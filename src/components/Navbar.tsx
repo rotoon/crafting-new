@@ -47,7 +47,15 @@ export default function Navbar() {
       <div className="navbar-inner">
         <a href="#hero" className="logo" onClick={(e) => handleSmoothScroll(e, "#hero")}>
           <Image src="/assets/logo-icon.svg" alt="Crafting Lab Icon" width={20} height={27} className="logo-icon" />
-          <Image src="/assets/logo-text.png" alt="CRAFTINGLAB" width={150} height={25} className="logo-text" />
+          <Image 
+            src="/assets/logo-text.png" 
+            alt="CRAFTINGLAB" 
+            width={150} 
+            height={25} 
+            className="logo-text" 
+            priority
+            style={{ width: 'auto', height: 'auto' }}
+          />
         </a>
         <div className={`nav-menu ${menuActive ? "active" : ""}`} id="nav-menu">
           <a

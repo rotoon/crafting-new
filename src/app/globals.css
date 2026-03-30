@@ -11,7 +11,7 @@
 
 :root {
   --green: #00FF00;
-  --black: #0a0a0a;
+  --black: #1a1a1a;
   --dark: #1a1a1a;
   --gray-light: #a6a6a6;
   --gray-mid: #6d6e70;
@@ -319,32 +319,33 @@ a {
 .about-section {
   position: relative;
   padding: 120px 0 80px;
+  margin: 10rem 0;
   overflow: hidden;
 }
 
 .about-bg-text {
   position: absolute;
-  font-family: var(--font-heading);
+  font-family: var(--font-pbio), var(--font-heading);
   font-weight: 800;
   font-size: clamp(100px, 12vw, 162px);
   text-transform: uppercase;
   letter-spacing: 1px;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.08);
+  -webkit-text-stroke: 1.5px var(--white);
   user-select: none;
   pointer-events: none;
-  z-index: 1;
+  z-index: 3; /* Move to background */
 }
 
 .about-bg-we {
-  top: 40px;
-  left: 50%;
+  top: 0px;
+  left: 60%;
   transform: translateX(-50%);
 }
 
 .about-bg-are {
-  bottom: 80px;
-  right: 5%;
+  bottom: -50px;
+  right: 10%;
 }
 
 .about-inner {
@@ -400,7 +401,7 @@ a {
 }
 
 .stat-value {
-  font-family: var(--font-heading);
+  font-family: var(--font-pbio), var(--font-heading);
   font-size: 82px;
   font-weight: 800;
   color: var(--green);
@@ -408,7 +409,7 @@ a {
 }
 
 .stat-plus {
-  font-family: var(--font-heading);
+  font-family: var(--font-pbio), var(--font-heading);
   font-size: 43px;
   font-weight: 800;
   color: transparent;
@@ -420,20 +421,24 @@ a {
   font-size: 26px;
   letter-spacing: 1px;
   line-height: 1.3;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .about-image {
   flex: 1;
   position: relative;
-  overflow: hidden;
-  border-radius: 8px;
+  min-height: 600px;
+  /* Slanted Frame Look */
+  clip-path: polygon(40% 0%, 100% 0%, 60% 100%, 0% 100%);
+  margin-right: -100px; /* Overlap effect */
+  z-index: 1;
 }
 
 .about-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  min-height: 500px;
+  min-height: 600px;
 }
 
 /* ----- PHOTO BAND ----- */

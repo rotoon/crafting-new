@@ -30,7 +30,7 @@ function Counter({ targetValue }: { targetValue: number }) {
           }
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     const el = ref.current;
@@ -41,7 +41,11 @@ function Counter({ targetValue }: { targetValue: number }) {
     };
   }, [targetValue]);
 
-  return <span ref={ref} className="stat-value">{count}</span>;
+  return (
+    <span ref={ref} className="stat-value">
+      {count}
+    </span>
+  );
 }
 
 export default function About() {
@@ -57,9 +61,24 @@ export default function About() {
             </FadeIn>
             <FadeIn delayMs={100}>
               <div className="about-text">
-                <p>In today's fast-moving digital world, brands that move with clarity and strategic direction are the ones that stay ahead.</p>
-                <p>With over 6 years of experience in branding and digital media design, we combine creativity with precision to deliver measurable, sustainable growth.</p>
-                <p>Because <span className="green">true success</span> is not about racing to the finish line<br />it is about building the strength to lead consistently<br />over time.</p>
+                <p>
+                  In today&apos;s fast-moving digital world, brands that move
+                  with clarity and strategic direction are the ones that stay
+                  ahead.
+                </p>
+                <p>
+                  With over 6 years of experience in branding and digital media
+                  design, we combine creativity with precision to deliver
+                  measurable, sustainable growth.
+                </p>
+                <p>
+                  Because <span className="green">true success</span> is not
+                  about racing to the finish line
+                  <br />
+                  it is about building the strength to lead consistently
+                  <br />
+                  over time.
+                </p>
               </div>
             </FadeIn>
             <FadeIn delayMs={200}>
@@ -69,30 +88,37 @@ export default function About() {
                     <Counter targetValue={50} />
                     <span className="stat-plus">+</span>
                   </div>
-                  <div className="stat-label">CLIENTS<br />WORK WITH</div>
+                  <div className="stat-label">
+                    CLIENTS
+                    <br />
+                    WORK WITH
+                  </div>
                 </div>
                 <div className="stat-item">
                   <div className="stat-number">
                     <Counter targetValue={7} />
                     <span className="stat-plus">+</span>
                   </div>
-                  <div className="stat-label">YEAR OF<br />EXPERIENCE</div>
+                  <div className="stat-label">
+                    YEAR OF
+                    <br />
+                    EXPERIENCE
+                  </div>
                 </div>
               </div>
             </FadeIn>
           </div>
           <FadeIn direction="right" delayMs={300} className="about-image">
-            <Image src="/assets/hero-bg.png" alt="Crafting Lab Team Photo" width={600} height={500} className="about-photo" />
+            <Image
+              src="/assets/hero-bg.png"
+              alt="Crafting Lab Team Photo"
+              width={800}
+              height={1000}
+              className="about-photo"
+              priority
+            />
           </FadeIn>
         </div>
-      </section>
-
-      <section className="photo-band" id="photo-band">
-        <div className="photo-band-curve photo-band-curve-top"></div>
-        <div className="photo-band-image">
-          <Image src="/assets/hero-bg.png" alt="Crafting Lab Studio" width={1440} height={580} className="photo-band-img" />
-        </div>
-        <div className="photo-band-curve photo-band-curve-bottom"></div>
       </section>
     </>
   );
