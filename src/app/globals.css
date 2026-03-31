@@ -701,7 +701,6 @@ a {
 .services-view-more {
     display: flex;
     justify-content: center;
-    margin-top: 60px;
 }
 
 .btn-view-more {
@@ -835,6 +834,7 @@ a {
 .works-section {
     position: relative;
     padding: 80px 0 40px;
+    background: linear-gradient(180deg, rgba(0, 255, 0, 0.00) 0%, rgba(0, 255, 0, 0.20) 50%, rgba(0, 255, 0, 0.00) 96.63%);
 }
 
 .works-header {
@@ -906,31 +906,39 @@ a {
 }
 
 .carousel-slide {
-    flex-shrink: 0;
     overflow: hidden;
     border-radius: 8px;
     border: none;
     padding: 0;
-    cursor: pointer;
     background: none;
+    transition: flex 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .carousel-slide img {
     width: 100%;
     height: 540px;
     object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.carousel-slide-secondary:hover img,
+.carousel-slide-peek:hover img {
+    transform: scale(1.05);
 }
 
 .carousel-slide-main {
-    width: 48%;
+    flex: 569;
+    cursor: default;
 }
 
 .carousel-slide-secondary {
-    width: 29%;
+    flex: 341;
+    cursor: pointer;
 }
 
 .carousel-slide-peek {
-    width: 11%;
+    flex: 129;
+    cursor: pointer;
 }
 
 .carousel-info {
@@ -938,6 +946,18 @@ a {
     justify-content: space-between;
     align-items: flex-start;
     margin-top: 30px;
+    animation: fadeSlideUp 0.5s ease forwards;
+}
+
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .carousel-info-left {
@@ -1645,7 +1665,7 @@ a {
     .carousel-slide-main,
     .carousel-slide-secondary,
     .carousel-slide-peek {
-        width: 100%;
+        flex: 1;
     }
 
     .carousel-slide img {
