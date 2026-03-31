@@ -10,6 +10,8 @@ export default function Services() {
       titleTop: "STRATEGY",
       titleBottom: "&MARKETING",
       img: "/assets/services/service-strategy.png",
+      imgWidth: 276,
+      imgHeight: 182,
       desc: "Explore and analyze target audiences, products, and both direct and indirect competitors to develop strategic plans and define a clear brand positioning. We provide business consultation and operational planning, while summarizing and analyzing performance results to refine strategies and guide the next stage of execution.",
       tags: [
         "Research",
@@ -29,6 +31,8 @@ export default function Services() {
       titleTop: "BRANDING",
       titleBottom: "&DESIGN",
       img: "/assets/services/service-branding.png",
+      imgWidth: 337,
+      imgHeight: 125,
       desc: "Develop and strengthen brand identity through thoughtful design, while establishing clear marketing communication guidelines. This ensures the brand maintains a distinct image and effectively connects with its target audience.",
       tags: [
         "Branding",
@@ -46,6 +50,8 @@ export default function Services() {
       titleTop: "PRODUCTION",
       titleBottom: "&VIDEO",
       img: "/assets/services/service-production.png",
+      imgWidth: 271,
+      imgHeight: 152,
       desc: "Produce photography and video content for marketing communications, creating visual content that reflects the brand's identity and captures the attention of the target audience.",
       tags: [
         "Photography",
@@ -54,7 +60,7 @@ export default function Services() {
         "Post Production",
         "Animation",
       ],
-      showDivider: false,
+      showDivider: true,
       hasLinesDecoration: false,
     },
   ];
@@ -62,27 +68,47 @@ export default function Services() {
   return (
     <section className="services-section" id="services">
       <div className="services-header">
-        <span className="services-bg-text services-bg-we">WE</span>
-        <FadeIn delayMs={0} className="services-header-center">
-          <h2 className="section-title">OUR SERVICES</h2>
-          <p className="services-subtitle">
-            We provide online marketing services by a team of experienced
-            people.
-            <br />
-            Build a strong brand in the online business world. through
-            creativity Content
-            <br />
-            and data analytics by using marketing strategies that are specific
-            to your business
-          </p>
+        <FadeIn
+          direction="left"
+          delayMs={0}
+          className="services-bg-text services-bg-we"
+        >
+          WE
         </FadeIn>
-        <span className="services-bg-text services-bg-do">DO</span>
+        <div className="services-header-center">
+          <FadeIn direction="down" delayMs={100}>
+            <h2 className="section-title">OUR SERVICES</h2>
+          </FadeIn>
+          <FadeIn direction="up" delayMs={200}>
+            <p className="services-subtitle">
+              We provide online marketing services by a team of experienced
+              people.
+              <br />
+              Build a strong brand in the online business world. through
+              creativity Content
+              <br />
+              and data analytics by using marketing strategies that are specific
+              to your business
+            </p>
+          </FadeIn>
+        </div>
+        <FadeIn
+          direction="right"
+          delayMs={0}
+          className="services-bg-text services-bg-do"
+        >
+          DO
+        </FadeIn>
       </div>
 
       <div className="services-content">
         {services.map((svc, idx) => (
-          <div key={svc.id}>
-            <FadeIn delayMs={idx * 150} className="service-row">
+          <div key={svc.id} className="service-row-wrapper">
+            <FadeIn
+              direction="left"
+              delayMs={idx * 150}
+              className="service-row"
+            >
               <div className="service-number">{svc.number}</div>
               <div className="service-title">
                 <span className="green">{svc.titleTop}</span>
@@ -93,8 +119,8 @@ export default function Services() {
                 <Image
                   src={svc.img}
                   alt={`${svc.titleTop} illustration`}
-                  width={280}
-                  height={200}
+                  width={svc.imgWidth}
+                  height={svc.imgHeight}
                 />
               </div>
               <div className="service-details">
@@ -107,10 +133,17 @@ export default function Services() {
                   ))}
                 </div>
               </div>
-              {svc.showDivider && <div className="service-divider"></div>}
             </FadeIn>
+            {svc.showDivider && (
+              <FadeIn direction="right" delayMs={idx * 150 + 100}>
+                <div className="service-divider"></div>
+              </FadeIn>
+            )}
           </div>
         ))}
+        <FadeIn direction="up" delayMs={300} className="services-view-more">
+          <a href="#" className="btn-view-more">View More</a>
+        </FadeIn>
       </div>
     </section>
   );

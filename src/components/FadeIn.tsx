@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 type FadeInProps = {
   children: React.ReactNode;
-  direction?: "up" | "left" | "right";
+  direction?: "up" | "down" | "left" | "right";
   delayMs?: number;
   className?: string;
 };
@@ -35,6 +35,7 @@ export default function FadeIn({ children, direction = "up", delayMs = 0, classN
   }, []);
 
   let baseClass = "fade-in";
+  if (direction === "down") baseClass = "fade-in-down";
   if (direction === "left") baseClass = "fade-in-left";
   if (direction === "right") baseClass = "fade-in-right";
 
