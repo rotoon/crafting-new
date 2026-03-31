@@ -8,19 +8,19 @@ const projects = [
     id: "gogreen",
     title: "Go Green by Kanya",
     desc: "Crafting Lab เริ่มตั้งแต่วาง Concept Branding ไปจนถึงการช่วย ออกแบบร้านกว่า 13 สาขา ต่อยอดทั้ง Online + Offline ให้ร้านเป็นที่รู้จัก ปรับเปลี่ยนการสื่อสารให้ถูกต้องตามข้อกฏหมายให้เป็น GoGreen Consult Center",
-    image: "/assets/works/carousel-1.png",
+    image: "/assets/works/carousel-1.webp",
   },
   {
     id: "wisetniyom",
     title: "Wisetniyom",
     desc: "เราร่วมคิดตั้งแต่ CONCEPT IDEA ร้าน และนำมาออกแบบ CI BRANDING ที่เป็นเอกลักษณ์ ออกแบบ FONT สำหรับใช้ในงานดีไซน์ของร้าน รวมถึงดูแลช่องทางสื่อสารออนไลน์ของแบรนด์และสื่อออฟไลน์ต่าง ๆ ณ จุดขาย",
-    image: "/assets/works/carousel-2.png",
+    image: "/assets/works/carousel-2.webp",
   },
   {
     id: "craftheart",
     title: "Craft Heart",
     desc: "เพจรีวิวร้าน อีเวนต์ กิจกรรมในเชียงใหม่ เราทำโปรดักชันตั้งแต่ถ่ายภาพ ถ่ายวิดีโอ ตัดต่อ วางคอนเซ็ปและคอนเทนต์ พร้อมวางแผนโพสต์ประจำแต่ละเดือน",
-    image: "/assets/works/carousel-3.png",
+    image: "/assets/works/carousel-3.webp",
   },
 ];
 
@@ -133,7 +133,7 @@ export default function Works() {
         <FadeIn className="production-center">
           <div className="production-video-card">
             <Image
-              src="/assets/works/video-1.png"
+              src="/assets/works/video-1.webp"
               alt="Production video showcase"
               width={381}
               height={676}
@@ -170,7 +170,7 @@ export default function Works() {
           <div className="video-thumb-grid">
             <div className="video-thumb">
               <Image
-                src="/assets/works/video-2.png"
+                src="/assets/works/video-2.webp"
                 alt="Video thumbnail"
                 width={187}
                 height={120}
@@ -178,7 +178,7 @@ export default function Works() {
             </div>
             <div className="video-thumb">
               <Image
-                src="/assets/works/video-3.png"
+                src="/assets/works/video-3.webp"
                 alt="Video thumbnail"
                 width={125}
                 height={80}
@@ -186,7 +186,7 @@ export default function Works() {
             </div>
             <div className="video-thumb">
               <Image
-                src="/assets/works/video-4.png"
+                src="/assets/works/video-4.webp"
                 alt="Video thumbnail"
                 width={187}
                 height={120}
@@ -194,7 +194,7 @@ export default function Works() {
             </div>
             <div className="video-thumb">
               <Image
-                src="/assets/works/video-5.png"
+                src="/assets/works/video-5.webp"
                 alt="Video thumbnail"
                 width={125}
                 height={80}

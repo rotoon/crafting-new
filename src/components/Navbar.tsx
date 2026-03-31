@@ -48,7 +48,7 @@ export default function Navbar() {
         <a href="#hero" className="logo" onClick={(e) => handleSmoothScroll(e, "#hero")}>
           <Image src="/assets/brand/logo-icon.svg" alt="Crafting Lab Icon" width={20} height={27} className="logo-icon" />
           <Image
-            src="/assets/brand/logo-text.png"
+            src="/assets/brand/logo-text.webp"
             alt="CRAFTINGLAB" 
             width={150} 
             height={25} 

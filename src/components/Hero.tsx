@@ -34,7 +34,7 @@ export default function Hero() {
         >
           <div className={`hero-bg-img-inner ${imgLoaded ? "loaded" : ""}`}>
             <Image
-              src="/assets/crew-bg.png"
+              src="/assets/crew-bg.webp"
               alt="Crafting Lab crew"
               fill
               priority

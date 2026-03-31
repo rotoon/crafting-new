@@ -145,7 +145,7 @@ export default function About() {
           </div>
           <FadeIn direction="right" delayMs={300} className="about-image">
             <Image
-              src="/assets/crew-bg.png"
+              src="/assets/crew-bg.webp"
               alt="Crafting Lab Team Photo"
               width={800}
               height={1000}

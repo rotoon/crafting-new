@@ -2,13 +2,13 @@
 import Image from "next/image";
 
 const photos = [
-  { src: "/assets/photos/photo-1.jpg", alt: "Crafting Lab - Dessert & Drinks" },
-  { src: "/assets/photos/photo-2.jpg", alt: "Crafting Lab - Neon Bar" },
-  { src: "/assets/photos/photo-3.jpg", alt: "Crafting Lab - Tire Service" },
-  { src: "/assets/photos/photo-4.jpg", alt: "Crafting Lab - Go Green Shop" },
-  { src: "/assets/photos/photo-5.jpg", alt: "Crafting Lab - Food" },
-  { src: "/assets/photos/photo-6.jpg", alt: "Crafting Lab - Lifestyle" },
-  { src: "/assets/photos/photo-7.jpg", alt: "Crafting Lab - Interior" },
+  { src: "/assets/photos/photo-1.webp", alt: "Crafting Lab - Dessert & Drinks" },
+  { src: "/assets/photos/photo-2.webp", alt: "Crafting Lab - Neon Bar" },
+  { src: "/assets/photos/photo-3.webp", alt: "Crafting Lab - Tire Service" },
+  { src: "/assets/photos/photo-4.webp", alt: "Crafting Lab - Go Green Shop" },
+  { src: "/assets/photos/photo-5.webp", alt: "Crafting Lab - Food" },
+  { src: "/assets/photos/photo-6.webp", alt: "Crafting Lab - Lifestyle" },
+  { src: "/assets/photos/photo-7.webp", alt: "Crafting Lab - Interior" },
 ];
 
 export default function PhotoCarousel() {
