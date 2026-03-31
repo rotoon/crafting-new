@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import About from "@/components/About";
+import PhotoCarousel from "@/components/PhotoCarousel";
 import Services from "@/components/Services";
 import Works from "@/components/Works";
 import Clients from "@/components/Clients";
@@ -15,6 +16,7 @@ export default function Home() {
         <Hero />
         <Marquee />
         <About />
+        <PhotoCarousel />
         <Services />
         <Works />
         <Clients />

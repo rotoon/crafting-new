@@ -9,9 +9,17 @@ export default function Services() {
       number: "01",
       titleTop: "STRATEGY",
       titleBottom: "&MARKETING",
-      img: "/assets/service-strategy.png",
+      img: "/assets/services/service-strategy.png",
       desc: "Explore and analyze target audiences, products, and both direct and indirect competitors to develop strategic plans and define a clear brand positioning. We provide business consultation and operational planning, while summarizing and analyzing performance results to refine strategies and guide the next stage of execution.",
-      tags: ["Research", "Strategy", "Consulting", "Planning", "KPI Analysis", "Report", "Marketing"],
+      tags: [
+        "Research",
+        "Strategy",
+        "Consulting",
+        "Planning",
+        "KPI Analysis",
+        "Report",
+        "Marketing",
+      ],
       showDivider: true,
       hasLinesDecoration: true,
     },
@@ -20,9 +28,15 @@ export default function Services() {
       number: "02",
       titleTop: "BRANDING",
       titleBottom: "&DESIGN",
-      img: "/assets/service-branding.png",
+      img: "/assets/services/service-branding.png",
       desc: "Develop and strengthen brand identity through thoughtful design, while establishing clear marketing communication guidelines. This ensures the brand maintains a distinct image and effectively connects with its target audience.",
-      tags: ["Branding", "Offline Media", "Digital Media", "Creative", "Consult"],
+      tags: [
+        "Branding",
+        "Offline Media",
+        "Digital Media",
+        "Creative",
+        "Consult",
+      ],
       showDivider: true,
       hasLinesDecoration: false,
     },
@@ -31,9 +45,15 @@ export default function Services() {
       number: "03",
       titleTop: "PRODUCTION",
       titleBottom: "&VIDEO",
-      img: "/assets/service-production.png",
+      img: "/assets/services/service-production.png",
       desc: "Produce photography and video content for marketing communications, creating visual content that reflects the brand's identity and captures the attention of the target audience.",
-      tags: ["Photography", "Video Production", "Motion Graphic", "Post Production", "Animation"],
+      tags: [
+        "Photography",
+        "Video Production",
+        "Motion Graphic",
+        "Post Production",
+        "Animation",
+      ],
       showDivider: false,
       hasLinesDecoration: false,
     },
@@ -46,9 +66,14 @@ export default function Services() {
         <FadeIn delayMs={0} className="services-header-center">
           <h2 className="section-title">OUR SERVICES</h2>
           <p className="services-subtitle">
-            We provide online marketing services by a team of experienced people.<br />
-            Build a strong brand in the online business world. through creativity Content<br />
-            and data analytics by using marketing strategies that are specific to your business
+            We provide online marketing services by a team of experienced
+            people.
+            <br />
+            Build a strong brand in the online business world. through
+            creativity Content
+            <br />
+            and data analytics by using marketing strategies that are specific
+            to your business
           </p>
         </FadeIn>
         <span className="services-bg-text services-bg-do">DO</span>
@@ -60,28 +85,30 @@ export default function Services() {
             <FadeIn delayMs={idx * 150} className="service-row">
               <div className="service-number">{svc.number}</div>
               <div className="service-title">
-                <span className="green">{svc.titleTop}</span><br />
+                <span className="green">{svc.titleTop}</span>
+                <br />
                 <span className="green">{svc.titleBottom}</span>
               </div>
               <div className="service-illustration">
-                <Image src={svc.img} alt={`${svc.titleTop} illustration`} width={280} height={200} />
+                <Image
+                  src={svc.img}
+                  alt={`${svc.titleTop} illustration`}
+                  width={280}
+                  height={200}
+                />
               </div>
               <div className="service-details">
                 <p className="service-description">{svc.desc}</p>
                 <div className="service-tags">
                   {svc.tags.map((t) => (
-                    <span key={t} className="tag">{t}</span>
+                    <span key={t} className="tag">
+                      {t}
+                    </span>
                   ))}
                 </div>
               </div>
               {svc.showDivider && <div className="service-divider"></div>}
             </FadeIn>
-
-            {svc.hasLinesDecoration && (
-              <FadeIn className="service-line-decoration">
-                <Image src="/assets/service-lines.svg" alt="" width={1181} height={711} className="service-lines-svg" />
-              </FadeIn>
-            )}
           </div>
         ))}
       </div>

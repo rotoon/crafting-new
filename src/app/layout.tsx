@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   title: "CRAFTING LAB - Race Your Life, Lead Your Brand Forward",
   description: "CRAFTING LAB - We provide online marketing services by a team of experienced people. Build a strong brand in the online business world through creative content and data analytics.",
   icons: {
-    icon: "/assets/logo-icon.svg",
+    icon: "/assets/brand/logo-icon.svg",
   },
 };
 

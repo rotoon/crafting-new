@@ -76,7 +76,7 @@ export default function Footer() {
                 <span className="footer-logo-text">LAB</span>
                 <div className="footer-logo-badge">
                   <span className="footer-logo-c">C</span>
-                  <Image src="/assets/footer-circle.svg" alt="" width={42} height={42} className="footer-logo-circle" />
+                  <Image src="/assets/brand/footer-circle.svg" alt="" width={42} height={42} className="footer-logo-circle" />
                 </div>
               </div>
               <div className="footer-address">

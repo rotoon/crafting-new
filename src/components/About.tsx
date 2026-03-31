@@ -3,12 +3,35 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import FadeIn from "./FadeIn";
 
+function useBgTextVisible() {
+  const weRef = useRef<HTMLDivElement>(null);
+  const areRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 },
+    );
+    if (weRef.current) observer.observe(weRef.current);
+    if (areRef.current) observer.observe(areRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return { weRef, areRef, visible };
+}
+
 function Counter({ targetValue }: { targetValue: number }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    let observer = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
           let current = 0;
@@ -49,11 +72,23 @@ function Counter({ targetValue }: { targetValue: number }) {
 }
 
 export default function About() {
+  const { weRef, areRef, visible } = useBgTextVisible();
+
   return (
     <>
       <section className="about-section" id="about">
-        <div className="about-bg-text about-bg-we">WE</div>
-        <div className="about-bg-text about-bg-are">ARE</div>
+        <div
+          ref={weRef}
+          className={`about-bg-text about-bg-we${visible ? " visible" : ""}`}
+        >
+          WE
+        </div>
+        <div
+          ref={areRef}
+          className={`about-bg-text about-bg-are${visible ? " visible" : ""}`}
+        >
+          ARE
+        </div>
         <div className="about-inner">
           <div className="about-content">
             <FadeIn>
@@ -110,7 +145,7 @@ export default function About() {
           </div>
           <FadeIn direction="right" delayMs={300} className="about-image">
             <Image
-              src="/assets/hero-bg.png"
+              src="/assets/crew-bg.png"
               alt="Crafting Lab Team Photo"
               width={800}
               height={1000}

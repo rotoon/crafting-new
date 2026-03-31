@@ -24,13 +24,13 @@ export default function Works() {
         <FadeIn className="works-carousel">
           <div className="carousel-track">
             <div className="carousel-slide carousel-slide-main">
-              <Image src="/assets/carousel-1.png" alt="Go Green by Kanya - Showcase 1" width={800} height={540} />
+              <Image src="/assets/works/carousel-1.png" alt="Go Green by Kanya - Showcase 1" width={800} height={540} />
             </div>
             <button className="carousel-slide carousel-slide-secondary">
-              <Image src="/assets/carousel-2.png" alt="Showcase 2" width={400} height={540} />
+              <Image src="/assets/works/carousel-2.png" alt="Showcase 2" width={400} height={540} />
             </button>
             <button className="carousel-slide carousel-slide-peek">
-              <Image src="/assets/carousel-3.png" alt="Showcase 3" width={200} height={540} />
+              <Image src="/assets/works/carousel-3.png" alt="Showcase 3" width={200} height={540} />
             </button>
           </div>
           <div className="carousel-info">
@@ -66,7 +66,7 @@ export default function Works() {
         
         <FadeIn className="production-center">
           <div className="production-video-card">
-            <Image src="/assets/video-1.png" alt="Production video showcase" width={381} height={676} />
+            <Image src="/assets/works/video-1.png" alt="Production video showcase" width={381} height={676} />
             <div className="video-overlay">
               <span className="video-text-top green">PRODU</span>
               <span className="video-thai-text">ทีมโปรดักชั่น</span>
@@ -87,10 +87,10 @@ export default function Works() {
         
         <FadeIn direction="right" className="production-right">
           <div className="video-thumb-grid">
-            <div className="video-thumb"><Image src="/assets/video-2.png" alt="Video thumbnail" width={187} height={120} /></div>
-            <div className="video-thumb"><Image src="/assets/video-3.png" alt="Video thumbnail" width={125} height={80} /></div>
-            <div className="video-thumb"><Image src="/assets/video-4.png" alt="Video thumbnail" width={187} height={120} /></div>
-            <div className="video-thumb"><Image src="/assets/video-5.png" alt="Video thumbnail" width={125} height={80} /></div>
+            <div className="video-thumb"><Image src="/assets/works/video-2.png" alt="Video thumbnail" width={187} height={120} /></div>
+            <div className="video-thumb"><Image src="/assets/works/video-3.png" alt="Video thumbnail" width={125} height={80} /></div>
+            <div className="video-thumb"><Image src="/assets/works/video-4.png" alt="Video thumbnail" width={187} height={120} /></div>
+            <div className="video-thumb"><Image src="/assets/works/video-5.png" alt="Video thumbnail" width={125} height={80} /></div>
           </div>
         </FadeIn>
       </section>

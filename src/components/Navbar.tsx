@@ -46,9 +46,9 @@ export default function Navbar() {
     >
       <div className="navbar-inner">
         <a href="#hero" className="logo" onClick={(e) => handleSmoothScroll(e, "#hero")}>
-          <Image src="/assets/logo-icon.svg" alt="Crafting Lab Icon" width={20} height={27} className="logo-icon" />
-          <Image 
-            src="/assets/logo-text.png" 
+          <Image src="/assets/brand/logo-icon.svg" alt="Crafting Lab Icon" width={20} height={27} className="logo-icon" />
+          <Image
+            src="/assets/brand/logo-text.png"
             alt="CRAFTINGLAB" 
             width={150} 
             height={25} 
