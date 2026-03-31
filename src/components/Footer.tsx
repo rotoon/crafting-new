@@ -57,10 +57,10 @@ export default function Footer() {
       <section className="success-banner" id="success-banner">
         <SuccessDots />
         <div className="success-text-row">
-          <FadeIn delayMs={0}>
+          <FadeIn direction="left">
             <span className="success-text">YOUR SUCCESS</span>
           </FadeIn>
-          <FadeIn delayMs={150}>
+          <FadeIn direction="right">
             <span className="success-text">OUR SUCCESS</span>
           </FadeIn>
         </div>
@@ -73,10 +73,12 @@ export default function Footer() {
             <div className="footer-brand">
               <div className="footer-logo">
                 <span className="footer-logo-text">CRAFTING</span>
-                <span className="footer-logo-text">LAB</span>
-                <div className="footer-logo-badge">
-                  <span className="footer-logo-c">C</span>
-                  <Image src="/assets/brand/footer-circle.svg" alt="" width={42} height={42} className="footer-logo-circle" />
+                <div className="footer-logo-second-line">
+                  <span className="footer-logo-text">LAB</span>
+                  <div className="footer-logo-badge">
+                    <span className="footer-logo-c">C</span>
+                    <Image src="/assets/brand/footer-circle.svg" alt="" width={42} height={42} className="footer-logo-circle" />
+                  </div>
                 </div>
               </div>
               <div className="footer-address">
