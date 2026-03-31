@@ -1000,7 +1000,7 @@ a {
     margin: 0 auto;
     padding: 80px 130px;
     display: grid;
-    grid-template-columns: 1fr 381px 290px;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 40px;
     align-items: start;
 }
@@ -1008,7 +1008,9 @@ a {
 .production-left {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 40px;
+    height: 100%;
 }
 
 .production-info h3 {

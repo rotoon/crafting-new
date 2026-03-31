@@ -115,19 +115,11 @@ export default function Works() {
             <h3 className="production-title">Go Green by Kanya</h3>
             <p className="production-type">Short Video Viral</p>
           </div>
-          <a href="#" className="see-all-link production-link">
-            See All
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
+          <FadeIn direction="left" delayMs={300} className="services-view-more">
+            <a href="#" className="btn-view-more">
+              View More
+            </a>
+          </FadeIn>
         </FadeIn>
 
         <FadeIn className="production-center">
