@@ -80,7 +80,6 @@ export default function Works() {
                     width={800}
                     height={540}
                     priority
-                    style={{ width: "100%", height: "auto" }}
                   />
                 </div>
               );
