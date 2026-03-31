@@ -195,14 +195,6 @@ export default function Works() {
           </div>
         </FadeIn>
       </section>
-
-      <section className="cta-section" id="cta-section">
-        <div className="cta-bg">
-          <div className="cta-gradient-left"></div>
-          <div className="cta-gradient-right"></div>
-          <div className="cta-gradient-bottom"></div>
-        </div>
-      </section>
     </>
   );
 }
