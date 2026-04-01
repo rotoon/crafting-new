@@ -13,6 +13,10 @@
 ## Just Completed
 - Full codebase exploration and analysis
 - Created memory system for project
+- Updated `Works` production showcase arc to a CSS-driven white rounded border on the left of `production-right`
+- Converted `Works` production showcase from auto-rotating thumbnails to click-driven thumbnail selection synced with the center video card
+- Compressed downloaded production videos in `public/assets/works/videos` for web delivery
+- Generated lightweight JPG thumbnails for production videos and wired `Works` to use real video playback with separate thumbnail assets
 
 ## Next Steps
 - Ready for feature requests or modifications

@@ -3,6 +3,46 @@ import { useState } from "react";
 import FadeIn from "./FadeIn";
 import Image from "next/image";
 
+// Production showcase: 3 slot positions
+const PROD_SLOTS = [
+  { right: 0, top: 44, width: 216, height: 138, z: 3 }, // slot 0: medium, upper
+  { right: 28, top: 228, width: 296, height: 190, z: 5 }, // slot 1: large, center
+  { right: 0, top: 466, width: 216, height: 138, z: 3 }, // slot 2: medium, lower
+];
+
+const PRODUCTION_ITEMS = [
+  {
+    id: "video-1",
+    src: "/assets/works/videos/17138219-uhd_2160_3840_25fps.mp4",
+    thumbnail: "/assets/works/thumbnails/17138219-uhd_2160_3840_25fps.jpg",
+    alt: "Go Green by Kanya production thumbnail 1",
+  },
+  {
+    id: "video-2",
+    src: "/assets/works/videos/19956132-hd_1080_1920_30fps.mp4",
+    thumbnail: "/assets/works/thumbnails/19956132-hd_1080_1920_30fps.jpg",
+    alt: "Go Green by Kanya production thumbnail 2",
+  },
+  {
+    id: "video-3",
+    src: "/assets/works/videos/4796949-uhd_2160_4096_25fps.mp4",
+    thumbnail: "/assets/works/thumbnails/4796949-uhd_2160_4096_25fps.jpg",
+    alt: "Go Green by Kanya production thumbnail 3",
+  },
+  {
+    id: "video-4",
+    src: "/assets/works/videos/6602217-hd_1080_1920_30fps.mp4",
+    thumbnail: "/assets/works/thumbnails/6602217-hd_1080_1920_30fps.jpg",
+    alt: "Go Green by Kanya production thumbnail 4",
+  },
+  {
+    id: "video-5",
+    src: "/assets/works/videos/8360260-uhd_2160_4096_25fps.mp4",
+    thumbnail: "/assets/works/thumbnails/8360260-uhd_2160_4096_25fps.jpg",
+    alt: "Go Green by Kanya production thumbnail 5",
+  },
+];
+
 const projects = [
   {
     id: "gogreen",
@@ -26,12 +66,17 @@ const projects = [
 
 export default function Works() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [activeProductionIndex, setActiveProductionIndex] = useState(0);
   const total = projects.length;
 
   const handleSlideClick = (index: number) => {
     if (index !== activeIndex) {
       setActiveIndex(index);
     }
+  };
+
+  const handleProductionChange = (index: number) => {
+    setActiveProductionIndex(index);
   };
 
   const getRole = (i: number): "main" | "secondary" | "peek" => {
@@ -42,6 +87,31 @@ export default function Works() {
   };
 
   const active = projects[activeIndex];
+  const activeProduction = PRODUCTION_ITEMS[activeProductionIndex];
+  const visibleProductionItems = [
+    {
+      item: PRODUCTION_ITEMS[
+        (activeProductionIndex - 1 + PRODUCTION_ITEMS.length) %
+          PRODUCTION_ITEMS.length
+      ],
+      slot: 0,
+      index:
+        (activeProductionIndex - 1 + PRODUCTION_ITEMS.length) %
+        PRODUCTION_ITEMS.length,
+    },
+    {
+      item: PRODUCTION_ITEMS[activeProductionIndex],
+      slot: 1,
+      index: activeProductionIndex,
+    },
+    {
+      item: PRODUCTION_ITEMS[
+        (activeProductionIndex + 1) % PRODUCTION_ITEMS.length
+      ],
+      slot: 2,
+      index: (activeProductionIndex + 1) % PRODUCTION_ITEMS.length,
+    },
+  ];
 
   return (
     <>
@@ -104,6 +174,9 @@ export default function Works() {
       </section>
 
       <section className="production-showcase" id="production-showcase">
+        {/* Background: dark green glow (Figma node 202:7604) */}
+        <div className="production-bg" aria-hidden="true" />
+
         <FadeIn direction="left" className="production-left">
           <div className="production-category">
             <div className="category-indicator">
@@ -124,74 +197,53 @@ export default function Works() {
 
         <FadeIn className="production-center">
           <div className="production-video-card">
-            <Image
-              src="/assets/works/video-1.webp"
-              alt="Production video showcase"
-              width={381}
-              height={676}
+            <video
+              key={activeProduction.id}
+              className="production-video"
+              src={activeProduction.src}
+              poster={activeProduction.thumbnail}
+              controls
+              playsInline
+              preload="metadata"
+              autoPlay
             />
-            <div className="video-overlay">
-              <span className="video-text-top green">PRODU</span>
-              <span className="video-thai-text">ทีมโปรดักชั่น</span>
-              <span className="video-text-bottom green">UCTION</span>
-              <div className="video-controls">
-                <button className="video-control" aria-label="Pause">
-                  ❚❚
-                </button>
-                <button className="video-control" aria-label="Previous">
-                  ⏮
-                </button>
-                <button className="video-control" aria-label="Next">
-                  ⏭
-                </button>
-                <button className="video-control" aria-label="Mute">
-                  🔊
-                </button>
-                <div className="video-progress">
-                  <div className="video-progress-bar"></div>
-                </div>
-                <button className="video-control" aria-label="Fullscreen">
-                  ⛶
-                </button>
-              </div>
-            </div>
           </div>
         </FadeIn>
 
         <FadeIn direction="right" className="production-right">
-          <div className="video-thumb-grid">
-            <div className="video-thumb">
-              <Image
-                src="/assets/works/video-2.webp"
-                alt="Video thumbnail"
-                width={187}
-                height={120}
-              />
-            </div>
-            <div className="video-thumb">
-              <Image
-                src="/assets/works/video-3.webp"
-                alt="Video thumbnail"
-                width={125}
-                height={80}
-              />
-            </div>
-            <div className="video-thumb">
-              <Image
-                src="/assets/works/video-4.webp"
-                alt="Video thumbnail"
-                width={187}
-                height={120}
-              />
-            </div>
-            <div className="video-thumb">
-              <Image
-                src="/assets/works/video-5.webp"
-                alt="Video thumbnail"
-                width={125}
-                height={80}
-              />
-            </div>
+          <div className="video-slot-container">
+            {visibleProductionItems.map(({ item, slot, index }) => {
+              const pos = PROD_SLOTS[slot];
+              const isActiveThumbnail = index === activeProductionIndex;
+
+              return (
+                <button
+                  key={item.id}
+                  className={`video-slot-item ${isActiveThumbnail ? "is-active" : ""}`}
+                  type="button"
+                  aria-label={`Show production video ${index + 1}`}
+                  aria-pressed={isActiveThumbnail}
+                  onClick={() => handleProductionChange(index)}
+                  style={{
+                    right: pos.right,
+                    top: pos.top,
+                    width: pos.width,
+                    height: pos.height,
+                    zIndex: pos.z,
+                    transition:
+                      "top 1s cubic-bezier(0.22,1,0.36,1), width 0.45s cubic-bezier(0.22,1,0.36,1), height 0.45s cubic-bezier(0.22,1,0.36,1)",
+                  }}
+                >
+                  <Image
+                    src={item.thumbnail}
+                    alt={item.alt}
+                    fill
+                    sizes="(max-width: 1024px) 40vw, 250px"
+                    style={{ objectFit: "cover" }}
+                  />
+                </button>
+              );
+            })}
           </div>
         </FadeIn>
       </section>
