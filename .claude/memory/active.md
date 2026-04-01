@@ -20,6 +20,8 @@
 - Tightened mobile responsiveness to reduce horizontal overflow risks in hero, about, success text, footer, and production sections
 - Applied a broader page-wide responsive pass across hero, marquee, about, photo carousel, services, works, production, sports banner, clients, footer, and navbar
 - Restored the production curve SVG in `Works` and kept it hidden on mobile/tablet via existing responsive CSS
+- Refined the responsive system with section-by-section polish: fluid navbar sizing and scroll offset handling, unified `btn-view-more` styles, variable-driven marquee/photo carousel motion, stronger tablet footer layout, and a cleaner desktop/mobile production thumbnail layout
+- Fixed the desktop `production-curve` visibility regression by allowing overflow on `production-right` while preserving clipping on tablet/mobile
 
 ## Next Steps
 - Ready for feature requests or modifications

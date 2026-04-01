@@ -48,7 +48,7 @@ function SuccessDots() {
     return () => window.removeEventListener("resize", render);
   }, []);
 
-  return <div ref={containerRef} className="success-dots w-full h-[32px]"></div>;
+  return <div ref={containerRef} className="success-dots"></div>;
 }
 
 export default function Footer() {
@@ -77,12 +77,20 @@ export default function Footer() {
                   <span className="footer-logo-text">LAB</span>
                   <div className="footer-logo-badge">
                     <span className="footer-logo-c">C</span>
-                    <Image src="/assets/brand/footer-circle.svg" alt="" width={42} height={42} className="footer-logo-circle" />
+                    <Image
+                      src="/assets/brand/footer-circle.svg"
+                      alt=""
+                      width={42}
+                      height={42}
+                      className="footer-logo-circle"
+                    />
                   </div>
                 </div>
               </div>
               <div className="footer-address">
-                <p><strong>CRAFTINGLAB Co.,Ltd.</strong></p>
+                <p>
+                  <strong>CRAFTINGLAB Co.,Ltd.</strong>
+                </p>
                 <p>210 Moo 2, Ton Pao Sub-district,</p>
                 <p>San Kamphaeng District, Chiang Mai 50130 Thailand</p>
               </div>
@@ -96,21 +104,45 @@ export default function Footer() {
             <div className="footer-links">
               <div className="footer-col">
                 <h4 className="footer-col-title">Menus</h4>
-                <a href="#hero" className="footer-link">Home</a>
-                <a href="#services" className="footer-link">Services</a>
-                <a href="#works" className="footer-link">Works</a>
-                <a href="#contact" className="footer-link">Contact Us</a>
+                <a href="#hero" className="footer-link">
+                  Home
+                </a>
+                <a href="#services" className="footer-link">
+                  Services
+                </a>
+                <a href="#works" className="footer-link">
+                  Works
+                </a>
+                <a href="#contact" className="footer-link">
+                  Contact Us
+                </a>
               </div>
               <div className="footer-col">
                 <h4 className="footer-col-title">Follow Us</h4>
-                <a href="https://www.facebook.com/CraftingLab.cnx" target="_blank" rel="noopener noreferrer" className="footer-link footer-link-underline">Facebook</a>
-                <a href="https://www.instagram.com/craftinglab.cnx/" target="_blank" rel="noopener noreferrer" className="footer-link footer-link-underline">Instagram</a>
+                <a
+                  href="https://www.facebook.com/CraftingLab.cnx"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-link footer-link-underline"
+                >
+                  Facebook
+                </a>
+                <a
+                  href="https://www.instagram.com/craftinglab.cnx/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-link footer-link-underline"
+                >
+                  Instagram
+                </a>
               </div>
             </div>
           </FadeIn>
         </div>
         <div className="footer-bottom">
-          <p className="footer-copyright">© CRAFTINGLAB 2026. All Rights Reserved.</p>
+          <p className="footer-copyright">
+            © CRAFTINGLAB 2026. All Rights Reserved.
+          </p>
         </div>
       </footer>
     </>

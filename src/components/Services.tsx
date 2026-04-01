@@ -65,6 +65,12 @@ export default function Services() {
     },
   ];
 
+  const subtitleLines = [
+    "We provide online marketing services by a team of experienced people.",
+    "Build a strong brand in the online business world through creativity, content,",
+    "and data analytics by using marketing strategies that are specific to your business.",
+  ];
+
   return (
     <section className="services-section" id="services">
       <div className="services-header">
@@ -81,14 +87,11 @@ export default function Services() {
           </FadeIn>
           <FadeIn direction="up" delayMs={200}>
             <p className="services-subtitle">
-              We provide online marketing services by a team of experienced
-              people.
-              <br />
-              Build a strong brand in the online business world. through
-              creativity Content
-              <br />
-              and data analytics by using marketing strategies that are specific
-              to your business
+              {subtitleLines.map((line) => (
+                <span key={line} className="services-subtitle-line">
+                  {line}
+                </span>
+              ))}
             </p>
           </FadeIn>
         </div>
@@ -142,7 +145,9 @@ export default function Services() {
           </div>
         ))}
         <FadeIn direction="up" delayMs={300} className="services-view-more">
-          <a href="#" className="btn-view-more">View More</a>
+          <a href="#" className="btn-view-more">
+            View More
+          </a>
         </FadeIn>
       </div>
     </section>

@@ -25,6 +25,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 88px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     width: 100%;
@@ -57,6 +58,11 @@ img {
 a {
     text-decoration: none;
     color: inherit;
+}
+
+section[id],
+footer[id] {
+    scroll-margin-top: 88px;
 }
 
 .green {
@@ -96,7 +102,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 100px;
+    padding: 10px clamp(20px, 6vw, 100px);
     height: 100%;
 }
 
@@ -121,13 +127,15 @@ a {
     align-items: center;
     gap: 0;
     height: 100%;
+    min-width: 0;
 }
 
 .nav-link {
     font-family: var(--font-heading);
     font-size: 16px;
     letter-spacing: 1px;
-    width: 127px;
+    min-width: 96px;
+    padding: 0 clamp(14px, 1.8vw, 24px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -145,8 +153,9 @@ a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 140px;
+    min-width: 140px;
     height: 39px;
+    padding: 0 24px;
     font-family: var(--font-heading);
     font-size: 16px;
     letter-spacing: 1px;
@@ -161,6 +170,7 @@ a {
         color 0.4s ease,
         font-weight 0.4s ease;
     font-weight: 400;
+    white-space: nowrap;
 }
 
 .btn-contact::before {
@@ -309,9 +319,12 @@ a {
 
 /* ----- MARQUEE BAR ----- */
 .marquee-bar {
+    --marquee-height: 104px;
+    --marquee-strip-width: 3038px;
+    --marquee-image-width: 3058px;
     width: 100%;
     background: var(--black);
-    height: 104px;
+    height: var(--marquee-height);
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -331,14 +344,14 @@ a {
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    width: 3038px; /* Force visible content width */
+    width: var(--marquee-strip-width); /* Force visible content width */
     overflow: hidden; /* Crop the 20px margin of the SVG */
 }
 
 .marquee-slide-img {
     display: block;
-    width: 3058px; /* Original SVG width */
-    height: 104px;
+    width: var(--marquee-image-width); /* Original SVG width */
+    height: var(--marquee-height);
     max-width: none;
     transform: translate3d(0, 0, 0); /* Force GPU acceleration */
 }
@@ -348,7 +361,7 @@ a {
         transform: translate3d(0, 0, 0);
     }
     100% {
-        transform: translate3d(-3038px, 0, 0);
+        transform: translate3d(calc(var(--marquee-strip-width) * -1), 0, 0);
     } /* Loop at exact content width */
 }
 
@@ -393,8 +406,10 @@ a {
 }
 
 .photo-carousel-track {
+    --photo-slide-width: 377px;
+    --photo-gap: 20px;
     display: flex;
-    gap: 20px;
+    gap: var(--photo-gap);
     animation: photo-scroll 30s linear infinite;
     width: fit-content;
     will-change: transform;
@@ -402,7 +417,7 @@ a {
 
 .photo-carousel-slide {
     flex-shrink: 0;
-    width: 377px;
+    width: var(--photo-slide-width);
     height: 579px;
     overflow: hidden;
 }
@@ -416,23 +431,9 @@ a {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-377px * 7 - 20px * 7));
-    }
-}
-
-@media (max-width: 768px) {
-    .photo-carousel-slide {
-        width: 260px;
-        height: 400px;
-    }
-
-    @keyframes photo-scroll {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(calc(-260px * 7 - 20px * 7));
-        }
+        transform: translateX(
+            calc((var(--photo-slide-width) + var(--photo-gap)) * -7)
+        );
     }
 }
 
@@ -693,6 +694,10 @@ a {
     margin: 0 auto;
 }
 
+.services-subtitle-line {
+    display: block;
+}
+
 .services-content {
     max-width: var(--max-width);
     margin: 0 auto;
@@ -737,7 +742,8 @@ a {
     align-items: center;
     justify-content: center;
     min-width: 127px;
-    padding: 8px 20px;
+    min-height: 44px;
+    padding: 8px 22px;
     font-family: var(--font-heading);
     font-size: 16px;
     font-weight: 400;
@@ -749,6 +755,7 @@ a {
     cursor: pointer;
     transition: all 0.3s ease;
     z-index: 1;
+    white-space: nowrap;
 }
 
 .btn-view-more::before {
@@ -782,6 +789,11 @@ a {
     box-shadow:
         0 0 15px rgba(0, 255, 0, 0.6),
         0 0 30px rgba(0, 255, 0, 0.3);
+}
+
+.btn-view-more:focus-visible {
+    outline: 2px solid rgba(0, 255, 0, 0.75);
+    outline-offset: 4px;
 }
 
 .service-number {
@@ -1202,18 +1214,23 @@ a {
     position: relative;
     align-self: stretch;
     min-width: 0;
+    min-height: 676px;
     display: flex;
     justify-content: flex-end;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .production-curve {
     position: absolute;
-    top: -70;
+    top: 50%;
     left: 0;
+    width: 470px;
+    height: 769px;
+    transform: translateY(-50%);
+    display: block;
     pointer-events: none;
     overflow: visible;
-    z-index: 6;
+    z-index: 3;
 }
 
 /* --- Slot-machine carousel (Figma layout) --- */
@@ -1225,6 +1242,8 @@ a {
     height: 628px;
     transform: translateY(-50%);
     overflow: hidden;
+    width: 100%;
+    z-index: 2;
     -webkit-mask-image: linear-gradient(
         to bottom,
         transparent 0%,
@@ -1253,6 +1272,9 @@ a {
     opacity: 0.72;
     box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
     transition:
+        top 1s cubic-bezier(0.22, 1, 0.36, 1),
+        width 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
         opacity 0.25s ease,
         transform 0.25s ease,
         box-shadow 0.25s ease;
@@ -1275,6 +1297,10 @@ a {
 .video-slot-item.is-active {
     opacity: 1;
     box-shadow: 0 22px 48px rgba(0, 0, 0, 0.28);
+}
+
+.video-slot-item.is-active::after {
+    border-color: rgba(255, 255, 255, 0.34);
 }
 
 .video-slot-item:focus-visible {
@@ -1555,25 +1581,6 @@ a {
     color: rgba(255, 255, 255, 0.85);
 }
 
-.btn-view-more {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--font-heading);
-    font-size: 18px;
-    letter-spacing: 1px;
-    color: var(--white);
-    padding: 12px 32px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 30px;
-    transition: all 0.3s ease;
-}
-
-.btn-view-more:hover {
-    border-color: var(--green);
-    color: var(--green);
-}
-
 /* ----- SUCCESS BANNER ----- */
 .success-banner {
     position: relative;
@@ -1711,14 +1718,20 @@ a {
 
 .footer-contact-info {
     display: flex;
+    flex-wrap: wrap;
     gap: 40px;
     font-size: 16px;
     letter-spacing: 1px;
 }
 
+.footer-contact-info span {
+    min-width: 0;
+}
+
 .footer-links {
     display: flex;
     gap: 80px;
+    min-width: 0;
 }
 
 .footer-col {
@@ -1834,6 +1847,19 @@ a {
         padding: 12px 40px;
     }
 
+    .nav-link {
+        min-width: 0;
+        padding-inline: 16px;
+        font-size: 15px;
+        letter-spacing: 0.7px;
+    }
+
+    .btn-contact {
+        min-width: 128px;
+        padding-inline: 20px;
+        font-size: 15px;
+    }
+
     .about-inner,
     .services-header,
     .services-content,
@@ -1856,9 +1882,19 @@ a {
         width: 320px;
         height: 570px;
     }
+
+    .production-right {
+        min-height: 570px;
+    }
 }
 
 @media (max-width: 1024px) {
+    .marquee-bar {
+        --marquee-height: 88px;
+        --marquee-strip-width: 2571px;
+        --marquee-image-width: 2588px;
+    }
+
     .hero {
         min-height: 620px;
         max-height: none;
@@ -1924,13 +1960,34 @@ a {
     }
 
     .photo-carousel-track {
-        gap: 16px;
-        animation: photo-scroll-tablet 28s linear infinite;
+        --photo-slide-width: 300px;
+        --photo-gap: 16px;
+        animation-duration: 28s;
     }
 
     .photo-carousel-slide {
-        width: 300px;
         height: 460px;
+    }
+
+    .navbar-inner {
+        padding: 12px 32px;
+    }
+
+    .logo-text {
+        width: 130px;
+    }
+
+    .nav-link {
+        padding-inline: 12px;
+        font-size: 15px;
+        letter-spacing: 0.5px;
+    }
+
+    .btn-contact {
+        min-width: 120px;
+        padding-inline: 16px;
+        font-size: 14px;
+        letter-spacing: 0.5px;
     }
 
     .services-header {
@@ -1992,6 +2049,7 @@ a {
     .production-right {
         min-height: 0;
         justify-content: center;
+        overflow: hidden;
     }
 
     .production-curve {
@@ -2014,6 +2072,7 @@ a {
         overflow-y: hidden;
         min-width: 0;
         padding-bottom: 6px;
+        scroll-snap-type: x proximity;
         -webkit-mask-image: none;
         mask-image: none;
         scrollbar-width: none;
@@ -2033,11 +2092,15 @@ a {
         aspect-ratio: 4 / 3;
         transform: none !important;
         scroll-snap-align: start;
-        transition: flex-basis 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
+        transition:
+            flex-basis 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+            transform 0.25s ease,
+            box-shadow 0.25s ease !important;
     }
 
     .video-slot-item.is-active {
         flex-basis: 240px;
+        transform: translateY(-6px) !important;
     }
 
     .sports-banner {
@@ -2053,6 +2116,19 @@ a {
 
     .clients-rows {
         margin-bottom: 48px;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        gap: 48px;
+    }
+
+    .footer-links {
+        gap: 48px;
+    }
+
+    .footer-contact-info {
+        gap: 14px 28px;
     }
 }
 
@@ -2132,20 +2208,13 @@ a {
     }
 
     .marquee-bar {
-        height: 72px;
+        --marquee-height: 72px;
+        --marquee-strip-width: 2102px;
+        --marquee-image-width: 2122px;
     }
 
     .marquee-track {
-        animation: marquee-mobile 30s linear infinite;
-    }
-
-    .marquee-content.slide-mode {
-        width: 2102px;
-    }
-
-    .marquee-slide-img {
-        width: 2122px;
-        height: 72px;
+        animation-duration: 30s;
     }
 
     .about-section {
@@ -2220,12 +2289,12 @@ a {
     }
 
     .photo-carousel-track {
-        gap: 12px;
-        animation: photo-scroll-mobile 24s linear infinite;
+        --photo-slide-width: 220px;
+        --photo-gap: 12px;
+        animation-duration: 24s;
     }
 
     .photo-carousel-slide {
-        width: 220px;
         height: 320px;
     }
 
@@ -2247,8 +2316,12 @@ a {
         line-height: 1.6;
     }
 
-    .services-subtitle br {
-        display: none;
+    .services-subtitle-line {
+        display: inline;
+    }
+
+    .services-subtitle-line + .services-subtitle-line::before {
+        content: " ";
     }
 
     .services-header,
@@ -2427,6 +2500,7 @@ a {
 
     .video-slot-item.is-active {
         flex-basis: auto;
+        transform: translateY(-8px) !important;
     }
 
     .production-right.fade-in-right,
@@ -2484,32 +2558,5 @@ a {
 
     .cta-section {
         height: 400px;
-    }
-}
-
-@keyframes photo-scroll-tablet {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(calc(-300px * 7 - 16px * 7));
-    }
-}
-
-@keyframes photo-scroll-mobile {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(calc(-220px * 7 - 12px * 7));
-    }
-}
-
-@keyframes marquee-mobile {
-    0% {
-        transform: translate3d(0, 0, 0);
-    }
-    100% {
-        transform: translate3d(-2102px, 0, 0);
     }
 }

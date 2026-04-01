@@ -27,9 +27,39 @@ export default function Navbar() {
     };
 
     handleScroll();
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setMenuActive(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const scrollToHash = (hash: string) => {
+    const target = document.querySelector<HTMLElement>(hash);
+    if (!target) return;
+
+    const navbarHeight = document.getElementById("navbar")?.offsetHeight ?? 65;
+    const top =
+      hash === "#hero"
+        ? 0
+        : Math.max(
+            target.getBoundingClientRect().top +
+              window.scrollY -
+              navbarHeight -
+              16,
+            0,
+          );
+
+    window.scrollTo({ top, behavior: "smooth" });
+  };
 
   const handleSmoothScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -37,10 +67,7 @@ export default function Navbar() {
   ) => {
     e.preventDefault();
     setMenuActive(false);
-    const target = document.querySelector(hash);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+    scrollToHash(hash);
   };
 
   return (
