@@ -26,11 +26,15 @@ export default function Navbar() {
       setActiveHash(`#${current}`);
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    hash: string,
+  ) => {
     e.preventDefault();
     setMenuActive(false);
     const target = document.querySelector(hash);
@@ -41,20 +45,30 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`navbar ${isScrolled ? "scrolled" : ""}`}
+      className={`navbar ${isScrolled ? "scrolled" : ""} ${menuActive ? "menu-open" : ""}`}
       id="navbar"
     >
       <div className="navbar-inner">
-        <a href="#hero" className="logo" onClick={(e) => handleSmoothScroll(e, "#hero")}>
-          <Image src="/assets/brand/logo-icon.svg" alt="Crafting Lab Icon" width={20} height={27} className="logo-icon" />
+        <a
+          href="#hero"
+          className="logo"
+          onClick={(e) => handleSmoothScroll(e, "#hero")}
+        >
+          <Image
+            src="/assets/brand/logo-icon.svg"
+            alt="Crafting Lab Icon"
+            width={20}
+            height={27}
+            className="logo-icon"
+          />
           <Image
             src="/assets/brand/logo-text.webp"
-            alt="CRAFTINGLAB" 
-            width={150} 
-            height={25} 
-            className="logo-text" 
+            alt="CRAFTINGLAB"
+            width={150}
+            height={25}
+            className="logo-text"
             priority
-            style={{ width: 'auto', height: 'auto' }}
+            style={{ width: "auto", height: "auto" }}
           />
         </a>
         <div className={`nav-menu ${menuActive ? "active" : ""}`} id="nav-menu">
@@ -92,6 +106,8 @@ export default function Navbar() {
           className={`nav-toggle ${menuActive ? "active" : ""}`}
           id="nav-toggle"
           aria-label="Toggle menu"
+          aria-expanded={menuActive}
+          aria-controls="nav-menu"
           onClick={() => setMenuActive(!menuActive)}
         >
           <span></span>

@@ -5,9 +5,9 @@ import Image from "next/image";
 
 // Production showcase: 3 slot positions
 const PROD_SLOTS = [
-  { right: 0, top: 44, width: 216, height: 138, z: 3 }, // slot 0: medium, upper
-  { right: 28, top: 228, width: 296, height: 190, z: 5 }, // slot 1: large, center
-  { right: 0, top: 466, width: 216, height: 138, z: 3 }, // slot 2: medium, lower
+  { right: 0, top: 52, width: 198, height: 126, z: 3 }, // slot 0: medium, upper
+  { right: 22, top: 226, width: 272, height: 174, z: 5 }, // slot 1: large, center
+  { right: 0, top: 450, width: 198, height: 126, z: 3 }, // slot 2: medium, lower
 ];
 
 const PRODUCTION_ITEMS = [
@@ -212,6 +212,34 @@ export default function Works() {
 
         <FadeIn direction="right" className="production-right">
           <div className="video-slot-container">
+            <svg
+              className="production-curve"
+              width="470"
+              height="769"
+              viewBox="0 0 470 769"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M248.5 1.08203C316.631 1.08203 378.46 43.8128 423.308 113.205C468.148 182.586 495.918 278.501 495.918 384.5C495.918 490.499 468.148 586.414 423.308 655.795C378.46 725.187 316.631 767.918 248.5 767.918C180.369 767.918 118.54 725.187 73.6924 655.795C28.8518 586.414 1.08203 490.499 1.08203 384.5C1.08203 278.501 28.8518 182.586 73.6924 113.205C118.54 43.8128 180.369 1.08203 248.5 1.08203Z"
+                stroke="url(#paint0_linear_113_495)"
+                strokeWidth="2.16404"
+              />
+              <defs>
+                <linearGradient
+                  id="paint0_linear_113_495"
+                  x1="0"
+                  y1="384.5"
+                  x2="497"
+                  y2="384.5"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stopColor="white" />
+                  <stop offset="0.168269" stopColor="#999999" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+            </svg>
             {visibleProductionItems.map(({ item, slot, index }) => {
               const pos = PROD_SLOTS[slot];
               const isActiveThumbnail = index === activeProductionIndex;

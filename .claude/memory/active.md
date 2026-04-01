@@ -17,6 +17,9 @@
 - Converted `Works` production showcase from auto-rotating thumbnails to click-driven thumbnail selection synced with the center video card
 - Compressed downloaded production videos in `public/assets/works/videos` for web delivery
 - Generated lightweight JPG thumbnails for production videos and wired `Works` to use real video playback with separate thumbnail assets
+- Tightened mobile responsiveness to reduce horizontal overflow risks in hero, about, success text, footer, and production sections
+- Applied a broader page-wide responsive pass across hero, marquee, about, photo carousel, services, works, production, sports banner, clients, footer, and navbar
+- Restored the production curve SVG in `Works` and kept it hidden on mobile/tablet via existing responsive CSS
 
 ## Next Steps
 - Ready for feature requests or modifications
