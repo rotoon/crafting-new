@@ -21,6 +21,22 @@ const syncopate = Syncopate({
   variable: "--font-syncopate",
 });
 
+const fcMinimal = localFont({
+  src: [
+    {
+      path: "../../public/fonts/FC-Minimal/FC Minimal Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/FC-Minimal/FC Minimal Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-fc-minimal",
+});
+
 const pbio = localFont({
   src: "../../public/fonts/pbio.ttf",
   variable: "--font-pbio",
@@ -41,7 +57,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${dmSans.variable} ${outfit.variable} ${syncopate.variable} ${pbio.variable} antialiased`}>
+      <body className={`${dmSans.variable} ${outfit.variable} ${syncopate.variable} ${fcMinimal.variable} ${pbio.variable} antialiased`}>
         {children}
       </body>
     </html>

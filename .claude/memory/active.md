@@ -23,6 +23,15 @@
 - Refined the responsive system with section-by-section polish: fluid navbar sizing and scroll offset handling, unified `btn-view-more` styles, variable-driven marquee/photo carousel motion, stronger tablet footer layout, and a cleaner desktop/mobile production thumbnail layout
 - Fixed the desktop `production-curve` visibility regression by allowing overflow on `production-right` while preserving clipping on tablet/mobile
 
+## Just Completed
+- Implemented Services page (`/services`) from Figma design (node 650-14263)
+  - `src/app/services/page.tsx` — route with Navbar + ServicesPage + Footer
+  - `src/components/ServicesPage.tsx` — full services page with 3 service blocks (Strategy, Branding, Production), subcards with icons, tags, back-to-top button
+  - `public/assets/services/` — hero webp images + SVG icons for each subcard + service-lines.svg decoration
+  - CSS added to globals.css under `/* SERVICES PAGE (/services) */` using `.sp-*` prefix
+  - Added `service-lines.svg` as decorative background to subcards section
+  - Fixed CSS class mismatches (`.sp-subcards` → `.sp-subcards-container`) in responsive media queries
+
 ## Next Steps
 - Ready for feature requests or modifications
 - Can improve design, add functionality, or fix issues

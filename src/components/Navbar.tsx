@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 
 export default function Navbar() {
@@ -7,11 +8,17 @@ export default function Navbar() {
   const [menuActive, setMenuActive] = useState(false);
   const [activeHash, setActiveHash] = useState("#hero");
 
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHome = pathname === "/";
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100);
 
-      // determine active section
+      if (!isHome) return;
+
+      // determine active section (only on home page)
       const sections = ["hero", "services", "works", "contact"];
       let current = "hero";
       sections.forEach((id) => {
@@ -29,7 +36,7 @@ export default function Navbar() {
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHome]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -61,13 +68,42 @@ export default function Navbar() {
     window.scrollTo({ top, behavior: "smooth" });
   };
 
-  const handleSmoothScroll = (
+  const handleNav = (
     e: React.MouseEvent<HTMLAnchorElement>,
     hash: string,
   ) => {
     e.preventDefault();
     setMenuActive(false);
-    scrollToHash(hash);
+
+    if (isHome) {
+      // On home page → smooth scroll
+      scrollToHash(hash);
+    } else {
+      // On other pages → navigate to home + hash
+      router.push(`/${hash}`);
+    }
+  };
+
+  const handleServiceNav = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setMenuActive(false);
+
+    if (pathname === "/services") {
+      // Already on services page → scroll to top
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      // Navigate to services page
+      router.push("/services");
+    }
+  };
+
+  // Determine which nav link is active
+  const getActiveClass = (link: string) => {
+    if (!isHome) {
+      if (link === "services" && pathname === "/services") return "active";
+      return "";
+    }
+    return activeHash === `#${link}` ? "active" : "";
   };
 
   return (
@@ -77,9 +113,9 @@ export default function Navbar() {
     >
       <div className="navbar-inner">
         <a
-          href="#hero"
+          href="/"
           className="logo"
-          onClick={(e) => handleSmoothScroll(e, "#hero")}
+          onClick={(e) => handleNav(e, "#hero")}
         >
           <Image
             src="/assets/brand/logo-icon.svg"
@@ -100,32 +136,32 @@ export default function Navbar() {
         </a>
         <div className={`nav-menu ${menuActive ? "active" : ""}`} id="nav-menu">
           <a
-            href="#hero"
-            className={`nav-link ${activeHash === "#hero" ? "active" : ""}`}
-            onClick={(e) => handleSmoothScroll(e, "#hero")}
+            href="/"
+            className={`nav-link ${getActiveClass("hero")}`}
+            onClick={(e) => handleNav(e, "#hero")}
           >
             Home
           </a>
           <a
-            href="#services"
-            className={`nav-link ${activeHash === "#services" ? "active" : ""}`}
-            onClick={(e) => handleSmoothScroll(e, "#services")}
+            href="/services"
+            className={`nav-link ${getActiveClass("services")}`}
+            onClick={handleServiceNav}
           >
             Services
           </a>
           <a
-            href="#works"
-            className={`nav-link ${activeHash === "#works" ? "active" : ""}`}
-            onClick={(e) => handleSmoothScroll(e, "#works")}
+            href="/#works"
+            className={`nav-link ${getActiveClass("works")}`}
+            onClick={(e) => handleNav(e, "#works")}
           >
             Works
           </a>
         </div>
         <a
-          href="#contact"
+          href="/#contact"
           className="btn-contact"
           id="btn-contact"
-          onClick={(e) => handleSmoothScroll(e, "#contact")}
+          onClick={(e) => handleNav(e, "#contact")}
         >
           Contact Us
         </a>
