@@ -87,13 +87,20 @@ export default function Navbar() {
   const handleServiceNav = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setMenuActive(false);
-
     if (pathname === "/services") {
-      // Already on services page → scroll to top
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      // Navigate to services page
       router.push("/services");
+    }
+  };
+
+  const handleWorksNav = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setMenuActive(false);
+    if (pathname === "/works") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      router.push("/works");
     }
   };
 
@@ -101,6 +108,7 @@ export default function Navbar() {
   const getActiveClass = (link: string) => {
     if (!isHome) {
       if (link === "services" && pathname === "/services") return "active";
+      if (link === "works" && pathname === "/works") return "active";
       return "";
     }
     return activeHash === `#${link}` ? "active" : "";
@@ -150,9 +158,9 @@ export default function Navbar() {
             Services
           </a>
           <a
-            href="/#works"
+            href="/works"
             className={`nav-link ${getActiveClass("works")}`}
-            onClick={(e) => handleNav(e, "#works")}
+            onClick={handleWorksNav}
           >
             Works
           </a>

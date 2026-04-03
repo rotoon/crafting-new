@@ -94,7 +94,7 @@ const SERVICES: ServiceData[] = [
       "Campaign Concept&Execution",
     ],
     photo: {
-      src: "/assets/services/service-strategy.webp",
+      src: "/assets/services/service-strategy.jpg",
       alt: "Strategy & Marketing",
       width: 1086,
       height: 328,

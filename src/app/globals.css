@@ -649,7 +649,11 @@ footer[id] {
     height: 1200px;
     top: -200px;
     left: -500px;
-    background: radial-gradient(ellipse at center, rgba(0, 80, 0, 0.35) 0%, transparent 70%);
+    background: radial-gradient(
+        ellipse at center,
+        rgba(0, 80, 0, 0.35) 0%,
+        transparent 70%
+    );
 }
 
 .sp-glow-2 {
@@ -657,7 +661,11 @@ footer[id] {
     height: 1200px;
     top: 1800px;
     right: -500px;
-    background: radial-gradient(ellipse at center, rgba(0, 80, 0, 0.3) 0%, transparent 70%);
+    background: radial-gradient(
+        ellipse at center,
+        rgba(0, 80, 0, 0.3) 0%,
+        transparent 70%
+    );
 }
 
 .sp-glow-3 {
@@ -665,7 +673,11 @@ footer[id] {
     height: 1200px;
     bottom: 200px;
     left: -400px;
-    background: radial-gradient(ellipse at center, rgba(0, 80, 0, 0.25) 0%, transparent 70%);
+    background: radial-gradient(
+        ellipse at center,
+        rgba(0, 80, 0, 0.25) 0%,
+        transparent 70%
+    );
 }
 
 .sp-section {
@@ -812,7 +824,9 @@ footer[id] {
     text-align: center;
     padding: 20px;
     opacity: 0;
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .sp-subcard-visible {
@@ -870,7 +884,6 @@ footer[id] {
     font-family: var(--font-fc-minimal), "Century Gothic", sans-serif;
 }
 
-
 /* Tags */
 .sp-tags-section {
     display: flex;
@@ -881,7 +894,13 @@ footer[id] {
 .sp-divider-line {
     width: 100%;
     height: 1px;
-    background: linear-gradient(90deg, #F1F1F1 0%, #0F0 40%, #9F0 60%, #E1E1E1 100%);
+    background: linear-gradient(
+        90deg,
+        #f1f1f1 0%,
+        #0f0 40%,
+        #9f0 60%,
+        #e1e1e1 100%
+    );
 }
 
 .sp-tags-label {
@@ -1178,7 +1197,483 @@ footer[id] {
     height: auto;
 }
 
-/* ----- WORKS SECTION ----- */
+/* ============================================================
+   WORKS PAGE REDESIGN (wk-* prefix)
+   Part 1: Showcases section
+   ============================================================ */
+
+.wk-section {
+    position: relative;
+    padding: 80px 0 0;
+    overflow: hidden;
+}
+
+.wk-bg-glow {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 255, 0, 0) 0%,
+        rgba(0, 255, 0, 0.12) 50%,
+        rgba(0, 255, 0, 0) 100%
+    );
+    pointer-events: none;
+}
+
+.wk-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 130px;
+}
+
+.wk-title {
+    font-family: var(--font-heading);
+    font-size: 50px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+/* SHOWCASES label row */
+.wk-label-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.wk-label-accent {
+    width: 6px;
+    height: 36px;
+    background: linear-gradient(180deg, rgba(0, 255, 0, 0.40) 0%, rgba(0, 255, 0, 0.00) 100%);
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.wk-label-text {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--green);
+}
+
+/* 3-card portrait row */
+.wk-showcases {
+    display: flex;
+    gap: 16px;
+    padding: 0 130px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    height: 592px;
+}
+
+.wk-showcase-card {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.85s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.wk-showcase-card:hover {
+    transform: translateY(-20px);
+}
+
+/* hover overlay */
+.wk-showcase-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.wk-showcase-card:hover::after {
+    opacity: 1;
+}
+
+/* slide-up label */
+.wk-showcase-label {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    background: #262626;
+    border-radius: 30px 30px 0 0;
+    padding: 18px 20px;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 2;
+}
+
+.wk-showcase-card:hover .wk-showcase-label {
+    transform: translateY(0);
+}
+
+.wk-showcase-name {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    white-space: nowrap;
+}
+
+/* ============================================================
+   Part 4: Photography
+   ============================================================ */
+
+.wk-ph-section {
+    background: #0a0a0a;
+    padding: 0 0 60px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Outline "PHOTOGRAPHY" title */
+.wk-ph-title-wrap {
+    text-align: center;
+    pointer-events: none;
+    padding: 40px 0 0;
+    overflow: hidden;
+}
+
+.wk-ph-title {
+    font-family: var(--font-heading);
+    font-size: clamp(60px, 11vw, 160px);
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--green);
+    text-stroke: 2px var(--green);
+    display: block;
+    line-height: 1;
+}
+
+/* Fan layout */
+.wk-ph-fan {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px 80px 0;
+    min-height: 420px;
+    position: relative;
+}
+
+.wk-ph-card {
+    flex-shrink: 0;
+    transform-origin: bottom center;
+    transition: transform 0.4s ease;
+}
+
+.wk-ph-card-inner {
+    width: 220px;
+    height: 320px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #1e1e1e;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+}
+
+.wk-ph-placeholder {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+}
+
+/* Footer: arrows + label */
+.wk-ph-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 32px 0 0;
+}
+
+.wk-ph-cat-wrap {
+    min-width: 220px;
+    text-align: center;
+}
+
+.wk-ph-cat {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+/* ============================================================
+   Part 3: Video Production
+   ============================================================ */
+
+.wk-vp-section {
+    padding: 60px 0 0;
+    background: #111;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Category tab bar */
+.wk-vp-tabs {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-top: 24px;
+    margin-bottom: 40px;
+}
+
+.wk-vp-tab {
+    padding: 8px 20px;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.45);
+    background: none;
+    border: none;
+    border-left: 1px solid var(--green);
+    cursor: pointer;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+}
+
+.wk-vp-tab:last-child {
+    border-right: 1px solid var(--green);
+}
+
+.wk-vp-tab--active {
+    color: var(--green);
+    font-weight: 700;
+}
+
+.wk-vp-tab:hover:not(.wk-vp-tab--active) {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Stage: holds decorative text + cards */
+.wk-vp-stage {
+    position: relative;
+    padding: 0 130px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+/* Decorative PRODU...UCTION text */
+.wk-vp-deco {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.wk-vp-deco-top,
+.wk-vp-deco-bottom {
+    font-family: var(--font-heading);
+    font-size: clamp(80px, 14vw, 200px);
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    color: var(--green);
+    line-height: 0.85;
+    opacity: 0.9;
+    user-select: none;
+}
+
+.wk-vp-deco-top {
+    align-self: flex-start;
+}
+
+.wk-vp-deco-bottom {
+    align-self: flex-start;
+    padding-bottom: 0;
+}
+
+/* 3 portrait video cards */
+.wk-vp-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+    padding: 20px 0 0;
+}
+
+.wk-vp-card {
+    flex: 1;
+    max-width: 342px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    background: #1a1a1a;
+    opacity: 0.55;
+    transform: scale(0.94);
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+.wk-vp-card--center {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 40px rgba(0, 255, 0, 0.12);
+}
+
+.wk-vp-video {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    display: block;
+}
+
+/* Progress bar at card bottom */
+.wk-vp-card-footer {
+    padding: 8px 12px 12px;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.wk-vp-progress {
+    height: 3px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.wk-vp-progress-fill {
+    height: 100%;
+    background: var(--green);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+    min-width: 8px;
+}
+
+/* Navigation arrows */
+.wk-vp-nav {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    padding: 24px 0 60px;
+    position: relative;
+    z-index: 2;
+}
+
+.wk-vp-arrow {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 1px solid var(--green);
+    border-radius: 50%;
+    color: var(--green);
+    font-size: 20px;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.wk-vp-arrow:hover {
+    background: var(--green);
+    color: #000;
+}
+
+/* ============================================================
+   Part 2: Graphic Design Grid
+   ============================================================ */
+
+.wk-label-row--white .wk-label-text {
+    color: #fff;
+}
+
+.wk-gd-section {
+    padding: 60px 0 80px;
+}
+
+/* 4-column grid */
+.wk-gd-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 28px;
+}
+
+.wk-gd-card {
+    display: block;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+
+.wk-gd-card-inner {
+    position: relative;
+    aspect-ratio: 258 / 231;
+    background: #1e1e1e;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    overflow: hidden;
+    transition:
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.wk-gd-card:hover .wk-gd-card-inner {
+    border-color: rgba(0, 255, 0, 0.3);
+    transform: translateY(-3px);
+}
+
+.wk-gd-card-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 1;
+    transition: background 0.3s ease;
+}
+
+.wk-gd-card:hover .wk-gd-card-overlay {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.wk-gd-card-name {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    line-height: 1.5;
+    transition: color 0.3s ease;
+}
+
+.wk-gd-card:hover .wk-gd-card-name {
+    color: var(--green);
+}
+
+/* ----- WORKS SECTION (legacy — kept for production section) ----- */
 .works-section {
     position: relative;
     padding: 80px 0;

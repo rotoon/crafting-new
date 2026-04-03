@@ -1,0 +1,279 @@
+"use client";
+import { useState } from "react";
+import FadeIn from "./FadeIn";
+import Image from "next/image";
+
+// ===== PART 4: Photography =====
+const PHOTO_CATEGORIES = ["PACKSHOT", "STYLING", "VIBE", "ADVERTISING"];
+
+const PHOTO_FAN = [
+  { rotate: 0.88,  yOffset: 77 },
+  { rotate: -4.98, yOffset: 0 },
+  { rotate: 0,     yOffset: 130 },
+  { rotate: 4.98,  yOffset: 0 },
+  { rotate: -0.88, yOffset: 77 },
+];
+
+const PHOTO_ITEMS = [
+  { id: "ph-1", image: "/assets/works/photography/ph-1.webp", alt: "Packshot 1" },
+  { id: "ph-2", image: "/assets/works/photography/ph-2.webp", alt: "Packshot 2" },
+  { id: "ph-3", image: "/assets/works/photography/ph-3.webp", alt: "Packshot 3" },
+  { id: "ph-4", image: "/assets/works/photography/ph-4.webp", alt: "Packshot 4" },
+  { id: "ph-5", image: "/assets/works/photography/ph-5.webp", alt: "Packshot 5" },
+];
+
+// ===== PART 2: Graphic Design Grid =====
+const GRAPHIC_DESIGN_ITEMS = [
+  { id: "cma",      name: "Central Chiangmai Airport", image: "/assets/works/portfolio/cma.webp" },
+  { id: "ggb",      name: "Go Green Bar",              image: "/assets/works/portfolio/ggb.webp" },
+  { id: "payon",    name: "Payon",                     image: "/assets/works/portfolio/payon.webp" },
+  { id: "kong",     name: "Kong Mart",                 image: "/assets/works/portfolio/kong.webp" },
+  { id: "gomaew",   name: "Gomaew",                    image: "/assets/works/portfolio/gomaew.webp" },
+  { id: "blanc",    name: "Blanc All Day Eatery",      image: "/assets/works/portfolio/blanc.webp" },
+  { id: "vinzon",   name: "The Vinzon",                image: "/assets/works/portfolio/vinzon.webp" },
+  { id: "nat",      name: "Nat Bar",                   image: "/assets/works/portfolio/nat.webp" },
+  { id: "paincare", name: "Pain Care",                 image: "/assets/works/portfolio/paincare.webp" },
+  { id: "ggc",      name: "Go Green Consult",          image: "/assets/works/portfolio/ggc.webp" },
+  { id: "funky",    name: "Funky",                     image: "/assets/works/portfolio/funky.webp" },
+  { id: "nor",      name: "Nor",                       image: "/assets/works/portfolio/nor.webp" },
+  { id: "moreeda",  name: "Moreeda / Baipo",           image: "/assets/works/portfolio/moreeda.webp" },
+  { id: "cc",       name: "CC",                        image: "/assets/works/portfolio/cc.webp" },
+  { id: "cmh",      name: "CMH",                       image: "/assets/works/portfolio/cmh.webp" },
+  { id: "gsl",      name: "GSL",                       image: "/assets/works/portfolio/gsl.webp" },
+  { id: "craft",    name: "Craft Heart",               image: "/assets/works/portfolio/craft.webp" },
+  { id: "ggc2",     name: "GGC",                       image: "/assets/works/portfolio/ggc2.webp" },
+  { id: "chidlom",  name: "Chidlom",                   image: "/assets/works/portfolio/chidlom.webp" },
+  { id: "somm",     name: "Somm",                      image: "/assets/works/portfolio/somm.webp" },
+];
+
+// ===== PART 1: Showcases =====
+const SHOWCASE_ITEMS = [
+  { id: "craftheart", title: "Craft Heart",       image: "/assets/works/showcase-craftheart.webp" },
+  { id: "gogreen",    title: "GoGreen By Kanya",  image: "/assets/works/showcase-gogreen.webp" },
+  { id: "wisetniyom", title: "Wiset Niyom",       image: "/assets/works/showcase-wisetniyom.webp" },
+];
+
+// ===== PART 3: Video Production =====
+const VIDEO_CATEGORIES = ["Real Estate", "Restaurant", "Food", "Clinic", "Bar&Cafe"];
+
+type VideoItem = { id: string; src: string; thumbnail: string; alt: string };
+
+const VIDEO_DATA: Record<string, VideoItem[]> = {
+  "Real Estate": [{ id: "re-1", src: "/assets/works/videos/17138219-uhd_2160_3840_25fps.mp4",  thumbnail: "/assets/works/thumbnails/17138219-uhd_2160_3840_25fps.jpg",  alt: "Real Estate video" }],
+  "Restaurant":  [{ id: "rs-1", src: "/assets/works/videos/19956132-hd_1080_1920_30fps.mp4",   thumbnail: "/assets/works/thumbnails/19956132-hd_1080_1920_30fps.jpg",   alt: "Restaurant video" }],
+  "Food":        [{ id: "fd-1", src: "/assets/works/videos/4796949-uhd_2160_4096_25fps.mp4",   thumbnail: "/assets/works/thumbnails/4796949-uhd_2160_4096_25fps.jpg",   alt: "Food video" }],
+  "Clinic":      [{ id: "cl-1", src: "/assets/works/videos/6602217-hd_1080_1920_30fps.mp4",    thumbnail: "/assets/works/thumbnails/6602217-hd_1080_1920_30fps.jpg",    alt: "Clinic video" }],
+  "Bar&Cafe":    [{ id: "bc-1", src: "/assets/works/videos/8360260-uhd_2160_4096_25fps.mp4",   thumbnail: "/assets/works/thumbnails/8360260-uhd_2160_4096_25fps.jpg",   alt: "Bar&Cafe video" }],
+};
+
+export default function WorksPage() {
+  // Part 3: Video state
+  const [activeCategory, setActiveCategory] = useState("Real Estate");
+  const [videoIndex, setVideoIndex] = useState(0);
+  const categoryVideos = VIDEO_DATA[activeCategory] ?? [];
+  const total = categoryVideos.length;
+  const getCard = (offset: number): VideoItem =>
+    categoryVideos[(videoIndex + offset + total) % total];
+  const handleCategoryChange = (cat: string) => { setActiveCategory(cat); setVideoIndex(0); };
+  const handlePrev = () => setVideoIndex((i) => (i - 1 + total) % total);
+  const handleNext = () => setVideoIndex((i) => (i + 1) % total);
+
+  // Part 4: Photography state
+  const [photoCatIndex, setPhotoCatIndex] = useState(0);
+  const [photoIndex, setPhotoIndex] = useState(0);
+  const totalPhotos = PHOTO_ITEMS.length;
+  const handlePhotoPrev = () => setPhotoIndex((i) => (i - 1 + totalPhotos) % totalPhotos);
+  const handlePhotoNext = () => setPhotoIndex((i) => (i + 1) % totalPhotos);
+  const getFanPhoto = (offset: number) =>
+    PHOTO_ITEMS[(photoIndex + offset + totalPhotos) % totalPhotos];
+
+  return (
+    <>
+      {/* ==============================================
+          PART 1: SHOWCASES
+          ============================================== */}
+      <section className="wk-section" id="works">
+        <div className="wk-bg-glow" aria-hidden="true" />
+        <div className="wk-inner">
+          <FadeIn direction="up">
+            <h2 className="wk-title">OUR WORKS</h2>
+          </FadeIn>
+          <FadeIn direction="up" delayMs={100}>
+            <div className="wk-label-row">
+              <div className="wk-label-accent" />
+              <span className="wk-label-text">SHOWCASES</span>
+            </div>
+          </FadeIn>
+        </div>
+
+        <FadeIn className="wk-showcases" delayMs={200}>
+          {SHOWCASE_ITEMS.map((item) => (
+            <a key={item.id} href="#" className="wk-showcase-card">
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                style={{ objectFit: "cover" }}
+                priority
+              />
+              <div className="wk-showcase-label">
+                <span className="wk-showcase-name">{item.title}</span>
+              </div>
+            </a>
+          ))}
+        </FadeIn>
+      </section>
+
+      {/* ==============================================
+          PART 2: GRAPHIC DESIGN GRID
+          ============================================== */}
+      <section className="wk-gd-section">
+        <div className="wk-inner">
+          <FadeIn direction="up">
+            <div className="wk-label-row">
+              <div className="wk-label-accent" />
+              <span className="wk-label-text wk-label-text--white">GRAPHIC DESIGN</span>
+            </div>
+          </FadeIn>
+
+          <FadeIn className="wk-gd-grid" delayMs={150}>
+            {GRAPHIC_DESIGN_ITEMS.map((item) => (
+              <a key={item.id} href="#" className="wk-gd-card">
+                <div className="wk-gd-card-inner">
+                  {/*
+                    TODO: Replace with real portfolio image.
+                    <Image src={item.image} alt={item.name} fill style={{ objectFit:"cover" }} />
+                  */}
+                  <div className="wk-gd-card-overlay">
+                    <span className="wk-gd-card-name">{item.name}</span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ==============================================
+          PART 3: VIDEO PRODUCTION
+          ============================================== */}
+      <section className="wk-vp-section" id="production-showcase">
+        <div className="wk-inner">
+          <FadeIn direction="up">
+            <div className="wk-label-row">
+              <div className="wk-label-accent" />
+              <span className="wk-label-text">VIDEO PRODUCTION</span>
+            </div>
+          </FadeIn>
+
+          <FadeIn direction="up" delayMs={100}>
+            <nav className="wk-vp-tabs" aria-label="Video categories">
+              {VIDEO_CATEGORIES.map((cat) => (
+                <button
+                  key={cat}
+                  className={`wk-vp-tab ${activeCategory === cat ? "wk-vp-tab--active" : ""}`}
+                  onClick={() => handleCategoryChange(cat)}
+                  type="button"
+                >
+                  {cat}
+                </button>
+              ))}
+            </nav>
+          </FadeIn>
+        </div>
+
+        <div className="wk-vp-stage">
+          <div className="wk-vp-deco" aria-hidden="true">
+            <span className="wk-vp-deco-top">PRODU</span>
+            <span className="wk-vp-deco-bottom">UCTION</span>
+          </div>
+
+          <FadeIn className="wk-vp-cards">
+            {[-1, 0, 1].map((offset, i) => {
+              const video = getCard(offset);
+              const isCenter = offset === 0;
+              return (
+                <div
+                  key={i}
+                  className={`wk-vp-card ${isCenter ? "wk-vp-card--center" : ""}`}
+                >
+                  <video
+                    key={video.id}
+                    className="wk-vp-video"
+                    src={video.src}
+                    poster={video.thumbnail}
+                    controls={isCenter}
+                    playsInline
+                    preload="metadata"
+                    muted={!isCenter}
+                    autoPlay={isCenter}
+                    loop
+                  />
+                  <div className="wk-vp-card-footer">
+                    <div className="wk-vp-progress">
+                      <div
+                        className="wk-vp-progress-fill"
+                        style={{ width: `${((videoIndex + 1) / Math.max(total, 1)) * 100}%` }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </FadeIn>
+
+          <div className="wk-vp-nav">
+            <button className="wk-vp-arrow" onClick={handlePrev} aria-label="Previous video" type="button">←</button>
+            <button className="wk-vp-arrow" onClick={handleNext} aria-label="Next video"     type="button">→</button>
+          </div>
+        </div>
+      </section>
+
+      {/* ==============================================
+          PART 4: PHOTOGRAPHY
+          ============================================== */}
+      <section className="wk-ph-section">
+        {/* Large PHOTOGRAPHY outline text */}
+        <div className="wk-ph-title-wrap" aria-hidden="true">
+          <span className="wk-ph-title">PHOTOGRAPHY</span>
+        </div>
+
+        {/* Fan-layout photo cards */}
+        <div className="wk-ph-fan">
+          {PHOTO_FAN.map((fan, i) => {
+            const photo = getFanPhoto(i - 2); // -2 so center (i=2) = photoIndex
+            return (
+              <div
+                key={i}
+                className="wk-ph-card"
+                style={{
+                  transform: `rotate(${fan.rotate}deg) translateY(${fan.yOffset}px)`,
+                }}
+              >
+                <div className="wk-ph-card-inner">
+                  {/*
+                    TODO: Replace with real photography images.
+                    <Image src={photo.image} alt={photo.alt} fill style={{ objectFit:"cover" }} />
+                  */}
+                  <div className="wk-ph-placeholder" />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Category label + arrows */}
+        <div className="wk-ph-footer">
+          <button className="wk-vp-arrow" onClick={handlePhotoPrev} aria-label="Previous" type="button">←</button>
+          <div className="wk-ph-cat-wrap">
+            <span className="wk-ph-cat">
+              {PHOTO_CATEGORIES[photoCatIndex]}
+            </span>
+          </div>
+          <button className="wk-vp-arrow" onClick={handlePhotoNext} aria-label="Next" type="button">→</button>
+        </div>
+      </section>
+    </>
+  );
+}

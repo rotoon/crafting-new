@@ -130,7 +130,7 @@ export default function Works() {
         <div className="works-header">
           <h2 className="section-title">OUR WORKS</h2>
           <FadeIn direction="up" delayMs={300} className="services-view-more">
-            <a href="#" className="btn-view-more">
+            <a href="/works" className="btn-view-more">
               View More
             </a>
           </FadeIn>
