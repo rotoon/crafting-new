@@ -683,12 +683,12 @@ footer[id] {
 .sp-section {
   position: relative;
   z-index: 1;
-  padding-top: 60px;
+  padding: 80px 0 0;
 }
 
 @media (max-width: 768px) {
   .sp-section {
-    padding-top: 40px;
+    padding: 40px 0 0;
   }
 }
 
@@ -727,8 +727,8 @@ footer[id] {
 .sp-title {
   font-family: var(--font-heading);
   font-size: clamp(32px, 8vw, 50px);
-  font-weight: 400;
-  letter-spacing: 1px;
+  font-weight: 700;
+  letter-spacing: 4px;
   color: var(--white);
   text-transform: uppercase;
   margin-bottom: 20px;
@@ -1386,6 +1386,9 @@ footer[id] {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 130px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .wk-title {

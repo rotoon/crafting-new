@@ -187,70 +187,54 @@ const SHOWCASE_ITEMS = [
 
 // ===== PART 3: Video Production =====
 const VIDEO_CATEGORIES = [
-  "Real Estate",
-  "Restaurant",
-  "Food",
-  "Clinic",
-  "Bar&Cafe",
+  "Showcase",
+  "Commercial",
+  "Documentary",
+  "Event",
+  "Corporate",
 ];
 
 type VideoItem = { id: string; src: string; thumbnail: string; alt: string };
 
-const VIDEO_DATA: Record<string, VideoItem[]> = {
-  "Real Estate": [
-    {
-      id: "re-1",
-      src: "/assets/works/videos/17138219-uhd_2160_3840_25fps.mp4",
-      thumbnail: "/assets/works/thumbnails/17138219-uhd_2160_3840_25fps.jpg",
-      alt: "Real Estate video",
-    },
-  ],
-  Restaurant: [
-    {
-      id: "rs-1",
-      src: "/assets/works/videos/19956132-hd_1080_1920_30fps.mp4",
-      thumbnail: "/assets/works/thumbnails/19956132-hd_1080_1920_30fps.jpg",
-      alt: "Restaurant video",
-    },
-  ],
-  Food: [
-    {
-      id: "fd-1",
-      src: "/assets/works/videos/4796949-uhd_2160_4096_25fps.mp4",
-      thumbnail: "/assets/works/thumbnails/4796949-uhd_2160_4096_25fps.jpg",
-      alt: "Food video",
-    },
-  ],
-  Clinic: [
-    {
-      id: "cl-1",
-      src: "/assets/works/videos/6602217-hd_1080_1920_30fps.mp4",
-      thumbnail: "/assets/works/thumbnails/6602217-hd_1080_1920_30fps.jpg",
-      alt: "Clinic video",
-    },
-  ],
-  "Bar&Cafe": [
-    {
-      id: "bc-1",
-      src: "/assets/works/videos/8360260-uhd_2160_4096_25fps.mp4",
-      thumbnail: "/assets/works/thumbnails/8360260-uhd_2160_4096_25fps.jpg",
-      alt: "Bar&Cafe video",
-    },
-  ],
-};
+const PRODUCTION_VIDEOS: VideoItem[] = [
+  {
+    id: "video-1",
+    src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4",
+    thumbnail: "/assets/works/thumbnails/snapsave-app_main.jpg",
+    alt: "Video production showcase 1",
+  },
+  {
+    id: "video-2",
+    src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4",
+    thumbnail: "/assets/works/thumbnails/snapsave-app_thumb_001.jpg",
+    alt: "Video production showcase 2",
+  },
+  {
+    id: "video-3",
+    src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4",
+    thumbnail: "/assets/works/thumbnails/snapsave-app_thumb_002.jpg",
+    alt: "Video production showcase 3",
+  },
+  {
+    id: "video-4",
+    src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4",
+    thumbnail: "/assets/works/thumbnails/snapsave-app_thumb_003.jpg",
+    alt: "Video production showcase 4",
+  },
+  {
+    id: "video-5",
+    src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4",
+    thumbnail: "/assets/works/thumbnails/snapsave-app_thumb_004.jpg",
+    alt: "Video production showcase 5",
+  },
+];
 
 export default function WorksPage() {
   // Part 3: Video state
-  const [activeCategory, setActiveCategory] = useState("Real Estate");
   const [videoIndex, setVideoIndex] = useState(0);
-  const categoryVideos = VIDEO_DATA[activeCategory] ?? [];
-  const total = categoryVideos.length;
+  const total = PRODUCTION_VIDEOS.length;
   const getCard = (offset: number): VideoItem =>
-    categoryVideos[(videoIndex + offset + total) % total];
-  const handleCategoryChange = (cat: string) => {
-    setActiveCategory(cat);
-    setVideoIndex(0);
-  };
+    PRODUCTION_VIDEOS[(videoIndex + offset + total) % total];
   const handlePrev = () => setVideoIndex((i) => (i - 1 + total) % total);
   const handleNext = () => setVideoIndex((i) => (i + 1) % total);
 
@@ -354,33 +338,12 @@ export default function WorksPage() {
               <span className="wk-label-text">VIDEO PRODUCTION</span>
             </div>
           </FadeIn>
-
-          <FadeIn direction="up" delayMs={100}>
-            <nav className="wk-vp-tabs" aria-label="Video categories">
-              {VIDEO_CATEGORIES.map((cat) => (
-                <button
-                  key={cat}
-                  className={`wk-vp-tab ${activeCategory === cat ? "wk-vp-tab--active" : ""}`}
-                  onClick={() => handleCategoryChange(cat)}
-                  type="button"
-                >
-                  {cat}
-                </button>
-              ))}
-            </nav>
-          </FadeIn>
         </div>
 
         <div className="wk-vp-stage">
-          <div className="wk-vp-deco" aria-hidden="true">
-            <span className="wk-vp-deco-top">PRODU</span>
-            <span className="wk-vp-deco-bottom">UCTION</span>
-          </div>
-
           <FadeIn className="wk-vp-cards">
-            {[-1, 0, 1].map((offset, i) => {
-              const video = getCard(offset);
-              const isCenter = offset === 0;
+            {PRODUCTION_VIDEOS.map((video, i) => {
+              const isCenter = i === 0;
               return (
                 <div
                   key={i}
@@ -394,20 +357,10 @@ export default function WorksPage() {
                     controls={isCenter}
                     playsInline
                     preload="metadata"
-                    muted={!isCenter}
+                    muted
                     autoPlay={isCenter}
                     loop
                   />
-                  <div className="wk-vp-card-footer">
-                    <div className="wk-vp-progress">
-                      <div
-                        className="wk-vp-progress-fill"
-                        style={{
-                          width: `${((videoIndex + 1) / Math.max(total, 1)) * 100}%`,
-                        }}
-                      />
-                    </div>
-                  </div>
                 </div>
               );
             })}
