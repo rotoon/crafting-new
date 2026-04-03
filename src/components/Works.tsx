@@ -13,32 +13,32 @@ const PROD_SLOTS = [
 const PRODUCTION_ITEMS = [
   {
     id: "video-1",
-    src: "/assets/works/videos/17138219-uhd_2160_3840_25fps.mp4",
-    thumbnail: "/assets/works/thumbnails/17138219-uhd_2160_3840_25fps.jpg",
+    src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4",
+    thumbnail: "/assets/works/thumbnails/snapsave-app_main.jpg",
     alt: "Go Green by Kanya production thumbnail 1",
   },
   {
     id: "video-2",
-    src: "/assets/works/videos/19956132-hd_1080_1920_30fps.mp4",
-    thumbnail: "/assets/works/thumbnails/19956132-hd_1080_1920_30fps.jpg",
+    src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4",
+    thumbnail: "/assets/works/thumbnails/snapsave-app_thumb_001.jpg",
     alt: "Go Green by Kanya production thumbnail 2",
   },
   {
     id: "video-3",
-    src: "/assets/works/videos/4796949-uhd_2160_4096_25fps.mp4",
-    thumbnail: "/assets/works/thumbnails/4796949-uhd_2160_4096_25fps.jpg",
+    src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4",
+    thumbnail: "/assets/works/thumbnails/snapsave-app_thumb_002.jpg",
     alt: "Go Green by Kanya production thumbnail 3",
   },
   {
     id: "video-4",
-    src: "/assets/works/videos/6602217-hd_1080_1920_30fps.mp4",
-    thumbnail: "/assets/works/thumbnails/6602217-hd_1080_1920_30fps.jpg",
+    src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4",
+    thumbnail: "/assets/works/thumbnails/snapsave-app_thumb_003.jpg",
     alt: "Go Green by Kanya production thumbnail 4",
   },
   {
     id: "video-5",
-    src: "/assets/works/videos/8360260-uhd_2160_4096_25fps.mp4",
-    thumbnail: "/assets/works/thumbnails/8360260-uhd_2160_4096_25fps.jpg",
+    src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4",
+    thumbnail: "/assets/works/thumbnails/snapsave-app_thumb_004.jpg",
     alt: "Go Green by Kanya production thumbnail 5",
   },
 ];
@@ -218,6 +218,7 @@ export default function Works() {
               playsInline
               preload="metadata"
               autoPlay
+              muted
             />
           </div>
         </FadeIn>

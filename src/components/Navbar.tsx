@@ -13,30 +13,11 @@ export default function Navbar() {
   const isHome = pathname === "/";
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
-
-      if (!isHome) return;
-
-      // determine active section (only on home page)
-      const sections = ["hero", "services", "works", "contact"];
-      let current = "hero";
-      sections.forEach((id) => {
-        const section = document.getElementById(id);
-        if (section) {
-          const sectionTop = section.offsetTop - 200;
-          if (window.scrollY >= sectionTop) {
-            current = id;
-          }
-        }
-      });
-      setActiveHash(`#${current}`);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 100);
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isHome]);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -68,10 +49,7 @@ export default function Navbar() {
     window.scrollTo({ top, behavior: "smooth" });
   };
 
-  const handleNav = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    hash: string,
-  ) => {
+  const handleNav = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
     e.preventDefault();
     setMenuActive(false);
 
@@ -120,11 +98,7 @@ export default function Navbar() {
       id="navbar"
     >
       <div className="navbar-inner">
-        <a
-          href="/"
-          className="logo"
-          onClick={(e) => handleNav(e, "#hero")}
-        >
+        <a href="/" className="logo" onClick={(e) => handleNav(e, "#hero")}>
           <Image
             src="/assets/brand/logo-icon.svg"
             alt="Crafting Lab Icon"
