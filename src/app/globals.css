@@ -1386,9 +1386,6 @@ footer[id] {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 130px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .wk-title {
@@ -1402,7 +1399,21 @@ footer[id] {
   margin-bottom: 48px;
 }
 
-/* SHOWCASES label row */
+/* Layout for Title + Tabs in same row */
+.wk-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.wk-header-row .wk-label-row {
+  margin-bottom: 0; /* Align perfectly in the row */
+}
+
+/* SHOWCASES label row (default) */
 .wk-label-row {
   display: flex;
   align-items: center;
@@ -1504,7 +1515,7 @@ footer[id] {
 
 .wk-ph-section {
   background: #0a0a0a;
-  padding: 0 0 60px;
+  padding: 60px 80px;
   overflow: hidden;
   position: relative;
 }
@@ -1525,7 +1536,6 @@ footer[id] {
   text-transform: uppercase;
   color: transparent;
   -webkit-text-stroke: 2px var(--green);
-  text-stroke: 2px var(--green);
   display: block;
   line-height: 1;
 }
@@ -1602,8 +1612,7 @@ footer[id] {
   display: flex;
   align-items: center;
   gap: 0;
-  margin-top: 24px;
-  margin-bottom: 40px;
+  margin: 0; /* Removed fixed margins to align in header-row */
 }
 
 .wk-vp-tab {
@@ -1636,9 +1645,15 @@ footer[id] {
 /* Stage: holds decorative text + cards */
 .wk-vp-stage {
   position: relative;
-  padding: 0 130px;
-  max-width: var(--max-width);
+  width: 100%;
   margin: 0 auto;
+  padding: 40px 0;
+}
+
+/* Constants for slider calculation */
+:root {
+  --wk-card-w: 342px;
+  --wk-card-gap: 30px;
 }
 
 /* Decorative PRODU...UCTION text */
@@ -1674,29 +1689,49 @@ footer[id] {
   padding-bottom: 0;
 }
 
-/* 3 portrait video cards */
+/* Viewport to clip everything to 3 visible cards */
+.wk-vp-viewport {
+  position: relative;
+  /* Precisely 3 cards wide */
+  width: calc(3 * var(--wk-card-w) + 2 * var(--wk-card-gap));
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* 3 portrait video cards in a sliding track */
 .wk-vp-cards {
   display: flex;
-  gap: 20px;
-  justify-content: center;
-  align-items: flex-start;
+  gap: var(--wk-card-gap);
+  padding: 0; /* padding handled by stage */
   position: relative;
   z-index: 1;
-  padding: 20px 0 0;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.wk-vp-cards--static {
+  justify-content: center;
+  transform: none !important;
+  transition: none !important;
+  width: 100%;
 }
 
 .wk-vp-card {
-  flex: 1;
-  max-width: 342px;
+  flex: 0 0 var(--wk-card-w);
+  height: clamp(500px, 60vh, 607px);
   border-radius: 12px;
   overflow: hidden;
   position: relative;
   background: #1a1a1a;
-  opacity: 0.55;
-  transform: scale(0.94);
+  opacity: 0.4;
+  transform: scale(0.9);
   transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.6s ease;
+  cursor: pointer;
 }
 
 .wk-vp-card--center {
@@ -1736,7 +1771,7 @@ footer[id] {
 /* Navigation arrows */
 .wk-vp-nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   gap: 24px;
   padding: 24px 0 60px;
   position: relative;
@@ -2843,9 +2878,13 @@ footer[id] {
   .works-carousel,
   .production-showcase,
   .footer-inner,
-  .footer-bottom {
-    padding-left: 40px;
-    padding-right: 40px;
+  .footer-bottom,
+  .wk-inner,
+  .wk-showcases,
+  .wk-vp-stage,
+  .wk-gd-grid {
+    padding-left: 80px;
+    padding-right: 80px;
   }
 
   .production-showcase {
@@ -3647,5 +3686,173 @@ footer[id] {
   .sp-tag {
     font-size: 14px;
     padding: 8px 14px;
+  }
+
+  /* Works Page Responsive */
+  .wk-title {
+    font-size: 38px;
+    margin-bottom: 32px;
+  }
+
+  .wk-showcases {
+    height: auto;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .wk-showcase-card {
+    flex: 1 1 calc(50% - 10px);
+    max-width: none;
+  }
+
+  .wk-gd-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .wk-ph-fan {
+    padding: 20px 40px 0;
+    gap: 8px;
+    min-height: 380px;
+  }
+
+  .wk-ph-card-inner {
+    width: 180px;
+    height: 260px;
+  }
+
+  .wk-ph-cat {
+    font-size: 24px;
+  }
+
+  .wk-vp-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .wk-vp-card {
+    max-width: 100%;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Works Page Mobile Responsive */
+  .wk-section,
+  .wk-gd-section,
+  .wk-ph-section,
+  .wk-vp-section {
+    padding-top: 60px;
+  }
+
+  .wk-inner,
+  .wk-showcases,
+  .wk-vp-stage,
+  .wk-gd-grid {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .wk-title {
+    font-size: 32px;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+  }
+
+  .wk-label-text {
+    font-size: 24px;
+    letter-spacing: 2px;
+  }
+
+  .wk-showcases {
+    flex-direction: column;
+    height: auto;
+    gap: 16px;
+  }
+
+  .wk-showcase-card {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 480px;
+    transform: none !important;
+  }
+
+  .wk-showcase-name {
+    font-size: 18px;
+  }
+
+  .wk-gd-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .wk-gd-card-inner {
+    aspect-ratio: 1 / 1;
+  }
+
+  .wk-ph-title {
+    font-size: 48px;
+    -webkit-text-stroke-width: 1px;
+  }
+
+  .wk-ph-fan {
+    padding: 20px 0 0;
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 12px;
+    min-height: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    scrollbar-width: none;
+  }
+
+  .wk-ph-fan::-webkit-scrollbar {
+    display: none;
+  }
+
+  .wk-ph-card {
+    transform: none !important;
+  }
+
+  .wk-ph-card-inner {
+    width: 240px;
+    height: 340px;
+  }
+
+  .wk-ph-footer {
+    gap: 20px;
+    padding: 24px 0 0;
+  }
+
+  .wk-ph-cat {
+    font-size: 20px;
+  }
+
+  .wk-vp-viewport {
+    width: var(--wk-card-w);
+  }
+
+  .wk-vp-stage {
+    padding: 20px 0;
+  }
+
+  .wk-vp-cards {
+    gap: 20px;
+  }
+
+  .wk-vp-video {
+    aspect-ratio: 16 / 9;
+  }
+
+  .wk-vp-nav {
+    padding: 20px 0 40px;
+  }
+
+  .wk-vp-arrow {
+    width: 40px;
+    height: 40px;
   }
 }

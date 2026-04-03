@@ -6,9 +6,16 @@ type FadeInProps = {
   direction?: "up" | "down" | "left" | "right";
   delayMs?: number;
   className?: string;
+  style?: React.CSSProperties;
 };
 
-export default function FadeIn({ children, direction = "up", delayMs = 0, className = "" }: FadeInProps) {
+export default function FadeIn({
+  children,
+  direction = "up",
+  delayMs = 0,
+  className = "",
+  style = {},
+}: FadeInProps) {
   const [isVisible, setIsVisible] = useState(false);
   const domRef = useRef<HTMLDivElement>(null);
 
@@ -43,7 +50,7 @@ export default function FadeIn({ children, direction = "up", delayMs = 0, classN
     <div
       ref={domRef}
       className={`${baseClass} ${isVisible ? "visible" : ""} ${className}`}
-      style={{ transitionDelay: `${delayMs}ms` }}
+      style={{ ...style, transitionDelay: `${delayMs}ms` }}
     >
       {children}
     </div>

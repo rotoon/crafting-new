@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import FadeIn from "./FadeIn";
 import Image from "next/image";
 
@@ -17,28 +17,28 @@ const PHOTO_FAN = [
 const PHOTO_ITEMS = [
   {
     id: "ph-1",
-    image: "/assets/works/photography/ph-1.webp",
+    image: "/assets/works/photography/ph-1.png",
     alt: "Packshot 1",
   },
   {
     id: "ph-2",
-    image: "/assets/works/photography/ph-2.webp",
-    alt: "Packshot 2",
+    image: "/assets/works/photography/ph-2.png",
+    alt: "Styling 1",
   },
   {
     id: "ph-3",
-    image: "/assets/works/photography/ph-3.webp",
-    alt: "Packshot 3",
+    image: "/assets/works/photography/ph-3.png",
+    alt: "Vibe 1",
   },
   {
     id: "ph-4",
-    image: "/assets/works/photography/ph-4.webp",
-    alt: "Packshot 4",
+    image: "/assets/works/photography/ph-4.png",
+    alt: "Advertising 1",
   },
   {
     id: "ph-5",
-    image: "/assets/works/photography/ph-5.webp",
-    alt: "Packshot 5",
+    image: "/assets/works/photography/ph-5.png",
+    alt: "Packshot 2",
   },
 ];
 
@@ -187,14 +187,20 @@ const SHOWCASE_ITEMS = [
 
 // ===== PART 3: Video Production =====
 const VIDEO_CATEGORIES = [
-  "Showcase",
-  "Commercial",
-  "Documentary",
-  "Event",
-  "Corporate",
+  "Real Estate",
+  "Restaurant",
+  "Food",
+  "Clinic",
+  "Bar&Cafe",
 ];
 
-type VideoItem = { id: string; src: string; thumbnail: string; alt: string };
+type VideoItem = {
+  id: string;
+  src: string;
+  thumbnail: string;
+  alt: string;
+  category: string;
+};
 
 const PRODUCTION_VIDEOS: VideoItem[] = [
   {
@@ -202,51 +208,81 @@ const PRODUCTION_VIDEOS: VideoItem[] = [
     src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4",
     thumbnail: "/assets/works/thumbnails/snapsave-app_main.jpg",
     alt: "Video production showcase 1",
+    category: "Real Estate",
   },
   {
     id: "video-2",
     src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4",
     thumbnail: "/assets/works/thumbnails/snapsave-app_thumb_001.jpg",
     alt: "Video production showcase 2",
+    category: "Restaurant",
   },
   {
     id: "video-3",
     src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4",
     thumbnail: "/assets/works/thumbnails/snapsave-app_thumb_002.jpg",
     alt: "Video production showcase 3",
+    category: "Food",
   },
   {
     id: "video-4",
     src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4",
     thumbnail: "/assets/works/thumbnails/snapsave-app_thumb_003.jpg",
     alt: "Video production showcase 4",
+    category: "Clinic",
   },
   {
     id: "video-5",
     src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4",
     thumbnail: "/assets/works/thumbnails/snapsave-app_thumb_004.jpg",
     alt: "Video production showcase 5",
+    category: "Bar&Cafe",
   },
 ];
 
 export default function WorksPage() {
+  const handleBackToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   // Part 3: Video state
+  const [videoCat, setVideoCat] = useState("");
+  const filteredVideos = PRODUCTION_VIDEOS.filter(
+    (v) => videoCat === "" || v.category === videoCat,
+  );
   const [videoIndex, setVideoIndex] = useState(0);
-  const total = PRODUCTION_VIDEOS.length;
-  const getCard = (offset: number): VideoItem =>
-    PRODUCTION_VIDEOS[(videoIndex + offset + total) % total];
+  const total = filteredVideos.length;
+
   const handlePrev = () => setVideoIndex((i) => (i - 1 + total) % total);
   const handleNext = () => setVideoIndex((i) => (i + 1) % total);
 
+  // Logic: Show 3-card infinite carousel only if 3+ videos exist
+  const isInfinite = total >= 3;
+
+  // We only render clones for infinite looping
+  const displayItems = isInfinite
+    ? [...filteredVideos, ...filteredVideos, ...filteredVideos]
+    : filteredVideos;
+
+  // For the sliding track, if infinite, we focus on the middle segment
+  const trackIndex = isInfinite ? total + videoIndex : videoIndex;
+
   // Part 4: Photography state
-  const [photoCatIndex, setPhotoCatIndex] = useState(0);
   const [photoIndex, setPhotoIndex] = useState(0);
   const totalPhotos = PHOTO_ITEMS.length;
-  const handlePhotoPrev = () =>
+
+  const handlePhotoPrev = () => {
     setPhotoIndex((i) => (i - 1 + totalPhotos) % totalPhotos);
-  const handlePhotoNext = () => setPhotoIndex((i) => (i + 1) % totalPhotos);
+  };
+  const handlePhotoNext = () => {
+    setPhotoIndex((i) => (i + 1) % totalPhotos);
+  };
+
   const getFanPhoto = (offset: number) =>
     PHOTO_ITEMS[(photoIndex + offset + totalPhotos) % totalPhotos];
+
+  // Logic: Map center photo index to category (if 1:1)
+  // Or adjust so center photo tells us the category
+  const activePhotoCat = PHOTO_CATEGORIES[photoIndex % PHOTO_CATEGORIES.length];
 
   return (
     <>
@@ -332,58 +368,107 @@ export default function WorksPage() {
           ============================================== */}
       <section className="wk-vp-section" id="production-showcase">
         <div className="wk-inner">
-          <FadeIn direction="up">
-            <div className="wk-label-row">
-              <div className="wk-label-accent" />
-              <span className="wk-label-text">VIDEO PRODUCTION</span>
-            </div>
-          </FadeIn>
+          <div className="wk-header-row">
+            <FadeIn direction="up">
+              <div className="wk-label-row">
+                <div className="wk-label-accent" />
+                <span className="wk-label-text">VIDEO PRODUCTION</span>
+              </div>
+            </FadeIn>
+
+            <FadeIn direction="up" delayMs={100}>
+              <div className="wk-vp-tabs">
+                {VIDEO_CATEGORIES.map((cat) => (
+                  <button
+                    key={cat}
+                    className={`wk-vp-tab ${videoCat === cat ? "wk-vp-tab--active" : ""}`}
+                    onClick={() => {
+                      setVideoCat(cat);
+                      setVideoIndex(0);
+                    }}
+                    type="button"
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </FadeIn>
+          </div>
         </div>
 
         <div className="wk-vp-stage">
-          <FadeIn className="wk-vp-cards">
-            {PRODUCTION_VIDEOS.map((video, i) => {
-              const isCenter = i === 0;
-              return (
-                <div
-                  key={i}
-                  className={`wk-vp-card ${isCenter ? "wk-vp-card--center" : ""}`}
-                >
-                  <video
-                    key={video.id}
-                    className="wk-vp-video"
-                    src={video.src}
-                    poster={video.thumbnail}
-                    controls={isCenter}
-                    playsInline
-                    preload="metadata"
-                    muted
-                    autoPlay={isCenter}
-                    loop
-                  />
-                </div>
-              );
-            })}
+          <FadeIn
+            className={`wk-vp-cards ${!isInfinite ? "wk-vp-cards--static" : ""}`}
+            style={
+              isInfinite
+                ? {
+                    // Calculate translation relative to the parent center (50% of stage)
+                    transform: `translateX(calc(50% - (var(--wk-card-w) / 2) - (${trackIndex} * (var(--wk-card-w) + var(--wk-card-gap)))))`,
+                  }
+                : {}
+            }
+          >
+            {displayItems.length > 0 ? (
+              displayItems.map((video, i) => {
+                const currentIdx = i % total;
+                const isCenter = isInfinite
+                  ? i === trackIndex
+                  : currentIdx === videoIndex;
+
+                return (
+                  <div
+                    key={`${video.id}-${i}`}
+                    className={`wk-vp-card ${isCenter ? "wk-vp-card--center" : ""}`}
+                    onClick={() => {
+                      if (isInfinite) {
+                        setVideoIndex(currentIdx);
+                      } else {
+                        setVideoIndex(i);
+                      }
+                    }}
+                  >
+                    <video
+                      key={`${video.id}-${i}`}
+                      className="wk-vp-video"
+                      src={video.src}
+                      poster={video.thumbnail}
+                      controls={isCenter}
+                      playsInline
+                      preload="metadata"
+                      muted
+                      autoPlay={isCenter}
+                      loop
+                    />
+                  </div>
+                );
+              })
+            ) : (
+              <div className="wk-vp-empty">
+                No videos found for this category.
+              </div>
+            )}
           </FadeIn>
 
-          <div className="wk-vp-nav">
-            <button
-              className="wk-vp-arrow"
-              onClick={handlePrev}
-              aria-label="Previous video"
-              type="button"
-            >
-              ←
-            </button>
-            <button
-              className="wk-vp-arrow"
-              onClick={handleNext}
-              aria-label="Next video"
-              type="button"
-            >
-              →
-            </button>
-          </div>
+          {isInfinite && (
+            <div className="wk-vp-nav">
+              <button
+                className="wk-vp-arrow"
+                onClick={handlePrev}
+                aria-label="Previous video"
+                type="button"
+              >
+                ←
+              </button>
+              <button
+                className="wk-vp-arrow"
+                onClick={handleNext}
+                aria-label="Next video"
+                type="button"
+              >
+                →
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -409,11 +494,13 @@ export default function WorksPage() {
                 }}
               >
                 <div className="wk-ph-card-inner">
-                  {/*
-                    TODO: Replace with real photography images.
-                    <Image src={photo.image} alt={photo.alt} fill style={{ objectFit:"cover" }} />
-                  */}
-                  <div className="wk-ph-placeholder" />
+                  <Image
+                    src={photo.image}
+                    alt={photo.alt}
+                    fill
+                    style={{ objectFit: "cover" }}
+                    unoptimized
+                  />
                 </div>
               </div>
             );
@@ -431,7 +518,7 @@ export default function WorksPage() {
             ←
           </button>
           <div className="wk-ph-cat-wrap">
-            <span className="wk-ph-cat">{PHOTO_CATEGORIES[photoCatIndex]}</span>
+            <span className="wk-ph-cat">{activePhotoCat}</span>
           </div>
           <button
             className="wk-vp-arrow"
@@ -443,6 +530,9 @@ export default function WorksPage() {
           </button>
         </div>
       </section>
+      <button className="back-to-top" onClick={handleBackToTop}>
+        Back to top
+      </button>
     </>
   );
 }
