@@ -1783,6 +1783,10 @@ footer[id] {
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   margin-top: 28px;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 130px;
 }
 
 .wk-gd-card {
