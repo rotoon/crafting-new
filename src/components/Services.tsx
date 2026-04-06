@@ -144,7 +144,11 @@ export default function Services() {
             )}
           </div>
         ))}
-        <FadeIn direction="up" delayMs={300} className="services-view-more">
+        <FadeIn
+          direction="up"
+          delayMs={300}
+          className="services-view-more-center"
+        >
           <a href="#" className="btn-view-more">
             View More
           </a>

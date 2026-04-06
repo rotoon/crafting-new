@@ -113,7 +113,6 @@ export default function Navbar() {
             height={25}
             className="logo-text"
             priority
-            style={{ width: "auto", height: "auto" }}
           />
         </a>
         <div className={`nav-menu ${menuActive ? "active" : ""}`} id="nav-menu">

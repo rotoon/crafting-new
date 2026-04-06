@@ -39,7 +39,8 @@ export default function Hero() {
               fill
               priority
               sizes="100vw"
-              style={{ objectFit: "cover", objectPosition: "center top" }}
+              objectFit="cover"
+              objectPosition="center top"
               onLoad={() => setImgLoaded(true)}
             />
           </div>
@@ -48,13 +49,23 @@ export default function Hero() {
       </div>
       <div className="hero-content">
         <h1 className="hero-heading">
-          <span className="hero-line hero-line-1" style={{ animation: "fadeInUp 0.8s ease 0.3s forwards" }}>
+          <span
+            className="hero-line hero-line-1"
+            style={{ animation: "fadeInUp 0.8s ease 0.3s forwards" }}
+          >
             RACE YOUR LIFE
           </span>
-          <span className="hero-line hero-line-2" style={{ animation: "fadeInUp 0.8s ease 0.5s forwards" }}>
-            <span className="hero-lead">LEAD</span> <span className="hero-your-brand">YOUR BRAND</span>
+          <span
+            className="hero-line hero-line-2"
+            style={{ animation: "fadeInUp 0.8s ease 0.5s forwards" }}
+          >
+            <span className="hero-lead">LEAD</span>{" "}
+            <span className="hero-your-brand">YOUR BRAND</span>
           </span>
-          <span className="hero-line hero-line-3" style={{ animation: "fadeInUp 0.8s ease 0.7s forwards" }}>
+          <span
+            className="hero-line hero-line-3"
+            style={{ animation: "fadeInUp 0.8s ease 0.7s forwards" }}
+          >
             FORWARD
           </span>
         </h1>

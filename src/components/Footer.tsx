@@ -1,54 +1,9 @@
 "use client";
-import { useEffect, useRef } from "react";
 import Image from "next/image";
 import FadeIn from "./FadeIn";
 
 function SuccessDots() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const dotSize = 4;
-    const spacing = 16;
-    const offsetEven = spacing / 2;
-
-    const render = () => {
-      canvas.width = container.offsetWidth || 1560;
-      canvas.height = 32;
-      canvas.style.width = "100%";
-      canvas.style.height = "32px";
-
-      const cols = Math.ceil(canvas.width / spacing) + 1;
-      const rows = 2;
-
-      ctx.fillStyle = "#00FF00";
-
-      for (let row = 0; row < rows; row++) {
-        for (let col = 0; col < cols; col++) {
-          const x = col * spacing + (row % 2 === 1 ? offsetEven : 0);
-          const y = row * spacing + spacing / 2;
-          ctx.beginPath();
-          ctx.arc(x, y, dotSize / 2, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
-    };
-
-    render();
-    container.innerHTML = "";
-    container.appendChild(canvas);
-
-    window.addEventListener("resize", render);
-    return () => window.removeEventListener("resize", render);
-  }, []);
-
-  return <div ref={containerRef} className="success-dots"></div>;
+  return <div className="success-dots"></div>;
 }
 
 export default function Footer() {

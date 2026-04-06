@@ -129,11 +129,6 @@ export default function Works() {
       <section className="works-section" id="works">
         <div className="works-header">
           <h2 className="section-title">OUR WORKS</h2>
-          <FadeIn direction="up" delayMs={300} className="services-view-more">
-            <a href="/works" className="btn-view-more">
-              View More
-            </a>
-          </FadeIn>
         </div>
 
         <div className="works-category">
@@ -173,13 +168,24 @@ export default function Works() {
               <p className="carousel-description">{active.desc}</p>
             </div>
             <div className="carousel-counter">
-              <span className="current-count">
-                {String(activeIndex + 1).padStart(2, "0")} /
-              </span>
-              <span className="total-count">
-                {" "}
-                {String(total).padStart(2, "0")}
-              </span>
+              <div>
+                <span className="current-count">
+                  {String(activeIndex + 1).padStart(2, "0")} /
+                </span>
+                <span className="total-count">
+                  {" "}
+                  {String(total).padStart(2, "0")}
+                </span>
+              </div>
+              <FadeIn
+                direction="up"
+                delayMs={300}
+                className="services-view-more"
+              >
+                <a href="/works" className="btn-view-more">
+                  View More
+                </a>
+              </FadeIn>
             </div>
           </div>
         </FadeIn>
