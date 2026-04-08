@@ -1,24 +1,97 @@
 "use client";
-import { useState } from "react";
+import Image from "next/image";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
 import FadeIn from "../FadeIn";
 import { VIDEO_CATEGORIES, PRODUCTION_VIDEOS } from "./data";
 
+const VIDEOS_PER_PAGE = 3;
+
+const buildPlayableSrc = (src: string) => {
+  const separator = src.includes("?") ? "&" : "?";
+
+  return `${src}${separator}autoplay=0&mute=1`;
+};
+
+const NavigationArrow = ({ direction }: { direction: "left" | "right" }) => {
+  const isLeft = direction === "left";
+
+  return (
+    <svg
+      className="wk-vp-arrow-icon"
+      viewBox="0 0 72 40"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d={isLeft ? "M66 20H16" : "M6 20H56"}
+        stroke="currentColor"
+        strokeWidth="5"
+        strokeLinecap="round"
+      />
+      <path
+        d={isLeft ? "M16 20L36 3" : "M56 20L36 3"}
+        stroke="currentColor"
+        strokeWidth="5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d={isLeft ? "M16 20L36 37" : "M56 20L36 37"}
+        stroke="currentColor"
+        strokeWidth="5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
 export default function VideoProductionSection() {
   const [videoCat, setVideoCat] = useState("");
-  const [videoIndex, setVideoIndex] = useState(0);
-
-  const filteredVideos = PRODUCTION_VIDEOS.filter(
-    (v) => videoCat === "" || v.category === videoCat,
+  const [pageIndex, setPageIndex] = useState(0);
+  const [loadedVideoMap, setLoadedVideoMap] = useState<Record<string, boolean>>(
+    {},
   );
-  const total = filteredVideos.length;
-  const isInfinite = total >= 3;
-  const displayItems = isInfinite
-    ? [...filteredVideos, ...filteredVideos, ...filteredVideos]
-    : filteredVideos;
-  const trackIndex = isInfinite ? total + videoIndex : videoIndex;
+  const swiperRef = useRef<SwiperType | null>(null);
 
-  const handlePrev = () => setVideoIndex((i) => (i - 1 + total) % total);
-  const handleNext = () => setVideoIndex((i) => (i + 1) % total);
+  const filteredVideos = useMemo(
+    () =>
+      PRODUCTION_VIDEOS.filter(
+        (video) => videoCat === "" || video.category === videoCat,
+      ),
+    [videoCat],
+  );
+
+  const videoPages = useMemo(() => {
+    const pages = [];
+
+    for (
+      let index = 0;
+      index < filteredVideos.length;
+      index += VIDEOS_PER_PAGE
+    ) {
+      pages.push(filteredVideos.slice(index, index + VIDEOS_PER_PAGE));
+    }
+
+    return pages;
+  }, [filteredVideos]);
+
+  const totalPages = videoPages.length;
+  useEffect(() => {
+    setPageIndex(0);
+    swiperRef.current?.slideTo(0, 0);
+  }, [videoCat]);
+
+  const handlePrevPage = () => {
+    swiperRef.current?.slidePrev();
+  };
+
+  const handleNextPage = () => {
+    swiperRef.current?.slideNext();
+  };
 
   return (
     <section className="wk-vp-section" id="production-showcase">
@@ -33,13 +106,21 @@ export default function VideoProductionSection() {
 
           <FadeIn direction="up" delayMs={100}>
             <div className="wk-vp-tabs">
+              <button
+                className={`wk-vp-tab ${videoCat === "" ? "wk-vp-tab--active" : ""}`}
+                onClick={() => {
+                  setVideoCat("");
+                }}
+                type="button"
+              >
+                All
+              </button>
               {VIDEO_CATEGORIES.map((cat) => (
                 <button
                   key={cat}
                   className={`wk-vp-tab ${videoCat === cat ? "wk-vp-tab--active" : ""}`}
                   onClick={() => {
                     setVideoCat(cat);
-                    setVideoIndex(0);
                   }}
                   type="button"
                 >
@@ -52,56 +133,106 @@ export default function VideoProductionSection() {
       </div>
 
       <div className="wk-vp-stage">
-        <FadeIn
-          className={`wk-vp-cards ${!isInfinite ? "wk-vp-cards--static" : ""}`}
-          style={
-            isInfinite
-              ? {
-                  transform: `translateX(calc(50% - (var(--wk-card-w) / 2) - (${trackIndex} * (var(--wk-card-w) + var(--wk-card-gap)))))`,
-                }
-              : {}
-          }
-        >
-          {displayItems.length > 0 ? (
-            displayItems.map((video, i) => {
-              const currentIdx = i % total;
-              const isCenter = isInfinite ? i === trackIndex : currentIdx === videoIndex;
+        <FadeIn>
+          {videoPages.length > 0 ? (
+            <Swiper
+              className="wk-vp-swiper"
+              slidesPerView={1}
+              spaceBetween={0}
+              speed={550}
+              rewind={totalPages > 1}
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+              }}
+              onSlideChange={(swiper) => {
+                setPageIndex(swiper.realIndex);
+              }}
+            >
+              {videoPages.map((page, index) => (
+                <SwiperSlide key={`video-page-${index}`}>
+                  <div className={`wk-vp-page wk-vp-page--${page.length}`}>
+                    {page.map((video) => {
+                      const isLoaded = loadedVideoMap[video.id] === true;
 
-              return (
-                <div
-                  key={`${video.id}-${i}`}
-                  className={`wk-vp-card ${isCenter ? "wk-vp-card--center" : ""}`}
-                  onClick={() => {
-                    setVideoIndex(isInfinite ? currentIdx : i);
-                  }}
-                >
-                  <video
-                    key={`${video.id}-${i}`}
-                    className="wk-vp-video"
-                    src={video.src}
-                    poster={video.thumbnail}
-                    controls={isCenter}
-                    playsInline
-                    preload="metadata"
-                    muted
-                    autoPlay={isCenter}
-                    loop
-                  />
-                </div>
-              );
-            })
+                      return (
+                        <div key={video.id} className="wk-vp-page-card">
+                          <div className="wk-vp-card-viewport">
+                            <div
+                              className={`wk-vp-poster-layer ${isLoaded ? "is-hidden" : ""}`}
+                              aria-hidden="true"
+                            >
+                              <Image
+                                src={video.thumbnail}
+                                alt=""
+                                fill
+                                sizes="(max-width: 768px) calc(100vw - 40px), 318px"
+                                className="wk-vp-poster-image"
+                              />
+                              <div
+                                className="wk-vp-poster-overlay"
+                                aria-hidden="true"
+                              />
+                              <div
+                                className="wk-vp-loading-overlay"
+                                aria-hidden="true"
+                              >
+                                <span className="wk-vp-loading-spinner" />
+                              </div>
+                            </div>
+                            <iframe
+                              className={`wk-vp-player ${isLoaded ? "is-ready" : "is-loading"}`}
+                              src={buildPlayableSrc(video.src)}
+                              title={video.alt}
+                              loading="lazy"
+                              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                              allowFullScreen
+                              onLoad={() => {
+                                setLoadedVideoMap((current) => {
+                                  if (current[video.id]) return current;
+
+                                  return {
+                                    ...current,
+                                    [video.id]: true,
+                                  };
+                                });
+                              }}
+                            />
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           ) : (
-            <div className="wk-vp-empty">No videos found for this category.</div>
+            <div className="wk-vp-empty">
+              No videos found for this category.
+            </div>
           )}
         </FadeIn>
 
-        {isInfinite && (
+        {totalPages > 1 && (
           <div className="wk-vp-nav">
-            <button className="wk-vp-arrow" onClick={handlePrev} aria-label="Previous video" type="button">
-              ←
+            <button
+              className="wk-vp-arrow"
+              onClick={handlePrevPage}
+              aria-label="Previous page"
+              type="button"
+            >
+              <NavigationArrow direction="left" />
             </button>
-            <button className="wk-vp-arrow" onClick={handleNext} aria-label="Next video" type="button">
-              →
+            <div className="wk-vp-page-indicator">
+              {String(pageIndex + 1).padStart(2, "0")} /{" "}
+              {String(totalPages).padStart(2, "0")}
+            </div>
+            <button
+              className="wk-vp-arrow"
+              onClick={handleNextPage}
+              aria-label="Next page"
+              type="button"
+            >
+              <NavigationArrow direction="right" />
             </button>
           </div>
         )}

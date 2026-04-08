@@ -49,12 +49,40 @@ export type VideoItem = {
   category: string;
 };
 
+const createYouTubeShort = (
+  id: string,
+  category: string,
+  alt: string,
+): VideoItem => ({
+  id,
+  src: `https://www.youtube.com/embed/${id}?playsinline=1&rel=0&modestbranding=1`,
+  thumbnail: `https://img.youtube.com/vi/${id}/maxresdefault.jpg`,
+  alt,
+  category,
+});
+
 export const PRODUCTION_VIDEOS: VideoItem[] = [
-  { id: "video-1", src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4", thumbnail: "/assets/works/thumbnails/snapsave-app_main.jpg", alt: "Video production showcase 1", category: "Real Estate" },
-  { id: "video-2", src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4", thumbnail: "/assets/works/thumbnails/snapsave-app_thumb_001.jpg", alt: "Video production showcase 2", category: "Restaurant" },
-  { id: "video-3", src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4", thumbnail: "/assets/works/thumbnails/snapsave-app_thumb_002.jpg", alt: "Video production showcase 3", category: "Food" },
-  { id: "video-4", src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4", thumbnail: "/assets/works/thumbnails/snapsave-app_thumb_003.jpg", alt: "Video production showcase 4", category: "Clinic" },
-  { id: "video-5", src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4", thumbnail: "/assets/works/thumbnails/snapsave-app_thumb_004.jpg", alt: "Video production showcase 5", category: "Bar&Cafe" },
+  createYouTubeShort(
+    "UPqGsHt7fkA",
+    "Real Estate",
+    "Real Estate video production showcase",
+  ),
+  createYouTubeShort(
+    "aaqykWnnUzE",
+    "Restaurant",
+    "Restaurant video production showcase",
+  ),
+  createYouTubeShort("Sldg55p42jU", "Food", "Food video production showcase"),
+  createYouTubeShort(
+    "HVRnOXuqMYI",
+    "Clinic",
+    "Clinic video production showcase",
+  ),
+  createYouTubeShort(
+    "XAQn98HVJw4",
+    "Bar&Cafe",
+    "Bar and cafe video production showcase",
+  ),
 ];
 
 export const PHOTO_CATEGORIES = ["PACKSHOT", "STYLING", "VIBE", "ADVERTISING"];
