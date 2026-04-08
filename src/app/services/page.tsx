@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import ServicesPage from "@/components/ServicesPage";
+import ServicesPage from "@/components/services/ServicesPage";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
 

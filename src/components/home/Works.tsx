@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import FadeIn from "./FadeIn";
+import FadeIn from "../FadeIn";
 import Image from "next/image";
 
 // Production showcase: 3 slot positions

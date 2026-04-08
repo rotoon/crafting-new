@@ -39,8 +39,7 @@ export default function Hero() {
               fill
               priority
               sizes="100vw"
-              objectFit="cover"
-              objectPosition="center top"
+              style={{ objectFit: "cover", objectPosition: "center top" }}
               onLoad={() => setImgLoaded(true)}
             />
           </div>

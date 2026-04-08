@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import FadeIn from "./FadeIn";
+import FadeIn from "../FadeIn";
 
 function useBgTextVisible() {
   const weRef = useRef<HTMLDivElement>(null);

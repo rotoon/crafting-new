@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 /* ========================================
    CRAFTING LAB – Landing Page Styles
    ======================================== */
@@ -789,9 +791,9 @@ footer[id] {
 
 /* Service content */
 .sp-content {
-  max-width: 1086px;
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 130px;
   display: flex;
   flex-direction: column;
   gap: 80px;
@@ -854,7 +856,7 @@ footer[id] {
   letter-spacing: 1px;
   line-height: 1.6;
   color: var(--white);
-  max-width: 1086px;
+  max-width: var(--max-width);
   margin-bottom: 40px;
 }
 

@@ -1,12 +1,12 @@
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
-import About from "@/components/About";
-import PhotoCarousel from "@/components/PhotoCarousel";
-import Services from "@/components/Services";
-import Works from "@/components/Works";
-import SportsBanner from "@/components/SportsBanner";
-import Clients from "@/components/Clients";
+import Hero from "@/components/home/Hero";
+import Marquee from "@/components/home/Marquee";
+import About from "@/components/home/About";
+import PhotoCarousel from "@/components/home/PhotoCarousel";
+import Services from "@/components/home/Services";
+import Works from "@/components/home/Works";
+import SportsBanner from "@/components/home/SportsBanner";
+import Clients from "@/components/home/Clients";
 import Footer from "@/components/Footer";
 
 export default function Home() {

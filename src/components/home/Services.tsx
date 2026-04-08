@@ -1,5 +1,5 @@
 "use client";
-import FadeIn from "./FadeIn";
+import FadeIn from "../FadeIn";
 import Image from "next/image";
 
 export default function Services() {
