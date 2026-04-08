@@ -12,6 +12,7 @@ export default function PhotographySection() {
   const fanRef = useRef<HTMLDivElement>(null);
   const catRef = useRef<HTMLSpanElement>(null);
   const dirRef = useRef<"next" | "prev">("next");
+  const hasNavigated = useRef(false);
 
   useEffect(() => {
     if (!catRef.current) return;
@@ -21,6 +22,7 @@ export default function PhotographySection() {
 
   const navigate = (d: "next" | "prev") => {
     dirRef.current = d;
+    hasNavigated.current = true;
     setDir(d);
     setSlideIndex((i) =>
       d === "next"
@@ -107,9 +109,19 @@ export default function PhotographySection() {
               <div className="wk-ph-cat-mask">
                 <div
                   key={slideIndex}
-                  className={`wk-ph-cat-slider wk-ph-cat-slider--${dir}`}
+                  className={`wk-ph-cat-track${hasNavigated.current ? ` wk-ph-cat-track--${dir}` : ""}`}
                 >
-                  <span className="wk-ph-cat">{activePhotoCat}</span>
+                  {[-1, 0, 1].map((delta) => {
+                    const idx = (slideIndex + delta + totalSlides) % totalSlides;
+                    return (
+                      <span
+                        key={delta}
+                        className={`wk-ph-cat ${delta === 0 ? "wk-ph-cat--active" : "wk-ph-cat--dim"}`}
+                      >
+                        {PHOTO_CATEGORIES[idx]}
+                      </span>
+                    );
+                  })}
                 </div>
               </div>
             </div>
