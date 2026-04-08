@@ -21,7 +21,7 @@
     --gray-mid: #6d6e70;
     --white: #ffffff;
     --font-heading: "Century Gothic", sans-serif;
-    --font-body: "DM Sans", "Century Gothic", sans-serif;
+    --font-body: "Century Gothic", sans-serif;
     /* --font-body: var(--font-dm-sans), "Century Gothic", var(--font-fc-minimal), sans-serif; */
     --font-syncopate: var(--font-syncopate);
     --font-fc-minimal: var(--font-fc-minimal);
@@ -1520,7 +1520,6 @@ footer[id] {
    ============================================================ */
 
 .wk-ph-section {
-    background: #0a0a0a;
     padding: 60px 80px;
     overflow: hidden;
     position: relative;
@@ -1531,19 +1530,26 @@ footer[id] {
     text-align: center;
     pointer-events: none;
     padding: 40px 0 0;
-    overflow: hidden;
+    overflow: visible;
+    position: relative;
+    z-index: 0;
 }
 
 .wk-ph-title {
-    font-family: var(--font-heading);
-    font-size: clamp(60px, 11vw, 160px);
-    font-weight: 900;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    text-align: center;
+    -webkit-text-stroke-width: clamp(1px, 0.15vw, 2.11px);
+    -webkit-text-stroke-color: #0f0;
+    font-family:
+        "Century Gothic", "CenturyGothic", var(--font-heading), sans-serif;
+    font-size: clamp(58px, 10.6vw, 152.6px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0.92;
+    letter-spacing: clamp(1.8px, 0.36vw, 5.087px);
+    text-transform: capitalize;
     color: transparent;
-    -webkit-text-stroke: 2px var(--green);
     display: block;
-    line-height: 1;
+    white-space: nowrap;
 }
 
 /* Fan layout */
@@ -1551,25 +1557,32 @@ footer[id] {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    gap: 12px;
-    padding: 20px 80px 0;
-    min-height: 420px;
+    gap: 0;
+    padding: 0 80px 0;
+    margin-top: -200px;
+    min-height: 500px;
     position: relative;
+    isolation: isolate;
+    z-index: 1;
 }
 
 .wk-ph-card {
     flex-shrink: 0;
     transform-origin: bottom center;
     transition: transform 0.4s ease;
+    margin-left: -40px;
+    position: relative;
+}
+
+.wk-ph-card:first-child {
+    margin-left: 0;
 }
 
 .wk-ph-card-inner {
     width: 220px;
     height: 320px;
-    border-radius: 8px;
     overflow: hidden;
     background: #1e1e1e;
-    border: 1px solid rgba(255, 255, 255, 0.08);
     position: relative;
 }
 
@@ -1583,9 +1596,11 @@ footer[id] {
 .wk-ph-footer {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 40px;
-    padding: 32px 0 0;
+    justify-content: space-between;
+    padding: 0 80px;
+    position: relative;
+    z-index: 2;
+    margin-top: 130px;
 }
 
 .wk-ph-cat-wrap {
@@ -1594,12 +1609,23 @@ footer[id] {
 }
 
 .wk-ph-cat {
-    font-family: var(--font-heading);
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: 4px;
     color: #fff;
-    text-transform: uppercase;
+    text-align: center;
+    font-family:
+        "Century Gothic", "CenturyGothic", var(--font-heading), sans-serif;
+    font-size: 72.225px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 2.407px;
+    text-transform: capitalize;
+}
+
+.wk-ph-arrow-icon {
+    width: 36px;
+    height: 37px;
+    display: block;
+    flex-shrink: 0;
 }
 
 /* ============================================================
@@ -1608,7 +1634,11 @@ footer[id] {
 
 .wk-vp-section {
     padding: 60px 0 0;
-    background: #111;
+    background: radial-gradient(
+        67.37% 67.37% at 50% 100%,
+        rgba(0, 255, 0, 0.2) 0%,
+        rgba(0, 255, 4, 0) 100%
+    );
     position: relative;
     overflow: hidden;
 }
@@ -1872,8 +1902,8 @@ footer[id] {
 }
 
 .wk-vp-arrow {
-    width: 35px;
-    height: 35px;
+    width: 45px;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -3861,9 +3891,18 @@ footer[id] {
     }
 
     .wk-ph-fan {
-        padding: 20px 40px 0;
-        gap: 8px;
-        min-height: 380px;
+        padding: 0 40px 0;
+        gap: 0;
+        margin-top: -140px;
+        min-height: 430px;
+    }
+
+    .wk-ph-card {
+        margin-left: -46px;
+    }
+
+    .wk-ph-card:first-child {
+        margin-left: 0;
     }
 
     .wk-ph-card-inner {
@@ -3873,6 +3912,10 @@ footer[id] {
 
     .wk-ph-cat {
         font-size: 24px;
+    }
+
+    .wk-ph-footer {
+        padding-top: 48px;
     }
 
     .wk-vp-page {
@@ -3939,7 +3982,8 @@ footer[id] {
     }
 
     .wk-ph-title {
-        font-size: 48px;
+        font-size: clamp(36px, 11vw, 56px);
+        letter-spacing: clamp(1px, 0.5vw, 2.4px);
         -webkit-text-stroke-width: 1px;
     }
 
@@ -3949,6 +3993,7 @@ footer[id] {
         justify-content: flex-start;
         overflow-x: auto;
         gap: 12px;
+        margin-top: 8px;
         min-height: auto;
         padding-left: 20px;
         padding-right: 20px;
@@ -3961,6 +4006,7 @@ footer[id] {
 
     .wk-ph-card {
         transform: none !important;
+        margin-left: 0;
     }
 
     .wk-ph-card-inner {
@@ -3970,7 +4016,7 @@ footer[id] {
 
     .wk-ph-footer {
         gap: 20px;
-        padding: 24px 0 0;
+        padding: 32px 0 0;
     }
 
     .wk-ph-cat {

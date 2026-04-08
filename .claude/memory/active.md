@@ -69,6 +69,16 @@
 - Disabled autoplay for the active YouTube player in `VideoProductionSection`; videos now stay paused until the user presses play
 - Removed the `VideoProductionSection` active-card gate so every visible card now mounts its own YouTube iframe immediately, keeps the poster visible while loading, and fades the player in once `onLoad` completes
 - Added a visible loading overlay to `VideoProductionSection` thumbnails while each YouTube iframe loads, including a neon spinner and loading chip, and restored the shared desktop `wk-vp-card-shell` frame styling
+- Attempted to read the provided Figma file/node via MCP, but direct access is currently blocked because `FIGMA_API_KEY` is not configured in the environment
+- Updated the `PhotographySection` headline typography to match the provided spec more closely, switching `wk-ph-title` to a centered Century Gothic outlined treatment with the requested stroke, size, weight, spacing, and capitalization
+- Made the `PhotographySection` headline responsive by converting its stroke, size, and letter spacing to `clamp(...)`, preserving the large desktop treatment while keeping the word on one line across smaller breakpoints
+- Reworked the `PhotographySection` fan layout to overlap the five cards like the reference by removing the flex gap, adding negative spacing between cards, and assigning higher `z-index` to the center cards while keeping mobile in a non-overlapping horizontal scroll layout
+- Tuned the `PhotographySection` fan layout closer to the reference by increasing desktop/tablet card overlap and pulling the stacked images upward so they visually overlap the outlined `PHOTOGRAPHY` headline, while preserving the simpler mobile layout
+- Increased the `PhotographySection` fan lift further to match the reference more closely, setting the desktop stack to `margin-top: -200px` and tablet to `-140px`
+- Separated the `PhotographySection` footer from the overlapping image stack by increasing `wk-ph-footer` top spacing and giving the footer its own positioned layer above the fan
+- Updated `wk-ph-cat` to the requested Century Gothic typography spec and changed `PHOTO_CATEGORIES` to title case so the photography category label renders as capitalized text instead of all caps
+- Replaced the `PhotographySection` footer's text arrows with the provided neon SVG arrow shape, mirroring the same right-arrow path for the left button and adding a dedicated `wk-ph-arrow-icon` size rule
+- Updated the `PhotographySection` left arrow to use the exact left-arrow SVG path provided by the user instead of a mirrored right-arrow transform
 
 ## Next Steps
 - Ready for feature requests or modifications

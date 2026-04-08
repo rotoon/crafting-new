@@ -138,14 +138,50 @@
   "hotPaths": [
     {
       "path": "src/app/globals.css",
-      "accessCount": 3,
-      "lastAccessed": 1775638506171,
+      "accessCount": 7,
+      "lastAccessed": 1775667718202,
+      "type": "directory"
+    },
+    {
+      "path": "src/components/works/PhotographySection.tsx",
+      "accessCount": 7,
+      "lastAccessed": 1775667983352,
+      "type": "file"
+    },
+    {
+      "path": "src/components/works/VideoProductionSection.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1775667232014,
+      "type": "file"
+    },
+    {
+      "path": "src/components/works/data.ts",
+      "accessCount": 4,
+      "lastAccessed": 1775668338885,
+      "type": "file"
+    },
+    {
+      "path": "src",
+      "accessCount": 2,
+      "lastAccessed": 1775667948616,
       "type": "directory"
     },
     {
       "path": "src/components/home/Works.tsx",
       "accessCount": 1,
       "lastAccessed": 1775638450562,
+      "type": "file"
+    },
+    {
+      "path": ".claude/memory/active.md",
+      "accessCount": 1,
+      "lastAccessed": 1775667067194,
+      "type": "file"
+    },
+    {
+      "path": "src/components/works/WorksArrow.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1775667199427,
       "type": "file"
     }
   ],

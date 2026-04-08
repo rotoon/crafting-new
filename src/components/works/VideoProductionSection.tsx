@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import FadeIn from "../FadeIn";
 import { VIDEO_CATEGORIES, PRODUCTION_VIDEOS } from "./data";
+import WorksArrow from "./WorksArrow";
 
 const VIDEOS_PER_PAGE = 3;
 
@@ -14,40 +15,6 @@ const buildPlayableSrc = (src: string) => {
   return `${src}${separator}autoplay=0&mute=1`;
 };
 
-const NavigationArrow = ({ direction }: { direction: "left" | "right" }) => {
-  const isLeft = direction === "left";
-
-  return (
-    <svg
-      className="wk-vp-arrow-icon"
-      viewBox="0 0 72 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d={isLeft ? "M66 20H16" : "M6 20H56"}
-        stroke="currentColor"
-        strokeWidth="5"
-        strokeLinecap="round"
-      />
-      <path
-        d={isLeft ? "M16 20L36 3" : "M56 20L36 3"}
-        stroke="currentColor"
-        strokeWidth="5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d={isLeft ? "M16 20L36 37" : "M56 20L36 37"}
-        stroke="currentColor"
-        strokeWidth="5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-};
 
 export default function VideoProductionSection() {
   const [videoCat, setVideoCat] = useState("");
@@ -81,7 +48,6 @@ export default function VideoProductionSection() {
 
   const totalPages = videoPages.length;
   useEffect(() => {
-    setPageIndex(0);
     swiperRef.current?.slideTo(0, 0);
   }, [videoCat]);
 
@@ -220,7 +186,7 @@ export default function VideoProductionSection() {
               aria-label="Previous page"
               type="button"
             >
-              <NavigationArrow direction="left" />
+              <WorksArrow direction="left" />
             </button>
             <div className="wk-vp-page-indicator">
               {String(pageIndex + 1).padStart(2, "0")} /{" "}
@@ -232,7 +198,7 @@ export default function VideoProductionSection() {
               aria-label="Next page"
               type="button"
             >
-              <NavigationArrow direction="right" />
+              <WorksArrow direction="right" />
             </button>
           </div>
         )}

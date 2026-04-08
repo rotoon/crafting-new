@@ -85,7 +85,7 @@ export const PRODUCTION_VIDEOS: VideoItem[] = [
   ),
 ];
 
-export const PHOTO_CATEGORIES = ["PACKSHOT", "STYLING", "VIBE", "ADVERTISING"];
+export const PHOTO_CATEGORIES = ["Packshot", "Styling", "Vibe", "Advertising"];
 
 export const PHOTO_FAN = [
   { rotate: 0.88, yOffset: 77 },
@@ -95,10 +95,33 @@ export const PHOTO_FAN = [
   { rotate: -0.88, yOffset: 77 },
 ];
 
-export const PHOTO_ITEMS = [
-  { id: "ph-1", image: "/assets/works/photography/ph-1.png", alt: "Packshot 1" },
-  { id: "ph-2", image: "/assets/works/photography/ph-2.png", alt: "Styling 1" },
-  { id: "ph-3", image: "/assets/works/photography/ph-3.png", alt: "Vibe 1" },
-  { id: "ph-4", image: "/assets/works/photography/ph-4.png", alt: "Advertising 1" },
-  { id: "ph-5", image: "/assets/works/photography/ph-5.png", alt: "Packshot 2" },
+export const PHOTO_SLIDES = [
+  [
+    { id: "ph-1", image: "/assets/works/photography/ph-1.webp", alt: "Packshot 1" },
+    { id: "ph-2", image: "/assets/works/photography/ph-2.webp", alt: "Packshot 2" },
+    { id: "ph-3", image: "/assets/works/photography/ph-3.webp", alt: "Packshot 3" },
+    { id: "ph-4", image: "/assets/works/photography/ph-4.webp", alt: "Packshot 4" },
+    { id: "ph-5", image: "/assets/works/photography/ph-5.webp", alt: "Packshot 5" },
+  ],
+  [
+    { id: "ph-6", image: "/assets/works/photography/ph-6.webp", alt: "Styling 1" },
+    { id: "ph-7", image: "/assets/works/photography/ph-7.webp", alt: "Styling 2" },
+    { id: "ph-8", image: "/assets/works/photography/ph-8.webp", alt: "Styling 3" },
+    { id: "ph-9", image: "/assets/works/photography/ph-9.webp", alt: "Styling 4" },
+    { id: "ph-10", image: "/assets/works/photography/ph-10.webp", alt: "Styling 5" },
+  ],
+  [
+    { id: "ph-11", image: "/assets/works/photography/ph-11.webp", alt: "Vibe 1" },
+    { id: "ph-12", image: "/assets/works/photography/ph-12.webp", alt: "Vibe 2" },
+    { id: "ph-13", image: "/assets/works/photography/ph-13.webp", alt: "Vibe 3" },
+    { id: "ph-14", image: "/assets/works/photography/ph-14.webp", alt: "Vibe 4" },
+    { id: "ph-15", image: "/assets/works/photography/ph-15.webp", alt: "Vibe 5" },
+  ],
+  [
+    { id: "ph-16", image: "/assets/works/photography/ph-16.webp", alt: "Advertising 1" },
+    { id: "ph-17", image: "/assets/works/photography/ph-17.webp", alt: "Advertising 2" },
+    { id: "ph-18", image: "/assets/works/photography/ph-18.webp", alt: "Advertising 3" },
+    { id: "ph-19", image: "/assets/works/photography/ph-19.webp", alt: "Advertising 4" },
+    { id: "ph-20", image: "/assets/works/photography/ph-20.webp", alt: "Advertising 5" },
+  ],
 ];
