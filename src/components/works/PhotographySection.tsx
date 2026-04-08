@@ -17,7 +17,11 @@ export default function PhotographySection() {
   useEffect(() => {
     if (!catRef.current) return;
     const y = dirRef.current === "next" ? 16 : -16;
-    gsap.fromTo(catRef.current, { opacity: 0, y }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" });
+    gsap.fromTo(
+      catRef.current,
+      { opacity: 0, y },
+      { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+    );
   }, [slideIndex]);
 
   const navigate = (d: "next" | "prev") => {
@@ -38,8 +42,6 @@ export default function PhotographySection() {
       el.classList.add(`wk-ph-fan--slide-${d}`);
     }
   };
-
-  const activePhotoCat = PHOTO_CATEGORIES[slideIndex];
 
   return (
     <>
@@ -109,10 +111,11 @@ export default function PhotographySection() {
               <div className="wk-ph-cat-mask">
                 <div
                   key={slideIndex}
-                  className={`wk-ph-cat-track${hasNavigated.current ? ` wk-ph-cat-track--${dir}` : ""}`}
+                  className={`wk-ph-cat-track wk-ph-cat-track--${dir}`}
                 >
                   {[-1, 0, 1].map((delta) => {
-                    const idx = (slideIndex + delta + totalSlides) % totalSlides;
+                    const idx =
+                      (slideIndex + delta + totalSlides) % totalSlides;
                     return (
                       <span
                         key={delta}
