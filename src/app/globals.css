@@ -1552,6 +1552,36 @@ footer[id] {
     white-space: nowrap;
 }
 
+/* Fan slide animations */
+@keyframes wk-fan-from-right {
+    from {
+        transform: translateX(80px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes wk-fan-from-left {
+    from {
+        transform: translateX(-80px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+.wk-ph-fan--slide-right,
+.wk-ph-fan--slide-next {
+    animation: wk-fan-from-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.wk-ph-fan--slide-left,
+.wk-ph-fan--slide-prev {
+    animation: wk-fan-from-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
 /* Fan layout */
 .wk-ph-fan {
     display: flex;
@@ -1572,6 +1602,7 @@ footer[id] {
     transition: transform 0.4s ease;
     margin-left: -40px;
     position: relative;
+    will-change: transform;
 }
 
 .wk-ph-card:first-child {
@@ -1582,14 +1613,12 @@ footer[id] {
     width: 220px;
     height: 320px;
     overflow: hidden;
-    background: #1e1e1e;
     position: relative;
 }
 
 .wk-ph-placeholder {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
 }
 
 /* Footer: arrows + label */
@@ -1603,9 +1632,48 @@ footer[id] {
     margin-top: 130px;
 }
 
+@keyframes wk-cat-slide-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes wk-cat-slide-down {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.wk-ph-cat--slide-next {
+    animation: wk-cat-slide-up 0.4s ease both;
+}
+.wk-ph-cat--slide-prev {
+    animation: wk-cat-slide-down 0.4s ease both;
+}
+
 .wk-ph-cat-wrap {
     min-width: 220px;
     text-align: center;
+}
+
+.wk-ph-cat-mask {
+    overflow: hidden;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes wk-cat-in-up {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+}
+@keyframes wk-cat-in-down {
+    from { transform: translateY(-100%); }
+    to   { transform: translateY(0); }
+}
+
+.wk-ph-cat-slider--next {
+    animation: wk-cat-in-up 0.4s ease forwards;
+}
+.wk-ph-cat-slider--prev {
+    animation: wk-cat-in-down 0.4s ease forwards;
 }
 
 .wk-ph-cat {

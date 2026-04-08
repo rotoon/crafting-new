@@ -15,7 +15,6 @@ const buildPlayableSrc = (src: string) => {
   return `${src}${separator}autoplay=0&mute=1`;
 };
 
-
 export default function VideoProductionSection() {
   const [videoCat, setVideoCat] = useState("");
   const [pageIndex, setPageIndex] = useState(0);
@@ -150,7 +149,7 @@ export default function VideoProductionSection() {
                               src={buildPlayableSrc(video.src)}
                               title={video.alt}
                               loading="lazy"
-                              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                               allowFullScreen
                               onLoad={() => {
                                 setLoadedVideoMap((current) => {

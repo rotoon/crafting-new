@@ -137,16 +137,16 @@
   },
   "hotPaths": [
     {
-      "path": "src/app/globals.css",
-      "accessCount": 7,
-      "lastAccessed": 1775667718202,
-      "type": "directory"
+      "path": "src/components/works/PhotographySection.tsx",
+      "accessCount": 38,
+      "lastAccessed": 1775671599576,
+      "type": "file"
     },
     {
-      "path": "src/components/works/PhotographySection.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1775667983352,
-      "type": "file"
+      "path": "src/app/globals.css",
+      "accessCount": 18,
+      "lastAccessed": 1775671608895,
+      "type": "directory"
     },
     {
       "path": "src/components/works/VideoProductionSection.tsx",
