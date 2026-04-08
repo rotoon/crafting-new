@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { gsap } from "gsap";
 import FadeIn from "../FadeIn";
 import Image from "next/image";
 
@@ -13,32 +14,32 @@ const PROD_SLOTS = [
 const PRODUCTION_ITEMS = [
   {
     id: "video-1",
-    src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4",
-    thumbnail: "/assets/works/thumbnails/snapsave-app_main.jpg",
+    src: "https://www.youtube.com/embed/UPqGsHt7fkA",
+    thumbnail: "https://img.youtube.com/vi/UPqGsHt7fkA/hqdefault.jpg",
     alt: "Go Green by Kanya production thumbnail 1",
   },
   {
     id: "video-2",
-    src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4",
-    thumbnail: "/assets/works/thumbnails/snapsave-app_thumb_001.jpg",
+    src: "https://www.youtube.com/embed/aaqykWnnUzE",
+    thumbnail: "https://img.youtube.com/vi/aaqykWnnUzE/hqdefault.jpg",
     alt: "Go Green by Kanya production thumbnail 2",
   },
   {
     id: "video-3",
-    src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4",
-    thumbnail: "/assets/works/thumbnails/snapsave-app_thumb_002.jpg",
+    src: "https://www.youtube.com/embed/Sldg55p42jU",
+    thumbnail: "https://img.youtube.com/vi/Sldg55p42jU/hqdefault.jpg",
     alt: "Go Green by Kanya production thumbnail 3",
   },
   {
     id: "video-4",
-    src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4",
-    thumbnail: "/assets/works/thumbnails/snapsave-app_thumb_003.jpg",
+    src: "https://www.youtube.com/embed/HVRnOXuqMYI",
+    thumbnail: "https://img.youtube.com/vi/HVRnOXuqMYI/hqdefault.jpg",
     alt: "Go Green by Kanya production thumbnail 4",
   },
   {
     id: "video-5",
-    src: "/assets/works/videos/snapsave-app_24561518606812703_hd.mp4",
-    thumbnail: "/assets/works/thumbnails/snapsave-app_thumb_004.jpg",
+    src: "https://www.youtube.com/embed/XAQn98HVJw4",
+    thumbnail: "https://img.youtube.com/vi/XAQn98HVJw4/hqdefault.jpg",
     alt: "Go Green by Kanya production thumbnail 5",
   },
 ];
@@ -68,6 +69,39 @@ export default function Works() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeProductionIndex, setActiveProductionIndex] = useState(0);
   const total = projects.length;
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const slidesRef = useRef<(HTMLDivElement | null)[]>([]);
+  const infoRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!carouselRef.current) return;
+
+    const slides = slidesRef.current.filter(Boolean);
+    const ctx = gsap.context(() => {
+      // Animate slides smooth transition
+      slides.forEach((slide, i) => {
+        const role = getRole(i);
+        const flexValue = role === "main" ? 569 : role === "secondary" ? 341 : 129;
+        
+        gsap.to(slide, {
+          flex: flexValue,
+          duration: 0.6,
+          ease: "power2.inOut",
+        });
+      });
+
+      // Animate info with fade
+      if (infoRef.current) {
+        gsap.fromTo(
+          infoRef.current,
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
+        );
+      }
+    }, carouselRef);
+
+    return () => ctx.revert();
+  }, [activeIndex]);
 
   const handleSlideClick = (index: number) => {
     if (index !== activeIndex) {
@@ -139,12 +173,13 @@ export default function Works() {
         </div>
 
         <FadeIn className="works-carousel">
-          <div className="carousel-track">
+          <div className="carousel-track" ref={carouselRef}>
             {projects.map((project, i) => {
               const role = getRole(i);
               return (
                 <div
                   key={project.id}
+                  ref={(el) => (slidesRef.current[i] = el)}
                   className={`carousel-slide carousel-slide-${role}`}
                   onClick={() => handleSlideClick(i)}
                   onKeyDown={(event) => handleSlideKeyDown(event, i)}
@@ -162,7 +197,7 @@ export default function Works() {
               );
             })}
           </div>
-          <div className="carousel-info" key={active.id}>
+          <div className="carousel-info" key={active.id} ref={infoRef}>
             <div className="carousel-info-left">
               <h3 className="carousel-title">{active.title}</h3>
               <p className="carousel-description">{active.desc}</p>
@@ -215,16 +250,13 @@ export default function Works() {
 
         <FadeIn className="production-center">
           <div className="production-video-card">
-            <video
+            <iframe
               key={activeProduction.id}
               className="production-video"
               src={activeProduction.src}
-              poster={activeProduction.thumbnail}
-              controls
-              playsInline
-              preload="metadata"
-              autoPlay
-              muted
+              title={activeProduction.alt}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
             />
           </div>
         </FadeIn>
