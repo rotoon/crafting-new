@@ -38,6 +38,7 @@
 - Reworked the `Works` production video swap animation to use GSAP on the card itself, making the transition visible during iframe changes
 - Reduced `Works` production video swap jank by keeping the card mounted and fading the iframe in over a thumbnail poster while YouTube reloads
 - Upgraded `Works` production poster images from YouTube `hqdefault` to `maxresdefault` thumbnails for sharper loading states
+- Fixed a React 19 ref callback typing error in `Works` by making the slide ref assignment callback return `void`
 
 ## Next Steps
 - Ready for feature requests or modifications

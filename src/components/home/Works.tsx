@@ -193,7 +193,9 @@ export default function Works() {
               return (
                 <div
                   key={project.id}
-                  ref={(el) => (slidesRef.current[i] = el)}
+                  ref={(el) => {
+                    slidesRef.current[i] = el;
+                  }}
                   className={`carousel-slide carousel-slide-${role}`}
                   onClick={() => handleSlideClick(i)}
                   onKeyDown={(event) => handleSlideKeyDown(event, i)}
