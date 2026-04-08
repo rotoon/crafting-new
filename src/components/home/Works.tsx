@@ -15,32 +15,32 @@ const PRODUCTION_ITEMS = [
   {
     id: "video-1",
     src: "https://www.youtube.com/embed/UPqGsHt7fkA",
-    thumbnail: "https://img.youtube.com/vi/UPqGsHt7fkA/hqdefault.jpg",
-    alt: "Go Green by Kanya production thumbnail 1",
+    thumbnail: "https://img.youtube.com/vi/UPqGsHt7fkA/maxresdefault.jpg",
+    alt: "Crafting Lab Works 1",
   },
   {
     id: "video-2",
     src: "https://www.youtube.com/embed/aaqykWnnUzE",
-    thumbnail: "https://img.youtube.com/vi/aaqykWnnUzE/hqdefault.jpg",
-    alt: "Go Green by Kanya production thumbnail 2",
+    thumbnail: "https://img.youtube.com/vi/aaqykWnnUzE/maxresdefault.jpg",
+    alt: "Crafting Lab Works 2",
   },
   {
     id: "video-3",
     src: "https://www.youtube.com/embed/Sldg55p42jU",
-    thumbnail: "https://img.youtube.com/vi/Sldg55p42jU/hqdefault.jpg",
-    alt: "Go Green by Kanya production thumbnail 3",
+    thumbnail: "https://img.youtube.com/vi/Sldg55p42jU/maxresdefault.jpg",
+    alt: "Crafting Lab Works 3",
   },
   {
     id: "video-4",
     src: "https://www.youtube.com/embed/HVRnOXuqMYI",
-    thumbnail: "https://img.youtube.com/vi/HVRnOXuqMYI/hqdefault.jpg",
-    alt: "Go Green by Kanya production thumbnail 4",
+    thumbnail: "https://img.youtube.com/vi/HVRnOXuqMYI/maxresdefault.jpg",
+    alt: "Crafting Lab Works 4",
   },
   {
     id: "video-5",
     src: "https://www.youtube.com/embed/XAQn98HVJw4",
-    thumbnail: "https://img.youtube.com/vi/XAQn98HVJw4/hqdefault.jpg",
-    alt: "Go Green by Kanya production thumbnail 5",
+    thumbnail: "https://img.youtube.com/vi/XAQn98HVJw4/maxresdefault.jpg",
+    alt: "Crafting Lab Works 5",
   },
 ];
 
@@ -68,40 +68,52 @@ const projects = [
 export default function Works() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeProductionIndex, setActiveProductionIndex] = useState(0);
+  const [isProductionLoading, setIsProductionLoading] = useState(true);
   const total = projects.length;
   const carouselRef = useRef<HTMLDivElement>(null);
+  const productionVideoCardRef = useRef<HTMLDivElement>(null);
   const slidesRef = useRef<(HTMLDivElement | null)[]>([]);
   const infoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!carouselRef.current) return;
 
-    const slides = slidesRef.current.filter(Boolean);
     const ctx = gsap.context(() => {
-      // Animate slides smooth transition
-      slides.forEach((slide, i) => {
-        const role = getRole(i);
-        const flexValue = role === "main" ? 569 : role === "secondary" ? 341 : 129;
-        
-        gsap.to(slide, {
-          flex: flexValue,
-          duration: 0.6,
-          ease: "power2.inOut",
-        });
-      });
-
       // Animate info with fade
       if (infoRef.current) {
         gsap.fromTo(
           infoRef.current,
           { opacity: 0, y: 10 },
-          { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
+          { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
         );
       }
     }, carouselRef);
 
     return () => ctx.revert();
   }, [activeIndex]);
+
+  useEffect(() => {
+    if (!productionVideoCardRef.current) return;
+
+    gsap.killTweensOf(productionVideoCardRef.current);
+    gsap.fromTo(
+      productionVideoCardRef.current,
+      {
+        opacity: 0.4,
+        y: 24,
+        scale: 0.975,
+        filter: "blur(10px) saturate(0.8)",
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        filter: "blur(0px) saturate(1)",
+        duration: 0.7,
+        ease: "power3.out",
+      },
+    );
+  }, [activeProductionIndex]);
 
   const handleSlideClick = (index: number) => {
     if (index !== activeIndex) {
@@ -121,6 +133,8 @@ export default function Works() {
   };
 
   const handleProductionChange = (index: number) => {
+    if (index === activeProductionIndex) return;
+    setIsProductionLoading(true);
     setActiveProductionIndex(index);
   };
 
@@ -249,15 +263,26 @@ export default function Works() {
         </FadeIn>
 
         <FadeIn className="production-center">
-          <div className="production-video-card">
-            <iframe
-              key={activeProduction.id}
-              className="production-video"
-              src={activeProduction.src}
-              title={activeProduction.alt}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+          <div ref={productionVideoCardRef} className="production-video-card">
+            <div className="production-video-stage">
+              <div className="production-video-poster" aria-hidden="true">
+                <Image
+                  src={activeProduction.thumbnail}
+                  alt=""
+                  fill
+                  sizes="(max-width: 1024px) 80vw, 440px"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+              <iframe
+                className={`production-video ${isProductionLoading ? "is-loading" : "is-ready"}`}
+                src={activeProduction.src}
+                title={activeProduction.alt}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                onLoad={() => setIsProductionLoading(false)}
+              />
+            </div>
           </div>
         </FadeIn>
 

@@ -6,9 +6,7 @@ const CLIENTS_ROW_1 = [
   "client-1", "client-2", "client-3", "client-4", "client-5", "client-6", "client-7", "client-8", "client-9", "client-10", "client-11", "client-12"
 ];
 const CLIENTS_ROW_2 = [
-  "client-13", "client-14", "client-15", "client-16", "client-17", "client-18", "client-19", "client-21", "client-22", "client-23", "client-24"
-];
-const CLIENTS_ROW_3 = [
+  "client-13", "client-14", "client-15", "client-16", "client-17", "client-18", "client-19", "client-21", "client-22", "client-23", "client-24",
   "client-25", "client-26", "client-27", "client-28", "client-29", "client-30", "client-31", "client-32", "client-33", "client-34", "client-35", "client-36"
 ];
 
@@ -69,22 +67,6 @@ export default function Clients() {
               </div>
             </div>
           </div>
-
-          {/* Row 3 */}
-          <div className="clients-marquee" id="clients-row-3">
-            <div className="clients-marquee-track">
-              <div className="clients-marquee-content">
-                {CLIENTS_ROW_3.map((name, i) => (
-                  <ClientLogo key={`r3-o-${i}`} name={name} />
-                ))}
-              </div>
-              <div className="clients-marquee-content" aria-hidden="true">
-                {CLIENTS_ROW_3.map((name, i) => (
-                  <ClientLogo key={`r3-d-${i}`} name={name} />
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </section>
       <button
@@ -96,4 +78,3 @@ export default function Clients() {
     </>
   );
 }
-

@@ -31,6 +31,13 @@
   - CSS added to globals.css under `/* SERVICES PAGE (/services) */` using `.sp-*` prefix
   - Added `service-lines.svg` as decorative background to subcards section
   - Fixed CSS class mismatches (`.sp-subcards` → `.sp-subcards-container`) in responsive media queries
+- Reduced `Clients` marquee from 3 rows to 2 rows by merging the third row logos into the second row and removing the extra marquee block
+- Slowed the `Clients` marquee animation from `30s` to `45s` for a calmer logo scroll pace
+- Tuned `Clients` row speeds separately so the longer second row scrolls slower (`80s`) and feels closer to the first row (`45s`)
+- Added an entrance animation to the active `Works` production video so iframe swaps feel smoother on thumbnail change
+- Reworked the `Works` production video swap animation to use GSAP on the card itself, making the transition visible during iframe changes
+- Reduced `Works` production video swap jank by keeping the card mounted and fading the iframe in over a thumbnail poster while YouTube reloads
+- Upgraded `Works` production poster images from YouTube `hqdefault` to `maxresdefault` thumbnails for sharper loading states
 
 ## Next Steps
 - Ready for feature requests or modifications
