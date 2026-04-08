@@ -1599,10 +1599,16 @@ footer[id] {
 .wk-ph-card {
     flex-shrink: 0;
     transform-origin: bottom center;
-    transition: transform 0.4s ease;
+    transition: transform 0.4s ease, filter 0.3s ease;
     margin-left: -40px;
     position: relative;
     will-change: transform;
+    cursor: pointer;
+}
+
+.wk-ph-card:hover {
+    filter: brightness(1.08) drop-shadow(0 12px 24px rgba(0,0,0,0.45));
+    z-index: 10 !important;
 }
 
 .wk-ph-card:first-child {
@@ -1704,6 +1710,27 @@ footer[id] {
     height: 37px;
     display: block;
     flex-shrink: 0;
+    transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.wk-vp-arrow--prev:hover .wk-ph-arrow-icon {
+    transform: translateX(-5px);
+}
+
+.wk-vp-arrow--next:hover .wk-ph-arrow-icon {
+    transform: translateX(5px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wk-ph-fan,
+    .wk-ph-card,
+    .wk-ph-card-inner,
+    .wk-ph-cat-track,
+    .wk-ph-arrow-icon,
+    [class*="wk-ph-fan--"] {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 
 /* ============================================================

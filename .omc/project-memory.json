@@ -138,14 +138,14 @@
   "hotPaths": [
     {
       "path": "src/components/works/PhotographySection.tsx",
-      "accessCount": 42,
-      "lastAccessed": 1775672426977,
+      "accessCount": 51,
+      "lastAccessed": 1775673281875,
       "type": "file"
     },
     {
       "path": "src/app/globals.css",
-      "accessCount": 22,
-      "lastAccessed": 1775672346069,
+      "accessCount": 27,
+      "lastAccessed": 1775672965073,
       "type": "directory"
     },
     {
@@ -167,6 +167,12 @@
       "type": "directory"
     },
     {
+      "path": "src/components/works/WorksArrow.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1775672694375,
+      "type": "file"
+    },
+    {
       "path": "src/components/home/Works.tsx",
       "accessCount": 1,
       "lastAccessed": 1775638450562,
@@ -176,12 +182,6 @@
       "path": ".claude/memory/active.md",
       "accessCount": 1,
       "lastAccessed": 1775667067194,
-      "type": "file"
-    },
-    {
-      "path": "src/components/works/WorksArrow.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1775667199427,
       "type": "file"
     }
   ],

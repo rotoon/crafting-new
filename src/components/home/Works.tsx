@@ -73,24 +73,6 @@ export default function Works() {
   const carouselRef = useRef<HTMLDivElement>(null);
   const productionVideoCardRef = useRef<HTMLDivElement>(null);
   const slidesRef = useRef<(HTMLDivElement | null)[]>([]);
-  const infoRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!carouselRef.current) return;
-
-    const ctx = gsap.context(() => {
-      // Animate info with fade
-      if (infoRef.current) {
-        gsap.fromTo(
-          infoRef.current,
-          { opacity: 0, y: 10 },
-          { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
-        );
-      }
-    }, carouselRef);
-
-    return () => ctx.revert();
-  }, [activeIndex]);
 
   useEffect(() => {
     if (!productionVideoCardRef.current) return;
@@ -213,7 +195,7 @@ export default function Works() {
               );
             })}
           </div>
-          <div className="carousel-info" key={active.id} ref={infoRef}>
+          <div className="carousel-info" key={active.id}>
             <div className="carousel-info-left">
               <h3 className="carousel-title">{active.title}</h3>
               <p className="carousel-description">{active.desc}</p>
@@ -228,11 +210,7 @@ export default function Works() {
                   {String(total).padStart(2, "0")}
                 </span>
               </div>
-              <FadeIn
-                direction="up"
-                delayMs={300}
-                className="services-view-more"
-              >
+              <FadeIn className="services-view-more">
                 <a href="/works" className="btn-view-more">
                   View More
                 </a>

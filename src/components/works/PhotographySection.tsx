@@ -9,32 +9,48 @@ export default function PhotographySection() {
   const [slideIndex, setSlideIndex] = useState(0);
   const [dir, setDir] = useState<"next" | "prev">("next");
   const totalSlides = PHOTO_SLIDES.length;
+  const sectionRef = useRef<HTMLElement>(null);
   const fanRef = useRef<HTMLDivElement>(null);
-  const catRef = useRef<HTMLSpanElement>(null);
-  const dirRef = useRef<"next" | "prev">("next");
   const hasNavigated = useRef(false);
+  const hasEntered = useRef(false);
 
+  // Scroll-triggered entrance
   useEffect(() => {
-    if (!catRef.current) return;
-    const y = dirRef.current === "next" ? 16 : -16;
-    gsap.fromTo(
-      catRef.current,
-      { opacity: 0, y },
-      { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+    const section = sectionRef.current;
+    const fan = fanRef.current;
+    if (!section || !fan) return;
+
+    const cards = fan.querySelectorAll<HTMLElement>(".wk-ph-card");
+    gsap.set(cards, { opacity: 0 });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasEntered.current) {
+          hasEntered.current = true;
+          gsap.to(cards, {
+            opacity: 1,
+            duration: 0.6,
+            stagger: 0.12,
+            ease: "power2.out",
+            delay: 0.15,
+          });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
     );
-  }, [slideIndex]);
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
 
   const navigate = (d: "next" | "prev") => {
-    dirRef.current = d;
     hasNavigated.current = true;
     setDir(d);
     setSlideIndex((i) =>
-      d === "next"
-        ? (i + 1) % totalSlides
-        : (i - 1 + totalSlides) % totalSlides,
+      d === "next" ? (i + 1) % totalSlides : (i - 1 + totalSlides) % totalSlides
     );
 
-    // Restart CSS slide animation via force reflow
     const el = fanRef.current;
     if (el) {
       el.classList.remove("wk-ph-fan--slide-next", "wk-ph-fan--slide-prev");
@@ -45,7 +61,7 @@ export default function PhotographySection() {
 
   return (
     <>
-      <section className="wk-ph-section">
+      <section ref={sectionRef} className="wk-ph-section">
         <div className="wk-ph-title-wrap" aria-hidden="true">
           <span className="wk-ph-title">PHOTOGRAPHY</span>
         </div>
@@ -77,7 +93,6 @@ export default function PhotographySection() {
                           transition: isActive
                             ? `opacity 0.8s ease ${staggerDelay}s`
                             : "opacity 0.8s ease 0s",
-                          willChange: "opacity",
                         }}
                       >
                         <Image
@@ -86,7 +101,7 @@ export default function PhotographySection() {
                           fill
                           sizes="220px"
                           style={{ objectFit: "cover" }}
-                          priority
+                          priority={slideIdx === 0}
                         />
                       </div>
                     );
@@ -100,7 +115,7 @@ export default function PhotographySection() {
         <div>
           <div className="wk-ph-footer">
             <button
-              className="wk-vp-arrow"
+              className="wk-vp-arrow wk-vp-arrow--prev"
               onClick={() => navigate("prev")}
               aria-label="Previous"
               type="button"
@@ -111,11 +126,10 @@ export default function PhotographySection() {
               <div className="wk-ph-cat-mask">
                 <div
                   key={slideIndex}
-                  className={`wk-ph-cat-track wk-ph-cat-track--${dir}`}
+                  className={`wk-ph-cat-track${hasNavigated.current ? ` wk-ph-cat-track--${dir}` : ""}`}
                 >
                   {[-1, 0, 1].map((delta) => {
-                    const idx =
-                      (slideIndex + delta + totalSlides) % totalSlides;
+                    const idx = (slideIndex + delta + totalSlides) % totalSlides;
                     return (
                       <span
                         key={delta}
@@ -129,7 +143,7 @@ export default function PhotographySection() {
               </div>
             </div>
             <button
-              className="wk-vp-arrow"
+              className="wk-vp-arrow wk-vp-arrow--next"
               onClick={() => navigate("next")}
               aria-label="Next"
               type="button"
