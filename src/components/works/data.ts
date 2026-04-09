@@ -125,3 +125,185 @@ export const PHOTO_SLIDES = [
     { id: "ph-20", image: "/assets/works/photography/ph-20.webp", alt: "Advertising 5" },
   ],
 ];
+
+export type WorkDetail = {
+  id: string;           // slug (ตรงกับ id ใน GRAPHIC_DESIGN_ITEMS)
+  client: string;       // ชื่อ client (bold label)
+  businessType: string; // ประเภทธุรกิจ
+  details: string;      // รายละเอียดงาน (multi-line ใช้ \n)
+  logo: string;         // path ไปยัง client logo image
+  images: string[];     // array ของ project images (1-5 รูป)
+};
+
+export const WORK_DETAILS: WorkDetail[] = [
+  {
+    id: "cma",
+    client: "Central",
+    businessType: "Department Store",
+    details: "Hoarding Design / Counter Design /\nVisual Design",
+    logo: "/assets/works/portfolio/clients/cma-color.webp",
+    images: [
+      "/assets/works/portfolio/details/cma-1.webp",
+      "/assets/works/portfolio/details/cma-2.webp",
+      "/assets/works/portfolio/details/cma-3.webp",
+      "/assets/works/portfolio/details/cma-4.webp",
+      "/assets/works/portfolio/details/cma-5.webp",
+    ],
+  },
+  {
+    id: "ggb",
+    client: "Go Green Bar",
+    businessType: "Bar & Cafe",
+    details: "Branding / Visual Design /\nPackaging Design",
+    logo: "/assets/works/portfolio/clients/ggb-color.webp",
+    images: [
+      "/assets/works/portfolio/details/ggb-1.webp",
+      "/assets/works/portfolio/details/ggb-2.webp",
+      "/assets/works/portfolio/details/ggb-3.webp",
+    ],
+  },
+  {
+    id: "somm",
+    client: "SOMM",
+    businessType: "Restaurant",
+    details: "Branding / Menu Design /\nVisual Design",
+    logo: "/assets/works/portfolio/clients/somm-color.webp",
+    images: [
+      "/assets/works/portfolio/details/somm-1.webp",
+      "/assets/works/portfolio/details/somm-2.webp",
+      "/assets/works/portfolio/details/somm-3.webp",
+    ],
+  },
+  {
+    id: "gomaew",
+    client: "Gomaew",
+    businessType: "Retail",
+    details: "Branding / Packaging Design /\nVisual Design",
+    logo: "/assets/works/portfolio/clients/gomaew-color.webp",
+    images: [
+      "/assets/works/portfolio/details/gomaew-1.webp",
+      "/assets/works/portfolio/details/gomaew-2.webp",
+      "/assets/works/portfolio/details/gomaew-3.webp",
+    ],
+  },
+  {
+    id: "baipo",
+    client: "Baipo",
+    businessType: "Restaurant",
+    details: "Branding / Menu Design /\nVisual Design",
+    logo: "/assets/works/portfolio/clients/baipo-color.webp",
+    images: [
+      "/assets/works/portfolio/details/baipo-1.webp",
+      "/assets/works/portfolio/details/baipo-2.webp",
+      "/assets/works/portfolio/details/baipo-3.webp",
+    ],
+  },
+  {
+    id: "nat",
+    client: "Nat Motor",
+    businessType: "Automotive",
+    details: "Branding / Visual Design /\nSocial Media Design",
+    logo: "/assets/works/portfolio/clients/nat-color.webp",
+    images: [
+      "/assets/works/portfolio/details/nat-1.webp",
+      "/assets/works/portfolio/details/nat-2.webp",
+      "/assets/works/portfolio/details/nat-3.webp",
+    ],
+  },
+  {
+    id: "kong",
+    client: "Kong Mart",
+    businessType: "Retail",
+    details: "Branding / Signage Design /\nVisual Design",
+    logo: "/assets/works/portfolio/clients/kong-color.webp",
+    images: [
+      "/assets/works/portfolio/details/kong-1.webp",
+      "/assets/works/portfolio/details/kong-2.webp",
+      "/assets/works/portfolio/details/kong-3.webp",
+    ],
+  },
+  {
+    id: "paincare",
+    client: "Pain Care",
+    businessType: "Medical Clinic",
+    details: "Branding / Visual Design /\nSocial Media Design",
+    logo: "/assets/works/portfolio/clients/paincare-color.webp",
+    images: [
+      "/assets/works/portfolio/details/paincare-1.webp",
+      "/assets/works/portfolio/details/paincare-2.webp",
+      "/assets/works/portfolio/details/paincare-3.webp",
+    ],
+  },
+  {
+    id: "gsl",
+    client: "GSL",
+    businessType: "Business",
+    details: "Branding / Visual Design /\nMarketing Material",
+    logo: "/assets/works/portfolio/clients/gsl-color.webp",
+    images: [
+      "/assets/works/portfolio/details/gsl-1.webp",
+      "/assets/works/portfolio/details/gsl-2.webp",
+      "/assets/works/portfolio/details/gsl-3.webp",
+    ],
+  },
+  {
+    id: "nor",
+    client: "Nor",
+    businessType: "Restaurant",
+    details: "Branding / Menu Design /\nVisual Design",
+    logo: "/assets/works/portfolio/clients/nor-color.webp",
+    images: [
+      "/assets/works/portfolio/details/nor-1.webp",
+      "/assets/works/portfolio/details/nor-2.webp",
+      "/assets/works/portfolio/details/nor-3.webp",
+    ],
+  },
+  {
+    id: "moreeda",
+    client: "Moreeda",
+    businessType: "Fashion",
+    details: "Branding / Packaging Design /\nVisual Design",
+    logo: "/assets/works/portfolio/clients/moreeda-color.webp",
+    images: [
+      "/assets/works/portfolio/details/moreeda-1.webp",
+      "/assets/works/portfolio/details/moreeda-2.webp",
+      "/assets/works/portfolio/details/moreeda-3.webp",
+    ],
+  },
+  {
+    id: "vinzen",
+    client: "The Vinzen",
+    businessType: "Real Estate",
+    details: "Branding / Visual Design /\nMarketing Material",
+    logo: "/assets/works/portfolio/clients/vinzen-color.webp",
+    images: [
+      "/assets/works/portfolio/details/vinzen-1.webp",
+      "/assets/works/portfolio/details/vinzen-2.webp",
+      "/assets/works/portfolio/details/vinzen-3.webp",
+    ],
+  },
+  {
+    id: "cmh",
+    client: "Cake Me Home",
+    businessType: "Bakery",
+    details: "Branding / Packaging Design /\nVisual Design",
+    logo: "/assets/works/portfolio/clients/cmh-color.webp",
+    images: [
+      "/assets/works/portfolio/details/cmh-1.webp",
+      "/assets/works/portfolio/details/cmh-2.webp",
+      "/assets/works/portfolio/details/cmh-3.webp",
+    ],
+  },
+  {
+    id: "funky",
+    client: "Funky",
+    businessType: "Bar & Cafe",
+    details: "Branding / Visual Design /\nSocial Media Design",
+    logo: "/assets/works/portfolio/clients/funky-color.webp",
+    images: [
+      "/assets/works/portfolio/details/funky-1.webp",
+      "/assets/works/portfolio/details/funky-2.webp",
+      "/assets/works/portfolio/details/funky-3.webp",
+    ],
+  },
+];
