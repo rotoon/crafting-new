@@ -4348,3 +4348,82 @@ footer[id] {
         display: none;
     }
 }
+
+/* ----- WORK MODAL (.wm-*) ----- */
+.wm-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: stretch;
+}
+
+.wm-panel {
+    position: relative;
+    width: 100%;
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    animation: wm-slide-down 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wm-panel--closing {
+    animation: wm-slide-up 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.wm-backdrop--closing {
+    animation: wm-fade-out 0.4s ease forwards;
+}
+
+@keyframes wm-fade-out {
+    from { background: rgba(0, 0, 0, 0.75); }
+    to   { background: rgba(0, 0, 0, 0); }
+}
+
+.wm-scroll {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+}
+
+.wm-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--white);
+    font-size: 18px;
+    line-height: 1;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.wm-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+@keyframes wm-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes wm-slide-down {
+    from { transform: translateY(-100vh); }
+    to   { transform: translateY(0); }
+}
+
+@keyframes wm-slide-up {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-100vh); }
+}

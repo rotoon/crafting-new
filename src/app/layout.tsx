@@ -47,8 +47,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
@@ -56,6 +58,7 @@ export default function RootLayout({
         className={`${outfit.variable} ${syncopate.variable} ${fcMinimal.variable} ${pbio.variable} antialiased`}
       >
         {children}
+        {modal}
       </body>
     </html>
   );
