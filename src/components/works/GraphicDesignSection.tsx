@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import FadeIn from "../FadeIn";
 import { GRAPHIC_DESIGN_ITEMS, WORK_DETAILS } from "./data";
 
@@ -12,14 +13,16 @@ export default function GraphicDesignSection() {
         <FadeIn direction="up">
           <div className="wk-label-row">
             <div className="wk-label-accent" />
-            <span className="wk-label-text wk-label-text--white">GRAPHIC DESIGN</span>
+            <span className="wk-label-text wk-label-text--white">
+              GRAPHIC DESIGN
+            </span>
           </div>
         </FadeIn>
       </div>
 
       <FadeIn className="wk-gd-grid" delayMs={150}>
         {GRAPHIC_DESIGN_ITEMS.map((item) => (
-          <a
+          <Link
             key={item.id}
             href={detailIds.has(item.id) ? `/works/${item.id}` : "#"}
             className="wk-gd-card"
@@ -42,7 +45,7 @@ export default function GraphicDesignSection() {
                 unoptimized
               />
             </div>
-          </a>
+          </Link>
         ))}
       </FadeIn>
     </section>
