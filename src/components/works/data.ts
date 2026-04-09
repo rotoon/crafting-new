@@ -17,29 +17,135 @@ export const SHOWCASE_ITEMS = [
 ];
 
 export const GRAPHIC_DESIGN_ITEMS = [
-  { id: "cma", name: "Central Chiangmai Airport", image: "/assets/works/portfolio/clients/cma-dark.webp", hoverImage: "/assets/works/portfolio/clients/cma-color.webp" },
-  { id: "ggb", name: "Go Green Bar", image: "/assets/works/portfolio/clients/ggb-dark.webp", hoverImage: "/assets/works/portfolio/clients/ggb-color.webp" },
-  { id: "payon", name: "Payon", image: "/assets/works/portfolio/clients/payon-dark.webp", hoverImage: "/assets/works/portfolio/clients/payon-color.webp" },
-  { id: "kong", name: "Kong Mart", image: "/assets/works/portfolio/clients/kong-dark.webp", hoverImage: "/assets/works/portfolio/clients/kong-color.webp" },
-  { id: "gomaew", name: "Gomaew", image: "/assets/works/portfolio/clients/gomaew-dark.webp", hoverImage: "/assets/works/portfolio/clients/gomaew-color.webp" },
-  { id: "blanc", name: "Blanc All Day Eatery", image: "/assets/works/portfolio/clients/blanc-dark.webp", hoverImage: "/assets/works/portfolio/clients/blanc-color.webp" },
-  { id: "vinzen", name: "The Vinzen", image: "/assets/works/portfolio/clients/vinzen-dark.webp", hoverImage: "/assets/works/portfolio/clients/vinzen-color.webp" },
-  { id: "nat", name: "Nat Bar", image: "/assets/works/portfolio/clients/nat-dark.webp", hoverImage: "/assets/works/portfolio/clients/nat-color.webp" },
-  { id: "paincare", name: "Pain Care", image: "/assets/works/portfolio/clients/paincare-dark.webp", hoverImage: "/assets/works/portfolio/clients/paincare-color.webp" },
-  { id: "ggc", name: "Go Green Consult", image: "/assets/works/portfolio/clients/ggc-dark.webp", hoverImage: "/assets/works/portfolio/clients/ggc-color.webp" },
-  { id: "funky", name: "Funky", image: "/assets/works/portfolio/clients/funky-dark.webp", hoverImage: "/assets/works/portfolio/clients/funky-color.webp" },
-  { id: "nor", name: "Nor", image: "/assets/works/portfolio/clients/nor-dark.webp", hoverImage: "/assets/works/portfolio/clients/nor-color.webp" },
-  { id: "moreeda", name: "Moreeda", image: "/assets/works/portfolio/clients/moreeda-dark.webp", hoverImage: "/assets/works/portfolio/clients/moreeda-color.webp" },
-  { id: "cc", name: "CC", image: "/assets/works/portfolio/clients/cc-dark.webp", hoverImage: "/assets/works/portfolio/clients/cc-color.webp" },
-  { id: "cmh", name: "CMH", image: "/assets/works/portfolio/clients/cmh-dark.webp", hoverImage: "/assets/works/portfolio/clients/cmh-color.webp" },
-  { id: "gsl", name: "GSL", image: "/assets/works/portfolio/clients/gsl-dark.webp", hoverImage: "/assets/works/portfolio/clients/gsl-color.webp" },
-  { id: "baipo", name: "Baipo", image: "/assets/works/portfolio/clients/baipo-dark.webp", hoverImage: "/assets/works/portfolio/clients/baipo-color.webp" },
-  { id: "ggc2", name: "GGC", image: "/assets/works/portfolio/clients/ggc2-dark.webp", hoverImage: "/assets/works/portfolio/clients/ggc2-color.webp" },
-  { id: "chidlom", name: "Chidlom", image: "/assets/works/portfolio/clients/chidlom-dark.webp", hoverImage: "/assets/works/portfolio/clients/chidlom-color.webp" },
-  { id: "somm", name: "Somm", image: "/assets/works/portfolio/clients/somm-dark.webp", hoverImage: "/assets/works/portfolio/clients/somm-color.webp" },
+  {
+    id: "cma",
+    name: "Central Chiangmai Airport",
+    image: "/assets/works/portfolio/clients/cma-dark.webp",
+    hoverImage: "/assets/works/portfolio/clients/cma-color.webp",
+  },
+  {
+    id: "ggb",
+    name: "Go Green Bar",
+    image: "/assets/works/portfolio/clients/ggb-dark.webp",
+    hoverImage: "/assets/works/portfolio/clients/ggb-color.webp",
+  },
+  {
+    id: "payon",
+    name: "Payon",
+    image: "/assets/works/portfolio/clients/payon-dark.webp",
+    hoverImage: "/assets/works/portfolio/clients/payon-color.webp",
+  },
+  {
+    id: "kong",
+    name: "Kong Mart",
+    image: "/assets/works/portfolio/clients/kong-dark.webp",
+    hoverImage: "/assets/works/portfolio/clients/kong-color.webp",
+  },
+  {
+    id: "gomaew",
+    name: "Gomaew",
+    image: "/assets/works/portfolio/clients/gomaew-dark.webp",
+    hoverImage: "/assets/works/portfolio/clients/gomaew-color.webp",
+  },
+  {
+    id: "blanc",
+    name: "Blanc All Day Eatery",
+    image: "/assets/works/portfolio/clients/blanc-dark.webp",
+    hoverImage: "/assets/works/portfolio/clients/blanc-color.webp",
+  },
+  {
+    id: "vinzen",
+    name: "The Vinzen",
+    image: "/assets/works/portfolio/clients/vinzen-dark.webp",
+    hoverImage: "/assets/works/portfolio/clients/vinzen-color.webp",
+  },
+  {
+    id: "nat",
+    name: "Nat Bar",
+    image: "/assets/works/portfolio/clients/nat-dark.webp",
+    hoverImage: "/assets/works/portfolio/clients/nat-color.webp",
+  },
+  {
+    id: "paincare",
+    name: "Pain Care",
+    image: "/assets/works/portfolio/clients/paincare-dark.webp",
+    hoverImage: "/assets/works/portfolio/clients/paincare-color.webp",
+  },
+  {
+    id: "ggc",
+    name: "Go Green Consult",
+    image: "/assets/works/portfolio/clients/ggc-dark.webp",
+    hoverImage: "/assets/works/portfolio/clients/ggc-color.webp",
+  },
+  {
+    id: "funky",
+    name: "Funky",
+    image: "/assets/works/portfolio/clients/funky-dark.webp",
+    hoverImage: "/assets/works/portfolio/clients/funky-color.webp",
+  },
+  {
+    id: "nor",
+    name: "Nor",
+    image: "/assets/works/portfolio/clients/nor-dark.webp",
+    hoverImage: "/assets/works/portfolio/clients/nor-color.webp",
+  },
+  {
+    id: "moreeda",
+    name: "Moreeda",
+    image: "/assets/works/portfolio/clients/moreeda-dark.webp",
+    hoverImage: "/assets/works/portfolio/clients/moreeda-color.webp",
+  },
+  {
+    id: "cc",
+    name: "CC",
+    image: "/assets/works/portfolio/clients/cc-dark.webp",
+    hoverImage: "/assets/works/portfolio/clients/cc-color.webp",
+  },
+  {
+    id: "cmh",
+    name: "CMH",
+    image: "/assets/works/portfolio/clients/cmh-dark.webp",
+    hoverImage: "/assets/works/portfolio/clients/cmh-color.webp",
+  },
+  {
+    id: "gsl",
+    name: "GSL",
+    image: "/assets/works/portfolio/clients/gsl-dark.webp",
+    hoverImage: "/assets/works/portfolio/clients/gsl-color.webp",
+  },
+  {
+    id: "baipo",
+    name: "Baipo",
+    image: "/assets/works/portfolio/clients/baipo-dark.webp",
+    hoverImage: "/assets/works/portfolio/clients/baipo-color.webp",
+  },
+  {
+    id: "ggc2",
+    name: "GGC",
+    image: "/assets/works/portfolio/clients/ggc2-dark.webp",
+    hoverImage: "/assets/works/portfolio/clients/ggc2-color.webp",
+  },
+  {
+    id: "chidlom",
+    name: "Chidlom",
+    image: "/assets/works/portfolio/clients/chidlom-dark.webp",
+    hoverImage: "/assets/works/portfolio/clients/chidlom-color.webp",
+  },
+  {
+    id: "somm",
+    name: "Somm",
+    image: "/assets/works/portfolio/clients/somm-dark.webp",
+    hoverImage: "/assets/works/portfolio/clients/somm-color.webp",
+  },
 ];
 
-export const VIDEO_CATEGORIES = ["Real Estate", "Restaurant", "Food", "Clinic", "Bar&Cafe"];
+export const VIDEO_CATEGORIES = [
+  "Real Estate",
+  "Restaurant",
+  "Food",
+  "Clinic",
+  "Bar&Cafe",
+];
 
 export type VideoItem = {
   id: string;
@@ -97,48 +203,128 @@ export const PHOTO_FAN = [
 
 export const PHOTO_SLIDES = [
   [
-    { id: "ph-1", image: "/assets/works/photography/ph-1.webp", alt: "Packshot 1" },
-    { id: "ph-2", image: "/assets/works/photography/ph-2.webp", alt: "Packshot 2" },
-    { id: "ph-3", image: "/assets/works/photography/ph-3.webp", alt: "Packshot 3" },
-    { id: "ph-4", image: "/assets/works/photography/ph-4.webp", alt: "Packshot 4" },
-    { id: "ph-5", image: "/assets/works/photography/ph-5.webp", alt: "Packshot 5" },
+    {
+      id: "ph-1",
+      image: "/assets/works/photography/ph-1.webp",
+      alt: "Packshot 1",
+    },
+    {
+      id: "ph-2",
+      image: "/assets/works/photography/ph-2.webp",
+      alt: "Packshot 2",
+    },
+    {
+      id: "ph-3",
+      image: "/assets/works/photography/ph-3.webp",
+      alt: "Packshot 3",
+    },
+    {
+      id: "ph-4",
+      image: "/assets/works/photography/ph-4.webp",
+      alt: "Packshot 4",
+    },
+    {
+      id: "ph-5",
+      image: "/assets/works/photography/ph-5.webp",
+      alt: "Packshot 5",
+    },
   ],
   [
-    { id: "ph-6", image: "/assets/works/photography/ph-6.webp", alt: "Styling 1" },
-    { id: "ph-7", image: "/assets/works/photography/ph-7.webp", alt: "Styling 2" },
-    { id: "ph-8", image: "/assets/works/photography/ph-8.webp", alt: "Styling 3" },
-    { id: "ph-9", image: "/assets/works/photography/ph-9.webp", alt: "Styling 4" },
-    { id: "ph-10", image: "/assets/works/photography/ph-10.webp", alt: "Styling 5" },
+    {
+      id: "ph-6",
+      image: "/assets/works/photography/ph-6.webp",
+      alt: "Styling 1",
+    },
+    {
+      id: "ph-7",
+      image: "/assets/works/photography/ph-7.webp",
+      alt: "Styling 2",
+    },
+    {
+      id: "ph-8",
+      image: "/assets/works/photography/ph-8.webp",
+      alt: "Styling 3",
+    },
+    {
+      id: "ph-9",
+      image: "/assets/works/photography/ph-9.webp",
+      alt: "Styling 4",
+    },
+    {
+      id: "ph-10",
+      image: "/assets/works/photography/ph-10.webp",
+      alt: "Styling 5",
+    },
   ],
   [
-    { id: "ph-11", image: "/assets/works/photography/ph-11.webp", alt: "Vibe 1" },
-    { id: "ph-12", image: "/assets/works/photography/ph-12.webp", alt: "Vibe 2" },
-    { id: "ph-13", image: "/assets/works/photography/ph-13.webp", alt: "Vibe 3" },
-    { id: "ph-14", image: "/assets/works/photography/ph-14.webp", alt: "Vibe 4" },
-    { id: "ph-15", image: "/assets/works/photography/ph-15.webp", alt: "Vibe 5" },
+    {
+      id: "ph-11",
+      image: "/assets/works/photography/ph-11.webp",
+      alt: "Vibe 1",
+    },
+    {
+      id: "ph-12",
+      image: "/assets/works/photography/ph-12.webp",
+      alt: "Vibe 2",
+    },
+    {
+      id: "ph-13",
+      image: "/assets/works/photography/ph-13.webp",
+      alt: "Vibe 3",
+    },
+    {
+      id: "ph-14",
+      image: "/assets/works/photography/ph-14.webp",
+      alt: "Vibe 4",
+    },
+    {
+      id: "ph-15",
+      image: "/assets/works/photography/ph-15.webp",
+      alt: "Vibe 5",
+    },
   ],
   [
-    { id: "ph-16", image: "/assets/works/photography/ph-16.webp", alt: "Advertising 1" },
-    { id: "ph-17", image: "/assets/works/photography/ph-17.webp", alt: "Advertising 2" },
-    { id: "ph-18", image: "/assets/works/photography/ph-18.webp", alt: "Advertising 3" },
-    { id: "ph-19", image: "/assets/works/photography/ph-19.webp", alt: "Advertising 4" },
-    { id: "ph-20", image: "/assets/works/photography/ph-20.webp", alt: "Advertising 5" },
+    {
+      id: "ph-16",
+      image: "/assets/works/photography/ph-16.webp",
+      alt: "Advertising 1",
+    },
+    {
+      id: "ph-17",
+      image: "/assets/works/photography/ph-17.webp",
+      alt: "Advertising 2",
+    },
+    {
+      id: "ph-18",
+      image: "/assets/works/photography/ph-18.webp",
+      alt: "Advertising 3",
+    },
+    {
+      id: "ph-19",
+      image: "/assets/works/photography/ph-19.webp",
+      alt: "Advertising 4",
+    },
+    {
+      id: "ph-20",
+      image: "/assets/works/photography/ph-20.webp",
+      alt: "Advertising 5",
+    },
   ],
 ];
 
 export type WorkDetail = {
-  id: string;           // slug (ตรงกับ id ใน GRAPHIC_DESIGN_ITEMS)
-  client: string;       // ชื่อ client (bold label)
+  id: string; // slug (ตรงกับ id ใน GRAPHIC_DESIGN_ITEMS)
+  client: string; // ชื่อ client (bold label)
   businessType: string; // ประเภทธุรกิจ
-  details: string;      // รายละเอียดงาน (multi-line ใช้ \n)
-  logo: string;         // path ไปยัง client logo image
-  images: string[];     // array ของ project images (1-5 รูป)
+  details: string; // รายละเอียดงาน (multi-line ใช้ \n)
+  logo: string; // path ไปยัง client logo image
+  images: string[]; // array ของ project images (1-5 รูป)
 };
 
 export const WORK_DETAILS: WorkDetail[] = [
   {
     id: "cma",
-    client: "Central",
+    client: "Central Chiangmai Department Store",
     businessType: "Department Store",
     details: "Hoarding Design / Counter Design /\nVisual Design",
     logo: "/assets/works/portfolio/clients/cma-color.webp",
@@ -152,9 +338,9 @@ export const WORK_DETAILS: WorkDetail[] = [
   },
   {
     id: "ggb",
-    client: "Go Green Bar",
+    client: "GoGreen Bar",
     businessType: "Bar & Cafe",
-    details: "Branding / Visual Design /\nPackaging Design",
+    details: "Decorate Shop / Digital Media /\nOffline Media",
     logo: "/assets/works/portfolio/clients/ggb-color.webp",
     images: [
       "/assets/works/portfolio/details/ggb-1.webp",
@@ -166,144 +352,183 @@ export const WORK_DETAILS: WorkDetail[] = [
     id: "somm",
     client: "SOMM",
     businessType: "Restaurant",
-    details: "Branding / Menu Design /\nVisual Design",
+    details: "Digital Media / Offline Media",
     logo: "/assets/works/portfolio/clients/somm-color.webp",
     images: [
       "/assets/works/portfolio/details/somm-1.webp",
       "/assets/works/portfolio/details/somm-2.webp",
       "/assets/works/portfolio/details/somm-3.webp",
+      "/assets/works/portfolio/details/somm-4.webp",
     ],
   },
   {
     id: "gomaew",
-    client: "Gomaew",
-    businessType: "Retail",
-    details: "Branding / Packaging Design /\nVisual Design",
+    client: "Go Maew Tom Kao Breakfast",
+    businessType: "Restaurant",
+    details:
+      "Digital Media / Offline Media /\nBusiness Consult / Social Media Planner",
     logo: "/assets/works/portfolio/clients/gomaew-color.webp",
     images: [
       "/assets/works/portfolio/details/gomaew-1.webp",
       "/assets/works/portfolio/details/gomaew-2.webp",
       "/assets/works/portfolio/details/gomaew-3.webp",
+      "/assets/works/portfolio/details/gomaew-4.webp",
     ],
   },
   {
     id: "baipo",
     client: "Baipo",
-    businessType: "Restaurant",
-    details: "Branding / Menu Design /\nVisual Design",
+    businessType: "Stationary",
+    details: "Catalogue Design",
     logo: "/assets/works/portfolio/clients/baipo-color.webp",
     images: [
       "/assets/works/portfolio/details/baipo-1.webp",
       "/assets/works/portfolio/details/baipo-2.webp",
       "/assets/works/portfolio/details/baipo-3.webp",
+      "/assets/works/portfolio/details/baipo-4.webp",
     ],
   },
   {
     id: "nat",
-    client: "Nat Motor",
+    client: "NATMOTOR",
     businessType: "Automotive",
-    details: "Branding / Visual Design /\nSocial Media Design",
+    details: "Digital Media",
     logo: "/assets/works/portfolio/clients/nat-color.webp",
     images: [
       "/assets/works/portfolio/details/nat-1.webp",
       "/assets/works/portfolio/details/nat-2.webp",
       "/assets/works/portfolio/details/nat-3.webp",
+      "/assets/works/portfolio/details/nat-4.webp",
     ],
   },
   {
     id: "kong",
     client: "Kong Mart",
-    businessType: "Retail",
-    details: "Branding / Signage Design /\nVisual Design",
+    businessType: "Retail Store",
+    details: "Logo Design / Mascot Design /\nBrand Guidebook",
     logo: "/assets/works/portfolio/clients/kong-color.webp",
     images: [
       "/assets/works/portfolio/details/kong-1.webp",
       "/assets/works/portfolio/details/kong-2.webp",
       "/assets/works/portfolio/details/kong-3.webp",
+      "/assets/works/portfolio/details/kong-4.webp",
     ],
   },
   {
     id: "paincare",
-    client: "Pain Care",
-    businessType: "Medical Clinic",
-    details: "Branding / Visual Design /\nSocial Media Design",
+    client: "Pain Care Specialists of Oregon",
+    businessType: "Clinic",
+    details: "Social Media Planner /\nGraphic Design / Content",
     logo: "/assets/works/portfolio/clients/paincare-color.webp",
     images: [
       "/assets/works/portfolio/details/paincare-1.webp",
       "/assets/works/portfolio/details/paincare-2.webp",
       "/assets/works/portfolio/details/paincare-3.webp",
+      "/assets/works/portfolio/details/paincare-4.webp",
     ],
   },
   {
     id: "gsl",
-    client: "GSL",
-    businessType: "Business",
-    details: "Branding / Visual Design /\nMarketing Material",
+    client: "GSL Green Star Lab",
+    businessType: "Retail Store",
+    details: "Logo Design / Mascot Design /\nBrand Guidebook",
     logo: "/assets/works/portfolio/clients/gsl-color.webp",
     images: [
       "/assets/works/portfolio/details/gsl-1.webp",
       "/assets/works/portfolio/details/gsl-2.webp",
       "/assets/works/portfolio/details/gsl-3.webp",
+      "/assets/works/portfolio/details/gsl-4.webp",
     ],
   },
   {
     id: "nor",
-    client: "Nor",
-    businessType: "Restaurant",
-    details: "Branding / Menu Design /\nVisual Design",
+    client: "Nor Noodle",
+    businessType: "Food",
+    details: "Logo Design / Menu Design /\nVinyl Design",
     logo: "/assets/works/portfolio/clients/nor-color.webp",
     images: [
       "/assets/works/portfolio/details/nor-1.webp",
       "/assets/works/portfolio/details/nor-2.webp",
       "/assets/works/portfolio/details/nor-3.webp",
+      "/assets/works/portfolio/details/nor-4.webp",
     ],
   },
   {
     id: "moreeda",
-    client: "Moreeda",
-    businessType: "Fashion",
-    details: "Branding / Packaging Design /\nVisual Design",
+    client: "MOREEDA SWEET",
+    businessType: "Bakery",
+    details: "Campaign Design / Digital Media",
     logo: "/assets/works/portfolio/clients/moreeda-color.webp",
     images: [
       "/assets/works/portfolio/details/moreeda-1.webp",
       "/assets/works/portfolio/details/moreeda-2.webp",
       "/assets/works/portfolio/details/moreeda-3.webp",
+      "/assets/works/portfolio/details/moreeda-4.webp",
+      "/assets/works/portfolio/details/moreeda-5.webp",
     ],
   },
   {
     id: "vinzen",
-    client: "The Vinzen",
+    client: "THE VINZEN",
     businessType: "Real Estate",
-    details: "Branding / Visual Design /\nMarketing Material",
+    details: "Campaign Design / Digital Media",
     logo: "/assets/works/portfolio/clients/vinzen-color.webp",
     images: [
       "/assets/works/portfolio/details/vinzen-1.webp",
       "/assets/works/portfolio/details/vinzen-2.webp",
       "/assets/works/portfolio/details/vinzen-3.webp",
+      "/assets/works/portfolio/details/vinzen-4.webp",
     ],
   },
   {
     id: "cmh",
-    client: "Cake Me Home",
+    client: "CAKE ME HOME",
     businessType: "Bakery",
-    details: "Branding / Packaging Design /\nVisual Design",
+    details: "Campaign Design / Digital Media",
     logo: "/assets/works/portfolio/clients/cmh-color.webp",
     images: [
       "/assets/works/portfolio/details/cmh-1.webp",
       "/assets/works/portfolio/details/cmh-2.webp",
       "/assets/works/portfolio/details/cmh-3.webp",
+      "/assets/works/portfolio/details/cmh-4.webp",
     ],
   },
   {
     id: "funky",
-    client: "Funky",
-    businessType: "Bar & Cafe",
-    details: "Branding / Visual Design /\nSocial Media Design",
+    client: "FUNKY GRILL THAILAND",
+    businessType: "Street Food",
+    details: "Catalogue Design",
     logo: "/assets/works/portfolio/clients/funky-color.webp",
     images: [
       "/assets/works/portfolio/details/funky-1.webp",
       "/assets/works/portfolio/details/funky-2.webp",
       "/assets/works/portfolio/details/funky-3.webp",
+      "/assets/works/portfolio/details/funky-4.webp",
+    ],
+  },
+  {
+    id: "cusco",
+    client: "CAFFE CUSCO",
+    businessType: "Brunch & Cafe",
+    details: "Digital Media / Offline Media",
+    logo: "/assets/works/portfolio/clients/cusco-color.webp",
+    images: [
+      "/assets/works/portfolio/details/cusco-1.webp",
+      "/assets/works/portfolio/details/cusco-2.webp",
+      "/assets/works/portfolio/details/cusco-3.webp",
+      "/assets/works/portfolio/details/cusco-4.webp",
+    ],
+  },
+  {
+    id: "ggcafe",
+    client: "GoGreen Cafe",
+    businessType: "Cafe",
+    details: "Digital Media / Social Planner",
+    logo: "/assets/works/portfolio/clients/ggcafe-color.webp",
+    images: [
+      "/assets/works/portfolio/details/ggcafe-1.webp",
+      "/assets/works/portfolio/details/ggcafe-2.webp",
+      "/assets/works/portfolio/details/ggcafe-3.webp",
     ],
   },
 ];

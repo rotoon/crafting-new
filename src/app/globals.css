@@ -152,6 +152,7 @@ footer[id] {
 .nav-link.active,
 .nav-link:hover {
     color: var(--green);
+    font-weight: 700;
 }
 
 .btn-contact {
@@ -1599,7 +1600,9 @@ footer[id] {
 .wk-ph-card {
     flex-shrink: 0;
     transform-origin: bottom center;
-    transition: transform 0.4s ease, filter 0.3s ease;
+    transition:
+        transform 0.4s ease,
+        filter 0.3s ease;
     margin-left: -40px;
     position: relative;
     will-change: transform;
@@ -1607,7 +1610,7 @@ footer[id] {
 }
 
 .wk-ph-card:hover {
-    filter: brightness(1.08) drop-shadow(0 12px 24px rgba(0,0,0,0.45));
+    filter: brightness(1.08) drop-shadow(0 12px 24px rgba(0, 0, 0, 0.45));
     z-index: 10 !important;
 }
 
@@ -1639,12 +1642,24 @@ footer[id] {
 }
 
 @keyframes wk-cat-slide-up {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 @keyframes wk-cat-slide-down {
-    from { opacity: 0; transform: translateY(-16px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 .wk-ph-cat--slide-next {
     animation: wk-cat-slide-up 0.4s ease both;
@@ -1673,12 +1688,20 @@ footer[id] {
 }
 
 @keyframes wk-cat-track-up {
-    from { transform: translateY(90px); }
-    to   { transform: translateY(0); }
+    from {
+        transform: translateY(90px);
+    }
+    to {
+        transform: translateY(0);
+    }
 }
 @keyframes wk-cat-track-down {
-    from { transform: translateY(-90px); }
-    to   { transform: translateY(0); }
+    from {
+        transform: translateY(-90px);
+    }
+    to {
+        transform: translateY(0);
+    }
 }
 
 .wk-ph-cat-track--next {
@@ -3272,6 +3295,7 @@ footer[id] {
 
     .logo-text {
         width: 130px;
+        height: auto;
     }
 
     .nav-link {
@@ -4169,158 +4193,158 @@ footer[id] {
 
 /* ----- WORK DETAIL PAGE (.wd-*) ----- */
 .wd-section {
-  position: relative;
-  background: var(--dark);
-  min-height: 100vh;
-  padding-top: 65px;
+    position: relative;
+    background: var(--dark);
+    min-height: 100vh;
+    padding-top: 65px;
 }
 
 /* Back to Menu button — fixed right edge */
 .wd-back-btn {
-  position: fixed;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  border: none;
-  color: var(--white);
-  cursor: pointer;
-  padding: 16px 12px;
-  z-index: 10;
-  width: 89px;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    padding: 16px 12px;
+    z-index: 10;
+    width: 89px;
 }
 
 .wd-back-icon {
-  font-size: 28px;
-  line-height: 1;
-  opacity: 0.7;
+    font-size: 28px;
+    line-height: 1;
+    opacity: 0.7;
 }
 
 .wd-back-label {
-  font-family: var(--font-heading);
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  line-height: 1.4;
-  text-align: center;
-  opacity: 0.7;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    text-align: center;
+    opacity: 0.7;
 }
 
 .wd-back-btn:hover .wd-back-icon,
 .wd-back-btn:hover .wd-back-label {
-  opacity: 1;
+    opacity: 1;
 }
 
 /* Header row: logo + meta */
 .wd-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 0;
-  padding: 40px 177px;
-  max-width: var(--max-width);
-  margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    padding: 40px 177px;
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
 
 .wd-logo-wrap {
-  width: 350px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  padding-top: 8px;
+    width: 350px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    padding-top: 8px;
 }
 
 .wd-logo {
-  object-fit: contain;
-  max-height: 99px;
-  width: auto;
+    object-fit: contain;
+    max-height: 99px;
+    width: auto;
 }
 
 .wd-meta {
-  display: flex;
-  gap: 24px;
-  flex: 1;
+    display: flex;
+    gap: 24px;
+    flex: 1;
 }
 
 .wd-meta-labels {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .wd-meta-labels p {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 26px;
-  letter-spacing: 1px;
-  color: var(--white);
-  line-height: 1.5;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: 1px;
+    color: var(--white);
+    line-height: 1.5;
 }
 
 .wd-meta-values {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .wd-meta-values p {
-  font-family: var(--font-heading);
-  font-size: 26px;
-  letter-spacing: 1px;
-  color: var(--white);
-  line-height: 1.5;
+    font-family: var(--font-heading);
+    font-size: 26px;
+    letter-spacing: 1px;
+    color: var(--white);
+    line-height: 1.5;
 }
 
 /* Images stack */
 .wd-images {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 177px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 177px 48px;
 }
 
 .wd-image-wrap {
-  width: 100%;
-  aspect-ratio: 1086 / 611;
-  position: relative;
-  overflow: hidden;
+    width: 100%;
+    aspect-ratio: 1086 / 611;
+    position: relative;
+    overflow: hidden;
 }
 
 .wd-image {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
 }
 
 /* Responsive */
 @media (max-width: 900px) {
-  .wd-header {
-    flex-direction: column;
-    padding: 32px 24px;
-    gap: 24px;
-  }
+    .wd-header {
+        flex-direction: column;
+        padding: 32px 24px;
+        gap: 24px;
+    }
 
-  .wd-logo-wrap {
-    width: 100%;
-  }
+    .wd-logo-wrap {
+        width: 100%;
+    }
 
-  .wd-images {
-    padding: 0 24px 48px;
-  }
+    .wd-images {
+        padding: 0 24px 48px;
+    }
 
-  .wd-meta {
-    flex-direction: column;
-    gap: 16px;
-  }
+    .wd-meta {
+        flex-direction: column;
+        gap: 16px;
+    }
 
-  .wd-meta-labels p,
-  .wd-meta-values p {
-    font-size: 18px;
-  }
+    .wd-meta-labels p,
+    .wd-meta-values p {
+        font-size: 18px;
+    }
 
-  .wd-back-btn {
-    display: none;
-  }
+    .wd-back-btn {
+        display: none;
+    }
 }

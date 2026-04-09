@@ -1,0 +1,7 @@
+{
+  "tool_name": "mcp__claude_ai_Figma__use_figma",
+  "tool_input_preview": "{\"fileKey\":\"0QWfGP3yT9dnmoFiBEwSyC\",\"description\":\"Export GGC Port 475:16252 and 475:16251 as base64 PNG using arrow function\",\"skillNames\":\"figma-use\",\"code\":\"\\nconst toB64 = (arr) => btoa(Array.from...",
+  "error": "TypeError: not a function\n    at toB64 (PLUGIN_1_SOURCE:2:28)\n    at <anonymous> (PLUGIN_1_SOURCE:18:21)",
+  "timestamp": "2026-04-09T07:40:57.426Z",
+  "retry_count": 1
+}

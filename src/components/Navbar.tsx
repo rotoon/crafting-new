@@ -2,11 +2,11 @@
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
-  const [activeHash, setActiveHash] = useState("#hero");
 
   const pathname = usePathname();
   const router = useRouter();
@@ -30,32 +30,13 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const scrollToHash = (hash: string) => {
-    const target = document.querySelector<HTMLElement>(hash);
-    if (!target) return;
-
-    const navbarHeight = document.getElementById("navbar")?.offsetHeight ?? 65;
-    const top =
-      hash === "#hero"
-        ? 0
-        : Math.max(
-            target.getBoundingClientRect().top +
-              window.scrollY -
-              navbarHeight -
-              16,
-            0,
-          );
-
-    window.scrollTo({ top, behavior: "smooth" });
-  };
-
   const handleNav = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
     e.preventDefault();
     setMenuActive(false);
 
     if (isHome) {
       // On home page → smooth scroll
-      scrollToHash(hash);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       // On other pages → navigate to home + hash
       router.push(`/${hash}`);
@@ -82,23 +63,13 @@ export default function Navbar() {
     }
   };
 
-  // Determine which nav link is active
-  const getActiveClass = (link: string) => {
-    if (!isHome) {
-      if (link === "services" && pathname === "/services") return "active";
-      if (link === "works" && pathname === "/works") return "active";
-      return "";
-    }
-    return activeHash === `#${link}` ? "active" : "";
-  };
-
   return (
     <nav
       className={`navbar ${isScrolled ? "scrolled" : ""} ${menuActive ? "menu-open" : ""}`}
       id="navbar"
     >
       <div className="navbar-inner">
-        <a href="/" className="logo" onClick={(e) => handleNav(e, "#hero")}>
+        <Link href="/" className="logo" onClick={(e) => handleNav(e, "#hero")}>
           <Image
             src="/assets/brand/logo-icon.svg"
             alt="Crafting Lab Icon"
@@ -114,38 +85,34 @@ export default function Navbar() {
             className="logo-text"
             priority
           />
-        </a>
+        </Link>
         <div className={`nav-menu ${menuActive ? "active" : ""}`} id="nav-menu">
-          <a
+          <Link
             href="/"
-            className={`nav-link ${getActiveClass("hero")}`}
+            className={`nav-link`}
             onClick={(e) => handleNav(e, "#hero")}
           >
             Home
-          </a>
-          <a
+          </Link>
+          <Link
             href="/services"
-            className={`nav-link ${getActiveClass("services")}`}
+            className={`nav-link`}
             onClick={handleServiceNav}
           >
             Services
-          </a>
-          <a
-            href="/works"
-            className={`nav-link ${getActiveClass("works")}`}
-            onClick={handleWorksNav}
-          >
+          </Link>
+          <Link href="/works" className={`nav-link`} onClick={handleWorksNav}>
             Works
-          </a>
+          </Link>
         </div>
-        <a
+        <Link
           href="/#contact"
           className="btn-contact"
           id="btn-contact"
           onClick={(e) => handleNav(e, "#contact")}
         >
           Contact Us
-        </a>
+        </Link>
         <button
           className={`nav-toggle ${menuActive ? "active" : ""}`}
           id="nav-toggle"

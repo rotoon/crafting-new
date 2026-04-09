@@ -144,9 +144,15 @@
     },
     {
       "path": "src/app/globals.css",
-      "accessCount": 27,
-      "lastAccessed": 1775672965073,
+      "accessCount": 30,
+      "lastAccessed": 1775710829721,
       "type": "directory"
+    },
+    {
+      "path": "src/components/works/data.ts",
+      "accessCount": 14,
+      "lastAccessed": 1775718722916,
+      "type": "file"
     },
     {
       "path": "src/components/works/VideoProductionSection.tsx",
@@ -155,9 +161,15 @@
       "type": "file"
     },
     {
-      "path": "src/components/works/data.ts",
-      "accessCount": 4,
-      "lastAccessed": 1775668338885,
+      "path": "src/components/works/WorkDetailPage.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1775710802388,
+      "type": "file"
+    },
+    {
+      "path": "src/components/works/GraphicDesignSection.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1775710902128,
       "type": "file"
     },
     {
@@ -173,6 +185,18 @@
       "type": "file"
     },
     {
+      "path": "src/app/services/page.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1775710661400,
+      "type": "file"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-04-09-works-detail-page.md",
+      "accessCount": 2,
+      "lastAccessed": 1775711563651,
+      "type": "file"
+    },
+    {
       "path": "src/components/home/Works.tsx",
       "accessCount": 1,
       "lastAccessed": 1775638450562,
@@ -182,6 +206,42 @@
       "path": ".claude/memory/active.md",
       "accessCount": 1,
       "lastAccessed": 1775667067194,
+      "type": "file"
+    },
+    {
+      "path": "src/app/works/page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1775710036910,
+      "type": "file"
+    },
+    {
+      "path": "src/components/works/WorksPage.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1775710037322,
+      "type": "file"
+    },
+    {
+      "path": "src/components/Navbar.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1775710037518,
+      "type": "file"
+    },
+    {
+      "path": "src/components/Footer.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1775710044611,
+      "type": "file"
+    },
+    {
+      "path": "src/components/FadeIn.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1775710063602,
+      "type": "file"
+    },
+    {
+      "path": "src/app/works/[slug]/page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1775710695450,
       "type": "file"
     }
   ],
