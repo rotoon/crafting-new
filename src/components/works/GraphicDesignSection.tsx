@@ -1,9 +1,11 @@
 "use client";
 import Image from "next/image";
 import FadeIn from "../FadeIn";
-import { GRAPHIC_DESIGN_ITEMS } from "./data";
+import { GRAPHIC_DESIGN_ITEMS, WORK_DETAILS } from "./data";
 
 export default function GraphicDesignSection() {
+  const detailIds = new Set(WORK_DETAILS.map((w) => w.id));
+
   return (
     <section className="wk-gd-section">
       <div className="wk-inner">
@@ -17,7 +19,11 @@ export default function GraphicDesignSection() {
 
       <FadeIn className="wk-gd-grid" delayMs={150}>
         {GRAPHIC_DESIGN_ITEMS.map((item) => (
-          <a key={item.id} href="#" className="wk-gd-card">
+          <a
+            key={item.id}
+            href={detailIds.has(item.id) ? `/works/${item.id}` : "#"}
+            className="wk-gd-card"
+          >
             <div className="wk-gd-card-inner">
               <Image
                 src={item.image}
