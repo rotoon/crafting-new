@@ -41,15 +41,11 @@ export default function WorkDetailPage({ work, onBack, onBackToTop }: Props) {
       {/* Header: logo + project meta */}
       <FadeIn className='wd-header'>
         <div className='wd-logo-wrap'>
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={work.logo}
             alt={work.client}
-            width={287}
-            height={99}
             className='wd-logo'
-            style={{ width: 'auto' }}
-            unoptimized
-            priority
           />
         </div>
         <div className='wd-meta'>
@@ -67,6 +63,15 @@ export default function WorkDetailPage({ work, onBack, onBackToTop }: Props) {
           </div>
         </div>
       </FadeIn>
+
+      {/* Optional description paragraph */}
+      {work.description && (
+        <FadeIn className='wd-description'>
+          {work.description.split('\n').map((line, i) => (
+            <p key={i}>{line}</p>
+          ))}
+        </FadeIn>
+      )}
 
       {/* Project images stack */}
       <div className='wd-images'>

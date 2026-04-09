@@ -4257,9 +4257,11 @@ footer[id] {
 }
 
 .wd-logo {
-    object-fit: contain;
-    max-height: 99px;
+    display: block;
     width: auto;
+    height: auto;
+    max-height: 165px;
+    max-width: 100%;
 }
 
 .wd-meta {
@@ -4295,6 +4297,22 @@ footer[id] {
     line-height: 1.5;
 }
 
+/* Optional description paragraph */
+.wd-description {
+    padding: 0 177px 40px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.wd-description p {
+    font-family: var(--font-heading);
+    font-size: 26px;
+    letter-spacing: 1px;
+    color: var(--white);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
 /* Images stack */
 .wd-images {
     display: flex;
@@ -4328,6 +4346,14 @@ footer[id] {
 
     .wd-logo-wrap {
         width: 100%;
+    }
+
+    .wd-description {
+        padding: 0 24px 32px;
+    }
+
+    .wd-description p {
+        font-size: 18px;
     }
 
     .wd-images {

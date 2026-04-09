@@ -317,11 +317,34 @@ export type WorkDetail = {
   client: string; // ชื่อ client (bold label)
   businessType: string; // ประเภทธุรกิจ
   details: string; // รายละเอียดงาน (multi-line ใช้ \n)
+  description?: string; // optional paragraph description (Thai text)
   logo: string; // path ไปยัง client logo image
-  images: string[]; // array ของ project images (1-5 รูป)
+  images: string[]; // array ของ project images
 };
 
 export const WORK_DETAILS: WorkDetail[] = [
+  {
+    id: "gogreen",
+    client: "GoGreen by Kanya",
+    businessType: "Cannabis Shop",
+    details:
+      "Decorate Shop / Digital Media / Offline Media / CI Branding / Merchandise",
+    description:
+      "Crafting Lab เริ่มตั้งแต่วาง Concept Branding ไปจนถึงการช่วย ออกแบบร้านกว่า 13 สาขา\nต่อยอดทั้ง Online + Offline ให้ร้านเป็นที่รู้จักปรับเปลี่ยนการสื่อสารให้ถูกต้องตามข้อกฏหมาย\nให้เป็น GoGreen Consult Center",
+    logo: "/assets/works/portfolio/clients/gogreen-color.svg",
+    images: [
+      "/assets/works/portfolio/details/gogreen-1.webp",
+      "/assets/works/portfolio/details/gogreen-2.webp",
+      "/assets/works/portfolio/details/gogreen-3.webp",
+      "/assets/works/portfolio/details/gogreen-4.webp",
+      "/assets/works/portfolio/details/gogreen-5.webp",
+      "/assets/works/portfolio/details/gogreen-6.webp",
+      "/assets/works/portfolio/details/gogreen-7.webp",
+      "/assets/works/portfolio/details/gogreen-8.webp",
+      "/assets/works/portfolio/details/gogreen-9.webp",
+      "/assets/works/portfolio/details/gogreen-10.webp",
+    ],
+  },
   {
     id: "cma",
     client: "Central Chiangmai Department Store",
