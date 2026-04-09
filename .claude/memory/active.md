@@ -84,3 +84,12 @@
 - Ready for feature requests or modifications
 - Can improve design, add functionality, or fix issues
 - Available for deployment or further development
+
+## Current Task Notes
+- Read Figma file `0QWfGP3yT9dnmoFiBEwSyC` node `2104:10164` successfully via MCP
+- Confirmed the node is a multi-brand portfolio board, not a single landing-page frame
+- Identified the colored logo node for each lower brand variant under the board
+- Added `public/assets/brand-logos-real/manifest.json` mapping 20 brand entries to their lower variant and logo node IDs for direct export later
+- Confirmed some logos export cleanly as SVG, but larger ones are truncated in tool output; PNG export is the safer bulk-export path
+- Created `public/assets/works/portfolio/details/clients/` and populated it with 23 client logo files named by work/detail slug where possible
+- Updated `src/components/works/data.ts` so all `WORK_DETAILS.logo` paths now point to `/assets/works/portfolio/details/clients/*`
