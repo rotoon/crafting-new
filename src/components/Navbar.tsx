@@ -63,6 +63,16 @@ export default function Navbar() {
     }
   }
 
+  const handleContactNav = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    setMenuActive(false)
+    if (pathname === '/contact') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      router.push('/contact')
+    }
+  }
+
   return (
     <nav
       className={`navbar ${isScrolled ? 'scrolled' : ''} ${menuActive ? 'menu-open' : ''}`}
@@ -107,10 +117,10 @@ export default function Navbar() {
           </Link>
         </div>
         <Link
-          href='/#contact'
+          href='/contact'
           className='btn-contact'
           id='btn-contact'
-          onClick={(e) => handleNav(e, '#contact')}
+          onClick={handleContactNav}
         >
           Contact Us
         </Link>

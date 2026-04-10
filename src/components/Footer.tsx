@@ -59,16 +59,16 @@ export default function Footer() {
             <div className="footer-links">
               <div className="footer-col">
                 <h4 className="footer-col-title">Menus</h4>
-                <a href="#hero" className="footer-link">
+                <a href="/" className="footer-link">
                   Home
                 </a>
-                <a href="#services" className="footer-link">
+                <a href="/services" className="footer-link">
                   Services
                 </a>
-                <a href="#works" className="footer-link">
+                <a href="/works" className="footer-link">
                   Works
                 </a>
-                <a href="#contact" className="footer-link">
+                <a href="/contact" className="footer-link">
                   Contact Us
                 </a>
               </div>
