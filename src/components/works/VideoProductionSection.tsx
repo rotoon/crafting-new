@@ -149,8 +149,9 @@ export default function VideoProductionSection() {
                               src={buildPlayableSrc(video.src)}
                               title={video.alt}
                               loading="lazy"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                               allowFullScreen
+                              referrerPolicy="strict-origin-when-cross-origin"
                               onLoad={() => {
                                 setLoadedVideoMap((current) => {
                                   if (current[video.id]) return current;

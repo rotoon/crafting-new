@@ -41,11 +41,13 @@ export default function WorkDetailPage({ work, onBack, onBackToTop }: Props) {
       {/* Header: logo + project meta */}
       <FadeIn className='wd-header'>
         <div className='wd-logo-wrap'>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={work.logo}
             alt={work.client}
+            width={200}
+            height={80}
             className='wd-logo'
+            style={{ width: 'auto', height: 'auto' }}
           />
         </div>
         <div className='wd-meta'>

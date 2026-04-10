@@ -1,4 +1,3 @@
-"use client";
 import FadeIn from "../FadeIn";
 import Image from "next/image";
 
@@ -149,7 +148,7 @@ export default function Services() {
           delayMs={300}
           className="services-view-more-center"
         >
-          <a href="#" className="btn-view-more">
+          <a href="/services" className="btn-view-more">
             View More
           </a>
         </FadeIn>

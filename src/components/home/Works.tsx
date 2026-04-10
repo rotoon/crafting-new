@@ -236,7 +236,7 @@ export default function Works() {
             <p className="production-type">Short Video Viral</p>
           </div>
           <FadeIn direction="left" delayMs={300} className="services-view-more">
-            <a href="#" className="btn-view-more">
+            <a href="/works" className="btn-view-more">
               View More
             </a>
           </FadeIn>
@@ -258,8 +258,9 @@ export default function Works() {
                 className={`production-video ${isProductionLoading ? "is-loading" : "is-ready"}`}
                 src={activeProduction.src}
                 title={activeProduction.alt}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
+                referrerPolicy="strict-origin-when-cross-origin"
                 onLoad={() => setIsProductionLoading(false)}
               />
             </div>

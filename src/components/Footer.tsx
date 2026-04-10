@@ -46,8 +46,9 @@ export default function Footer() {
                 <p>
                   <strong>CRAFTINGLAB Co.,Ltd.</strong>
                 </p>
-                <p>210 Moo 2, Ton Pao Sub-district,</p>
-                <p>San Kamphaeng District, Chiang Mai 50130 Thailand</p>
+                <p>24 Nimmanahaeminda Road,</p>
+                <p>Tambon Su Thep, Mueang Chiang Mai District,</p>
+                <p>Chiang Mai 50200 Thailand</p>
               </div>
               <div className="footer-contact-info">
                 <span>Mobile: 08-4169-6906</span>

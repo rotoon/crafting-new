@@ -29,6 +29,7 @@ function useBgTextVisible() {
 function Counter({ targetValue }: { targetValue: number }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -38,11 +39,12 @@ function Counter({ targetValue }: { targetValue: number }) {
           const duration = 1500;
           const step = targetValue / (duration / 16);
 
-          const interval = setInterval(() => {
+          intervalRef.current = setInterval(() => {
             current += step;
             if (current >= targetValue) {
               setCount(targetValue);
-              clearInterval(interval);
+              clearInterval(intervalRef.current!);
+              intervalRef.current = null;
             } else {
               setCount(Math.floor(current));
             }
@@ -61,6 +63,10 @@ function Counter({ targetValue }: { targetValue: number }) {
 
     return () => {
       if (el) observer.unobserve(el);
+      if (intervalRef.current !== null) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
     };
   }, [targetValue]);
 
