@@ -93,7 +93,7 @@ export default function Navbar() {
             width={150}
             height={25}
             className='logo-text'
-            style={{ width: 'auto' }}
+            style={{ width: 'auto', height: 'auto' }}
             priority
           />
         </Link>
