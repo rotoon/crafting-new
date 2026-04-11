@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit, Syncopate } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import "./works/detail.css";
 
 const outfit = Outfit({
   subsets: ["latin"],

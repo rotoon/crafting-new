@@ -1,4 +1,3 @@
-import "../detail.css";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";

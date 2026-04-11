@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import WorkModal from "@/components/works/WorkModal";
-import "../../../works/detail.css";
+
 import { WORK_DETAILS } from "@/components/works/data";
 
 type Props = {
