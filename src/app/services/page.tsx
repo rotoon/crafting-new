@@ -1,3 +1,4 @@
+import "./services.css";
 import Navbar from "@/components/Navbar";
 import ServicesPage from "@/components/services/ServicesPage";
 import Footer from "@/components/Footer";

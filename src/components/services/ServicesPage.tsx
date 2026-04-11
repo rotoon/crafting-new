@@ -1,14 +1,10 @@
 "use client";
-import { useCallback } from "react";
 import ServiceHeader from "./ServiceHeader";
 import ServiceBlock from "./ServiceBlock";
 import { SERVICES } from "./data";
+import BackToTop from "../BackToTop";
 
 export default function ServicesPage() {
-  const handleBackToTop = useCallback(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
-
   return (
     <div className="sp-page">
       <div className="sp-glow sp-glow-1"></div>
@@ -24,9 +20,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <button className="back-to-top" onClick={handleBackToTop}>
-        Back to top
-      </button>
+      <BackToTop />
     </div>
   );
 }

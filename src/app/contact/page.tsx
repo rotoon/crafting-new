@@ -1,3 +1,4 @@
+import "./contact.css";
 import Navbar from "@/components/Navbar";
 import ContactPage from "@/components/contact/ContactPage";
 import Footer from "@/components/Footer";

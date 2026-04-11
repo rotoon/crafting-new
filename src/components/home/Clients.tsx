@@ -1,6 +1,7 @@
 "use client";
 import FadeIn from "../FadeIn";
 import Image from "next/image";
+import BackToTop from "../BackToTop";
 
 const CLIENTS_ROW_1 = [
   "client-1", "client-2", "client-3", "client-4", "client-5", "client-6", "client-7", "client-8", "client-9", "client-10", "client-11", "client-12"
@@ -69,12 +70,7 @@ export default function Clients() {
           </div>
         </div>
       </section>
-      <button
-        className="back-to-top"
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      >
-        Back to top
-      </button>
+      <BackToTop />
     </>
   );
 }

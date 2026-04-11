@@ -1,8 +1,9 @@
 'use client'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { useCallback } from 'react'
+
 import FadeIn from '../FadeIn'
+import BackToTop from '../BackToTop'
 import type { WorkDetail } from './data'
 
 type Props = {
@@ -15,12 +16,6 @@ export default function WorkDetailPage({ work, onBack, onBackToTop }: Props) {
   const router = useRouter()
 
   const handleBack = onBack ?? (() => router.push('/works'))
-
-  const defaultBackToTop = useCallback(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }, [])
-
-  const handleBackToTop = onBackToTop ?? defaultBackToTop
 
   return (
     <section className='wd-section'>
@@ -95,10 +90,7 @@ export default function WorkDetailPage({ work, onBack, onBackToTop }: Props) {
         ))}
       </div>
 
-      {/* Back to top */}
-      <button className='back-to-top' onClick={handleBackToTop}>
-        Back to top
-      </button>
+      <BackToTop onScrollToTop={onBackToTop} />
     </section>
   )
 }
