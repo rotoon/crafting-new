@@ -26,6 +26,18 @@
   --font-syncopate: var(--font-syncopate);
   --font-fc-minimal: var(--font-fc-minimal);
   --max-width: 1440px;
+
+  /* Type scale */
+  --text-xs: 11px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-md: 18px;
+  --text-lg: 20px;
+  --text-xl: 24px;
+  --text-2xl: 32px;
+  --text-3xl: 48px;
+  --text-4xl: 64px;
+  --text-5xl: 80px;
 }
 
 html {
@@ -137,7 +149,7 @@ footer[id] {
 
 .nav-link {
   font-family: var(--font-heading);
-  font-size: 16px;
+  font-size: var(--text-base);
   letter-spacing: 1px;
   min-width: 96px;
   padding: 0 clamp(14px, 1.8vw, 24px);
@@ -163,7 +175,7 @@ footer[id] {
   height: 39px;
   padding: 0 24px;
   font-family: var(--font-heading);
-  font-size: 16px;
+  font-size: var(--text-base);
   letter-spacing: 1px;
   background: var(--gray-light);
   color: var(--white);

@@ -116,7 +116,7 @@ export default function ServiceBlock({ svc, index }: ServiceBlockProps) {
           <FadeIn
             direction="up"
             delayMs={baseDelay + 150}
-            className="flex items-center justify-center"
+
           >
             <span className="sp-tags-label">Services include:</span>
           </FadeIn>
