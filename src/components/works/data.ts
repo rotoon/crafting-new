@@ -72,10 +72,10 @@ export const GRAPHIC_DESIGN_ITEMS = [
     hoverImage: '/assets/works/portfolio/clients/paincare-color.webp',
   },
   {
-    id: 'ggc',
-    name: 'Go Green Consult',
-    image: '/assets/works/portfolio/clients/ggc-dark.webp',
-    hoverImage: '/assets/works/portfolio/clients/ggc-color.webp',
+    id: 'ggclinic',
+    name: 'Go Green Clinic',
+    image: '/assets/works/portfolio/clients/ggclinic-dark.webp',
+    hoverImage: '/assets/works/portfolio/clients/ggclinic-color.webp',
   },
   {
     id: 'funky',
@@ -96,10 +96,10 @@ export const GRAPHIC_DESIGN_ITEMS = [
     hoverImage: '/assets/works/portfolio/clients/moreeda-color.webp',
   },
   {
-    id: 'cc',
-    name: 'CC',
-    image: '/assets/works/portfolio/clients/cc-dark.webp',
-    hoverImage: '/assets/works/portfolio/clients/cc-color.webp',
+    id: 'cusco',
+    name: 'Caffe Cusco',
+    image: '/assets/works/portfolio/clients/cusco-dark.webp',
+    hoverImage: '/assets/works/portfolio/clients/cusco-color.webp',
   },
   {
     id: 'cmh',
@@ -120,10 +120,10 @@ export const GRAPHIC_DESIGN_ITEMS = [
     hoverImage: '/assets/works/portfolio/clients/baipo-color.webp',
   },
   {
-    id: 'ggc2',
-    name: 'GGC',
-    image: '/assets/works/portfolio/clients/ggc2-dark.webp',
-    hoverImage: '/assets/works/portfolio/clients/ggc2-color.webp',
+    id: 'ggcafe',
+    name: 'GoGreen Cafe',
+    image: '/assets/works/portfolio/clients/ggcafe-dark.webp',
+    hoverImage: '/assets/works/portfolio/clients/ggcafe-color.webp',
   },
   {
     id: 'chidlom',
