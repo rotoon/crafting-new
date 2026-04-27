@@ -86,6 +86,8 @@
 - Available for deployment or further development
 
 ## Current Task Notes
+- Post-deploy verification after `13e6c1b`: Lighthouse on `https://crafting-new.up.railway.app/` reported performance 59, accessibility 96, best-practices 96, SEO 100; PageSpeed reported desktop 65 and mobile 55; deployed CSS still served `footer-col-title{color:var(--gray-mid)}` so the footer contrast fix from latest source was not reflected in the live CSS yet
+- Deferred homepage `gsap` by replacing the top-level import in `src/components/home/Works.tsx` with dynamic `import("gsap")` inside the production-card animation effect; also raised footer column label contrast in `globals.css`; verified with `pnpm run build` and local Lighthouse (`performance 87`, `accessibility 100`, `SEO 100`)
 - Started conservative Hero/LCP pass: added `fetchPriority="high"` to the navbar logo image and hero background image, plus a fixed logo `sizes` hint; verified with `pnpm run build`
 - Completed low-risk image loading pass: removed below-fold image priority and added responsive `sizes` in `src/components/home/Works.tsx`, `src/components/home/About.tsx`, and `src/components/home/PhotoCarousel.tsx`; verified with `pnpm run build`
 - Fixed Lighthouse heading-order warning by changing footer column labels from `h4.footer-col-title` to `p.footer-col-title` in `src/components/Footer.tsx`; verified with `pnpm run build`

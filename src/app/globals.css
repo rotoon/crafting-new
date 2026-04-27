@@ -1054,7 +1054,7 @@ footer[id] {
 .wk-showcases--desktop {
   display: flex;
   gap: 16px;
-  padding: 0 130px;
+  padding: 0px 130px 80px;
   height: 592px;
 }
 
