@@ -86,6 +86,12 @@
 - Available for deployment or further development
 
 ## Current Task Notes
+- Started conservative Hero/LCP pass: added `fetchPriority="high"` to the navbar logo image and hero background image, plus a fixed logo `sizes` hint; verified with `pnpm run build`
+- Completed low-risk image loading pass: removed below-fold image priority and added responsive `sizes` in `src/components/home/Works.tsx`, `src/components/home/About.tsx`, and `src/components/home/PhotoCarousel.tsx`; verified with `pnpm run build`
+- Fixed Lighthouse heading-order warning by changing footer column labels from `h4.footer-col-title` to `p.footer-col-title` in `src/components/Footer.tsx`; verified with `pnpm run build`
+- Fixed invalid Codex skill metadata for `seo-analysis` and `seo-page` by shortening their `description` frontmatter below the 1024-character loader limit
+- Installed additional Codex skills from `nowork-studio/toprank`: SEO (`broken-link-checker`, `content-writer`, `keyword-research`, `meta-tags-optimizer`, `schema-markup-generator`, `seo-analysis`, `seo-page`, `setup-cms`) and Google Ads (`ads-audit`, `ads-copy`, `ads-landing`, `ads`)
+- Installed Codex skill `toprank-upgrade-skill` from `nowork-studio/toprank` path `toprank-upgrade-skill` into `/Users/rotoon/.codex/skills/toprank-upgrade-skill`
 - Read Figma file `0QWfGP3yT9dnmoFiBEwSyC` node `2104:10164` successfully via MCP
 - Confirmed the node is a multi-brand portfolio board, not a single landing-page frame
 - Identified the colored logo node for each lower brand variant under the board

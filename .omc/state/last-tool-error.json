@@ -1,7 +1,0 @@
-{
-  "tool_name": "Read",
-  "tool_input_preview": "{\"file_path\":\"/Users/rotoon/.claude/projects/-Users-rotoon-Git-crafting-new/ca35c5d4-97ea-4132-87f6-a4df1fcab07e/tool-results/mcp-claude_ai_Figma-get_design_context-1775711703424.txt\",\"limit\":80}",
-  "error": "File content (27745 tokens) exceeds maximum allowed tokens (10000). Use offset and limit parameters to read specific portions of the file, or search for specific content instead of reading the whole file.",
-  "timestamp": "2026-04-09T05:28:09.644Z",
-  "retry_count": 1
-}

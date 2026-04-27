@@ -2510,7 +2510,6 @@ footer[id] {
 .success-banner {
   position: relative;
   overflow: hidden;
-  padding: 30px 0;
 }
 
 .success-dots {
@@ -2579,7 +2578,6 @@ footer[id] {
   display: flex;
   justify-content: space-between;
   gap: 60px;
-  margin-bottom: 40px;
 }
 
 .footer-brand {

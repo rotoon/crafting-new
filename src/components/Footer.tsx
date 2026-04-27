@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import FadeIn from "./FadeIn";
 
 function SuccessDots() {
   return <div className="success-dots"></div>;
@@ -12,19 +11,19 @@ export default function Footer() {
       <section className="success-banner" id="success-banner">
         <SuccessDots />
         <div className="success-text-row">
-          <FadeIn direction="left">
+          <div className="your-success-row">
             <span className="success-text">YOUR SUCCESS</span>
-          </FadeIn>
-          <FadeIn direction="right">
+          </div>
+          <div className="our-success-row">
             <span className="success-text">OUR SUCCESS</span>
-          </FadeIn>
+          </div>
         </div>
         <SuccessDots />
       </section>
 
       <footer className="footer" id="contact">
         <div className="footer-inner">
-          <FadeIn direction="left" delayMs={0}>
+          <div>
             <div className="footer-brand">
               <div className="footer-logo">
                 <span className="footer-logo-text">CRAFTING</span>
@@ -50,13 +49,9 @@ export default function Footer() {
                 <p>Tambon Su Thep, Mueang Chiang Mai District,</p>
                 <p>Chiang Mai 50200 Thailand</p>
               </div>
-              <div className="footer-contact-info">
-                <span>Mobile: 08-4169-6906</span>
-                <span>Email: craftinglab.co@gmail.com</span>
-              </div>
             </div>
-          </FadeIn>
-          <FadeIn direction="right" delayMs={200}>
+          </div>
+          <div>
             <div className="footer-links">
               <div className="footer-col">
                 <p className="footer-col-title">Menus</p>
@@ -93,9 +88,13 @@ export default function Footer() {
                 </a>
               </div>
             </div>
-          </FadeIn>
+          </div>
         </div>
         <div className="footer-bottom">
+          <div className="footer-contact-info">
+            <span>Mobile: 08-4169-6906</span>
+            <span>Email: craftinglab.co@gmail.com</span>
+          </div>
           <p className="footer-copyright">
             © CRAFTINGLAB 2026. All Rights Reserved.
           </p>
