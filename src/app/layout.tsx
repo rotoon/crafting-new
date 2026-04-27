@@ -8,12 +8,14 @@ const outfit = Outfit({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-outfit",
+  preload: false,
 });
 
 const syncopate = Syncopate({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-syncopate",
+  preload: false,
 });
 
 const fcMinimal = localFont({
@@ -30,6 +32,7 @@ const fcMinimal = localFont({
     },
   ],
   variable: "--font-fc-minimal",
+  preload: false,
 });
 
 const pbio = localFont({
