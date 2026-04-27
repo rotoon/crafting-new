@@ -21,6 +21,7 @@ export default function PhotoCarousel() {
           width={1659}
           height={194}
           className="photo-carousel-ellipse-img"
+          sizes="100vw"
         />
       </div>
       <div className="photo-carousel-track-wrapper">
@@ -32,6 +33,7 @@ export default function PhotoCarousel() {
                 alt={photo.alt}
                 width={377}
                 height={579}
+                sizes="(max-width: 768px) 220px, (max-width: 1024px) 300px, 377px"
                 style={{ objectFit: "cover", width: "100%", height: "100%" }}
               />
             </div>
@@ -45,6 +47,7 @@ export default function PhotoCarousel() {
           width={1659}
           height={194}
           className="photo-carousel-ellipse-img"
+          sizes="100vw"
         />
       </div>
     </section>

@@ -189,7 +189,7 @@ export default function Works() {
                     alt={project.title}
                     width={800}
                     height={540}
-                    priority
+                    sizes="(max-width: 768px) calc(100vw - 40px), (max-width: 1200px) calc(100vw - 64px), 650px"
                   />
                 </div>
               );

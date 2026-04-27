@@ -59,7 +59,7 @@ export default function Footer() {
           <FadeIn direction="right" delayMs={200}>
             <div className="footer-links">
               <div className="footer-col">
-                <h4 className="footer-col-title">Menus</h4>
+                <p className="footer-col-title">Menus</p>
                 <a href="/" className="footer-link">
                   Home
                 </a>
@@ -74,7 +74,7 @@ export default function Footer() {
                 </a>
               </div>
               <div className="footer-col">
-                <h4 className="footer-col-title">Follow Us</h4>
+                <p className="footer-col-title">Follow Us</p>
                 <a
                   href="https://www.facebook.com/CraftingLab.cnx"
                   target="_blank"

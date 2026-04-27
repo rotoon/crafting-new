@@ -38,6 +38,7 @@ export default function Hero() {
               alt="Crafting Lab crew"
               fill
               priority
+              fetchPriority="high"
               sizes="100vw"
               style={{ objectFit: "cover", objectPosition: "center top" }}
               onLoad={() => setImgLoaded(true)}

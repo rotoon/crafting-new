@@ -156,7 +156,7 @@ export default function About() {
               width={800}
               height={1000}
               className="about-photo"
-              priority
+              sizes="(max-width: 768px) calc(100vw - 40px), (max-width: 1024px) calc(100vw - 64px), 620px"
             />
           </FadeIn>
         </div>
