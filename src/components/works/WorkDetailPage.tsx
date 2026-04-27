@@ -80,6 +80,7 @@ export default function WorkDetailPage({ work, onBack, onBackToTop }: Props) {
               width={1086}
               height={611}
               className='wd-image'
+              sizes='(max-width: 900px) calc(100vw - 48px), 1086px'
               priority={i === 0}
               quality={75}
               onError={(e) => {
