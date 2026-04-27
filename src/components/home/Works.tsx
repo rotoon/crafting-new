@@ -210,11 +210,9 @@ export default function Works() {
                   {String(total).padStart(2, "0")}
                 </span>
               </div>
-              <FadeIn className="services-view-more">
-                <a href="/works" className="btn-view-more">
-                  View More
-                </a>
-              </FadeIn>
+              <a href="/works" className="btn-view-more">
+                View More
+              </a>
             </div>
           </div>
         </FadeIn>
@@ -235,11 +233,9 @@ export default function Works() {
             <h3 className="production-title">Go Green by Kanya</h3>
             <p className="production-type">Short Video Viral</p>
           </div>
-          <FadeIn direction="left" delayMs={300} className="services-view-more">
-            <a href="/works" className="btn-view-more">
-              View More
-            </a>
-          </FadeIn>
+          <a href="/works" className="btn-view-more">
+            View More
+          </a>
         </FadeIn>
 
         <FadeIn className="production-center">

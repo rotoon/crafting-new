@@ -14,6 +14,18 @@ export default function PhotographySection() {
   const hasNavigated = useRef(false);
   const hasEntered = useRef(false);
 
+  // Init image visibility — GSAP owns opacity, not React
+  useEffect(() => {
+    const fan = fanRef.current;
+    if (!fan) return;
+    PHOTO_SLIDES.forEach((_, slideIdx) => {
+      const imgs = fan.querySelectorAll<HTMLElement>(
+        `[data-slide="${slideIdx}"]`,
+      );
+      gsap.set(imgs, { opacity: slideIdx === 0 ? 1 : 0 });
+    });
+  }, []);
+
   // Scroll-triggered entrance
   useEffect(() => {
     const section = sectionRef.current;
@@ -37,26 +49,62 @@ export default function PhotographySection() {
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     observer.observe(section);
     return () => observer.disconnect();
   }, []);
 
+  const slideIndexRef = useRef(0);
+
   const navigate = (d: "next" | "prev") => {
     hasNavigated.current = true;
     setDir(d);
-    setSlideIndex((i) =>
-      d === "next" ? (i + 1) % totalSlides : (i - 1 + totalSlides) % totalSlides
-    );
 
     const el = fanRef.current;
-    if (el) {
-      el.classList.remove("wk-ph-fan--slide-next", "wk-ph-fan--slide-prev");
-      void el.offsetWidth;
-      el.classList.add(`wk-ph-fan--slide-${d}`);
-    }
+    if (!el) return;
+
+    const currentImgs = el.querySelectorAll<HTMLElement>(
+      `[data-slide="${slideIndexRef.current}"]`,
+    );
+
+    const cards = el.querySelectorAll<HTMLElement>(".wk-ph-card");
+
+    gsap.to(cards, {
+      opacity: 0,
+      duration: 0.15,
+      ease: "power2.in",
+      onComplete: () => {
+        const nextIdx =
+          d === "next"
+            ? (slideIndexRef.current + 1) % totalSlides
+            : (slideIndexRef.current - 1 + totalSlides) % totalSlides;
+        slideIndexRef.current = nextIdx;
+        setSlideIndex(nextIdx);
+
+        // swap images instantly while cards are invisible
+        PHOTO_SLIDES.forEach((_, slideIdx) => {
+          const imgs = el.querySelectorAll<HTMLElement>(
+            `[data-slide="${slideIdx}"]`,
+          );
+          gsap.set(imgs, { opacity: slideIdx === nextIdx ? 1 : 0 });
+        });
+        const section = sectionRef.current;
+        if (section) section.style.overflow = "visible";
+        gsap.fromTo(
+          cards,
+          { x: 70000, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.4,
+            stagger: 0.16,
+            ease: "elastic.out(0.5, 0.4)",
+          },
+        );
+      },
+    });
   };
 
   return (
@@ -69,8 +117,6 @@ export default function PhotographySection() {
         <div ref={fanRef} className="wk-ph-fan">
           {PHOTO_FAN.map((fan, cardIdx) => {
             const distanceFromCenter = Math.abs(cardIdx - 2);
-            const staggerDelay = cardIdx * 0.2;
-
             return (
               <div
                 key={cardIdx}
@@ -82,18 +128,11 @@ export default function PhotographySection() {
               >
                 <div className="wk-ph-card-inner">
                   {PHOTO_SLIDES.map((slide, slideIdx) => {
-                    const isActive = slideIdx === slideIndex;
                     return (
                       <div
                         key={slide[cardIdx].id}
-                        style={{
-                          position: "absolute",
-                          inset: 0,
-                          opacity: isActive ? 1 : 0,
-                          transition: isActive
-                            ? `opacity 0.8s ease ${staggerDelay}s`
-                            : "opacity 0.8s ease 0s",
-                        }}
+                        data-slide={slideIdx}
+                        style={{ position: "absolute", inset: 0 }}
                       >
                         <Image
                           src={slide[cardIdx].image}
@@ -129,7 +168,8 @@ export default function PhotographySection() {
                   className={`wk-ph-cat-track${hasNavigated.current ? ` wk-ph-cat-track--${dir}` : ""}`}
                 >
                   {[-1, 0, 1].map((delta) => {
-                    const idx = (slideIndex + delta + totalSlides) % totalSlides;
+                    const idx =
+                      (slideIndex + delta + totalSlides) % totalSlides;
                     return (
                       <span
                         key={delta}

@@ -20,7 +20,7 @@ export default function GraphicDesignSection() {
         </FadeIn>
       </div>
 
-      <FadeIn className="wk-gd-grid" delayMs={150}>
+      <FadeIn className="wk-gd-grid" delayMs={150} threshold={0}>
         {GRAPHIC_DESIGN_ITEMS.map((item) => (
           <Link
             key={item.id}

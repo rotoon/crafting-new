@@ -18,7 +18,7 @@ function useScrollReveal(threshold = 0.15) {
           obs.disconnect();
         }
       },
-      { threshold },
+      { threshold, rootMargin: "0px 0px -120px 0px" },
     );
     obs.observe(el);
     return () => {
@@ -35,11 +35,11 @@ interface ServiceBlockProps {
 }
 
 export default function ServiceBlock({ svc, index }: ServiceBlockProps) {
-  const { ref, visible } = useScrollReveal(0.1);
+  const { ref, visible } = useScrollReveal(0.2);
   const baseDelay = index * 100;
 
   return (
-    <div className="sp-service-block" ref={ref}>
+    <div className="sp-service-block">
       {svc?.photo && (
         <FadeIn direction="down" delayMs={baseDelay}>
           <div className="sp-block-hero">
@@ -62,7 +62,7 @@ export default function ServiceBlock({ svc, index }: ServiceBlockProps) {
         <p className="sp-service-desc">{svc.description}</p>
       </FadeIn>
 
-      <div className="sp-subcards-wrapper">
+      <div className="sp-subcards-wrapper" ref={ref}>
         <div className="sp-subcards-container">
           {svc.subCards.map((card, ci) => (
             <div
@@ -79,7 +79,11 @@ export default function ServiceBlock({ svc, index }: ServiceBlockProps) {
                   alt={card.photo.alt}
                   width={card.photo.width}
                   height={card.photo.height}
-                  style={{ width: "100%", height: "auto", objectFit: "contain" }}
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    objectFit: "contain",
+                  }}
                 />
               ) : (
                 <>
@@ -93,8 +97,12 @@ export default function ServiceBlock({ svc, index }: ServiceBlockProps) {
                     />
                   </div>
                   <div className="sp-subcard-titles">
-                    <span className="sp-subcard-title-top">{card.titleTop}</span>
-                    <span className="sp-subcard-title-bottom">{card.titleBottom}</span>
+                    <span className="sp-subcard-title-top">
+                      {card.titleTop}
+                    </span>
+                    <span className="sp-subcard-title-bottom">
+                      {card.titleBottom}
+                    </span>
                   </div>
                   <div className="sp-subcard-lines">
                     {card.lines?.map((l) => (
@@ -113,15 +121,15 @@ export default function ServiceBlock({ svc, index }: ServiceBlockProps) {
           <div className="sp-divider-line"></div>
         </FadeIn>
         <div className="sp-tags-wrap">
-          <FadeIn
-            direction="up"
-            delayMs={baseDelay + 150}
-
-          >
+          <FadeIn direction="up" delayMs={baseDelay + 150}>
             <span className="sp-tags-label">Services include:</span>
           </FadeIn>
           {svc.tags.map((tag, ti) => (
-            <FadeIn key={tag} direction="up" delayMs={baseDelay + 200 + ti * 40}>
+            <FadeIn
+              key={tag}
+              direction="up"
+              delayMs={baseDelay + 200 + ti * 40}
+            >
               <span className="sp-tag">{tag}</span>
             </FadeIn>
           ))}

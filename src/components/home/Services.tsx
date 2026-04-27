@@ -105,12 +105,13 @@ export default function Services() {
 
       <div className="services-content">
         {services.map((svc, idx) => (
-          <div key={svc.id} className="service-row-wrapper">
-            <FadeIn
-              direction="left"
-              delayMs={idx * 150}
-              className="service-row"
-            >
+          <FadeIn
+            key={svc.id}
+            direction="left"
+            delayMs={idx * 150}
+            className="service-row-wrapper"
+          >
+            <div className="service-row">
               <div className="service-number">{svc.number}</div>
               <div className="service-title">
                 <span className="green">{svc.titleTop}</span>
@@ -123,6 +124,7 @@ export default function Services() {
                   alt={`${svc.titleTop} illustration`}
                   width={svc.imgWidth}
                   height={svc.imgHeight}
+                  style={{ width: "auto", height: "auto" }}
                 />
               </div>
               <div className="service-details">
@@ -135,23 +137,15 @@ export default function Services() {
                   ))}
                 </div>
               </div>
-            </FadeIn>
-            {svc.showDivider && (
-              <FadeIn direction="right" delayMs={idx * 150 + 100}>
-                <div className="service-divider"></div>
-              </FadeIn>
-            )}
-          </div>
+            </div>
+            {svc.showDivider && <div className="service-divider"></div>}
+          </FadeIn>
         ))}
-        <FadeIn
-          direction="up"
-          delayMs={300}
-          className="services-view-more-center"
-        >
+        <div className="services-view-more-center">
           <a href="/services" className="btn-view-more">
             View More
           </a>
-        </FadeIn>
+        </div>
       </div>
     </section>
   );

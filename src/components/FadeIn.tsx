@@ -7,6 +7,7 @@ type FadeInProps = {
   delayMs?: number;
   className?: string;
   style?: React.CSSProperties;
+  threshold?: number;
 };
 
 export default function FadeIn({
@@ -15,6 +16,7 @@ export default function FadeIn({
   delayMs = 0,
   className = "",
   style = {},
+  threshold = 0.1,
 }: FadeInProps) {
   const [isVisible, setIsVisible] = useState(false);
   const domRef = useRef<HTMLDivElement>(null);
@@ -29,7 +31,7 @@ export default function FadeIn({
           }
         });
       },
-      { rootMargin: "0px 0px -80px 0px", threshold: 0.1 }
+      { rootMargin: "0px 0px -80px 0px", threshold }
     );
 
     const currentRef = domRef.current;

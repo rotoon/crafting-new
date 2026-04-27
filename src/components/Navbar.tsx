@@ -100,19 +100,19 @@ export default function Navbar() {
         <div className={`nav-menu ${menuActive ? 'active' : ''}`} id='nav-menu'>
           <Link
             href='/'
-            className={`nav-link`}
+            className={`nav-link${pathname === '/' ? ' active' : ''}`}
             onClick={(e) => handleNav(e, '#')}
           >
             Home
           </Link>
           <Link
             href='/services'
-            className={`nav-link`}
+            className={`nav-link${pathname.startsWith('/services') ? ' active' : ''}`}
             onClick={handleServiceNav}
           >
             Services
           </Link>
-          <Link href='/works' className={`nav-link`} onClick={handleWorksNav}>
+          <Link href='/works' className={`nav-link${pathname.startsWith('/works') ? ' active' : ''}`} onClick={handleWorksNav}>
             Works
           </Link>
         </div>

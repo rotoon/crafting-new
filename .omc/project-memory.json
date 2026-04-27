@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1775638354135,
+  "lastScanned": 1777276692688,
   "projectRoot": "/Users/rotoon/Git/crafting-new",
   "techStack": {
     "languages": [
@@ -63,6 +63,7 @@
     "isMonorepo": false,
     "workspaces": [],
     "mainDirectories": [
+      "docs",
       "public",
       "scripts",
       "src"
@@ -74,11 +75,18 @@
   },
   "customNotes": [],
   "directoryMap": {
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 0,
+      "lastAccessed": 1777276692666,
+      "keyFiles": []
+    },
     "public": {
       "path": "public",
       "purpose": "Public files",
       "fileCount": 6,
-      "lastAccessed": 1775638353750,
+      "lastAccessed": 1777276692668,
       "keyFiles": [
         "file.svg",
         "globe.svg",
@@ -91,21 +99,21 @@
       "path": "scripts",
       "purpose": "Build/utility scripts",
       "fileCount": 0,
-      "lastAccessed": 1775638353750,
+      "lastAccessed": 1777276692674,
       "keyFiles": []
     },
     "src": {
       "path": "src",
       "purpose": "Source code",
       "fileCount": 0,
-      "lastAccessed": 1775638353755,
+      "lastAccessed": 1777276692675,
       "keyFiles": []
     },
     "public/assets": {
       "path": "public/assets",
       "purpose": "Static assets",
       "fileCount": 5,
-      "lastAccessed": 1775638353755,
+      "lastAccessed": 1777276692675,
       "keyFiles": [
         "athlete-banner.webp",
         "crew-bg.webp",
@@ -116,7 +124,7 @@
       "path": "src/app",
       "purpose": "Application code",
       "fileCount": 4,
-      "lastAccessed": 1775638353756,
+      "lastAccessed": 1777276692676,
       "keyFiles": [
         "globals.css",
         "icon.svg",
@@ -126,32 +134,38 @@
     "src/components": {
       "path": "src/components",
       "purpose": "UI components",
-      "fileCount": 3,
-      "lastAccessed": 1775638353756,
+      "fileCount": 4,
+      "lastAccessed": 1777276692676,
       "keyFiles": [
+        "BackToTop.tsx",
         "FadeIn.tsx",
-        "Footer.tsx",
-        "Navbar.tsx"
+        "Footer.tsx"
       ]
     }
   },
   "hotPaths": [
     {
       "path": "src/components/works/PhotographySection.tsx",
-      "accessCount": 51,
-      "lastAccessed": 1775673281875,
+      "accessCount": 76,
+      "lastAccessed": 1777279996971,
       "type": "file"
     },
     {
       "path": "src/app/globals.css",
-      "accessCount": 30,
-      "lastAccessed": 1775710829721,
+      "accessCount": 39,
+      "lastAccessed": 1777282000699,
       "type": "directory"
     },
     {
       "path": "src/components/works/data.ts",
-      "accessCount": 14,
-      "lastAccessed": 1775718722916,
+      "accessCount": 15,
+      "lastAccessed": 1777277082896,
+      "type": "file"
+    },
+    {
+      "path": "src/components/services/ServiceBlock.tsx",
+      "accessCount": 7,
+      "lastAccessed": 1777281176172,
       "type": "file"
     },
     {
@@ -161,15 +175,45 @@
       "type": "file"
     },
     {
+      "path": "src/components/works/GraphicDesignSection.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1777281364216,
+      "type": "file"
+    },
+    {
+      "path": "src/components/home/Services.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1777281900820,
+      "type": "file"
+    },
+    {
       "path": "src/components/works/WorkDetailPage.tsx",
       "accessCount": 3,
       "lastAccessed": 1775710802388,
       "type": "file"
     },
     {
-      "path": "src/components/works/GraphicDesignSection.tsx",
+      "path": "src/components/Navbar.tsx",
       "accessCount": 3,
-      "lastAccessed": 1775710902128,
+      "lastAccessed": 1777276919617,
+      "type": "file"
+    },
+    {
+      "path": "src/app/services/page.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1777280979187,
+      "type": "file"
+    },
+    {
+      "path": "src/app/services/services.css",
+      "accessCount": 3,
+      "lastAccessed": 1777281130384,
+      "type": "file"
+    },
+    {
+      "path": "src/components/FadeIn.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1777281360554,
       "type": "file"
     },
     {
@@ -185,12 +229,6 @@
       "type": "file"
     },
     {
-      "path": "src/app/services/page.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1775710661400,
-      "type": "file"
-    },
-    {
       "path": "docs/superpowers/plans/2026-04-09-works-detail-page.md",
       "accessCount": 2,
       "lastAccessed": 1775711563651,
@@ -198,8 +236,8 @@
     },
     {
       "path": "src/components/home/Works.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1775638450562,
+      "accessCount": 2,
+      "lastAccessed": 1777281993164,
       "type": "file"
     },
     {
@@ -221,21 +259,9 @@
       "type": "file"
     },
     {
-      "path": "src/components/Navbar.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1775710037518,
-      "type": "file"
-    },
-    {
       "path": "src/components/Footer.tsx",
       "accessCount": 1,
       "lastAccessed": 1775710044611,
-      "type": "file"
-    },
-    {
-      "path": "src/components/FadeIn.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1775710063602,
       "type": "file"
     },
     {
