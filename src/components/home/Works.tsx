@@ -1,8 +1,9 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import { gsap } from "gsap";
 import FadeIn from "../FadeIn";
 import Image from "next/image";
+
+type Gsap = typeof import("gsap").gsap;
 
 // Production showcase: 3 slot positions
 const PROD_SLOTS = [
@@ -73,28 +74,40 @@ export default function Works() {
   const carouselRef = useRef<HTMLDivElement>(null);
   const productionVideoCardRef = useRef<HTMLDivElement>(null);
   const slidesRef = useRef<(HTMLDivElement | null)[]>([]);
+  const gsapRef = useRef<Gsap | null>(null);
 
   useEffect(() => {
-    if (!productionVideoCardRef.current) return;
+    let cancelled = false;
+    const card = productionVideoCardRef.current;
+    if (!card) return;
 
-    gsap.killTweensOf(productionVideoCardRef.current);
-    gsap.fromTo(
-      productionVideoCardRef.current,
-      {
-        opacity: 0.4,
-        y: 24,
-        scale: 0.975,
-        filter: "blur(10px) saturate(0.8)",
-      },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        filter: "blur(0px) saturate(1)",
-        duration: 0.7,
-        ease: "power3.out",
-      },
-    );
+    void import("gsap").then(({ gsap }) => {
+      if (cancelled) return;
+      gsapRef.current = gsap;
+      gsap.killTweensOf(card);
+      gsap.fromTo(
+        card,
+        {
+          opacity: 0.4,
+          y: 24,
+          scale: 0.975,
+          filter: "blur(10px) saturate(0.8)",
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          filter: "blur(0px) saturate(1)",
+          duration: 0.7,
+          ease: "power3.out",
+        },
+      );
+    });
+
+    return () => {
+      cancelled = true;
+      gsapRef.current?.killTweensOf(card);
+    };
   }, [activeProductionIndex]);
 
   const handleSlideClick = (index: number) => {
